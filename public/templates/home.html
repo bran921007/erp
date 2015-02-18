@@ -45,7 +45,7 @@
                                                 <label>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="icon-search"></i></span>
-                                                        <input type="text" aria-controls="DataTables_Table_0" class="form-control">
+                                                        <input ng-model="query" type="text" aria-controls="DataTables_Table_0" class="form-control">
                                                     </div>
                                                 </label>
                                             </div>
@@ -73,7 +73,7 @@
 
                                 <tbody role="alert" aria-live="polite" aria-relevant="all"  >
 
-                                    <tr class="odd" ng-repeat="data in datos">
+                                    <tr class="odd" ng-repeat="data in datos | filter:query">
                                             <td class="checkbox-column  sorting_1">
                                                 <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
                                             </td>
