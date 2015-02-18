@@ -1,5 +1,6 @@
+(function(){
 
-var app = angular.module("app", ['ngRoute']);
+var app = angular.module("app", ['ngRoute','controllers']);
 
  
 app.config(function($routeProvider)
@@ -14,6 +15,8 @@ app.config(function($routeProvider)
     }).otherwise({reditrectTo:"/"});
  
 });
+
+})();
 
 // app.controller("homeController", function homeController($scope,$http)
 // {
