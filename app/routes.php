@@ -35,3 +35,6 @@ Route::post("/getData", function()
     return User::create(Input::all());
 
 });
+
+Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeController@destroy']);
+
