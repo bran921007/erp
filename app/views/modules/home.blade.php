@@ -104,9 +104,29 @@
 
 			<!-- Top Left Menu -->
 			<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
-				<li>
+				<li ng-show="tab === 1">
 					<a href="#">
 						Dashboard
+					</a>
+				</li>
+				<li ng-show="tab === 2">
+					<a href="#">
+						Pedidos
+					</a>
+				</li>
+				<li ng-show="tab === 3">
+					<a href="#">
+						Clientes
+					</a>
+				</li>
+				<li ng-show="tab === 4">
+					<a href="#">
+						Inventario
+					</a>
+				</li>
+				<li ng-show="tab === 5">
+					<a href="#">
+						Informe
 					</a>
 				</li>
 			</ul>
@@ -138,23 +158,35 @@
 		<div id="sidebar" class="sidebar-fixed">
 			<div id="sidebar-content">
 				<!--=== Navigation ===-->
-				<ul id="nav">
-					<li class="current">
-						<a href="#/home">
+				<ul id="nav" ng-init="tab = 1">
+					<li ng-class="{ current : tab === 1 }" >
+						<a href="#/home" ng-click="tab = 1">
 							<i class="icon-dashboard"></i>
 							Dashboard
 						</a>
 					</li>
-					<li>
-						<a href="#/pedidos">
-							<i class="icon-group"></i>
+					<li ng-class="{ current : tab === 2 }">
+						<a href="#/pedidos" ng-click="tab = 2">
+							<i class="icon-shopping-cart"></i>
 							Pedidos
 						</a>
 					</li>
-					<li>
-						<a href="#/clientes">
+					<li ng-class="{ current : tab === 3 }">
+						<a href="#/clientes" ng-click="tab = 3">
 							<i class="icon-group"></i>
 							Clientes
+						</a>
+					</li>
+					<li ng-class="{ current : tab === 4 }">
+						<a href="#/inventario" ng-click="tab = 4">
+							<i class="icon-barcode"></i>
+							Inventario
+						</a>
+					</li>
+					<li ng-class="{ current : tab === 5 }">
+						<a href="#/informe" ng-click="tab = 5">
+							<i class="icon-calendar"></i>
+							Informe
 						</a>
 					</li>
 				</ul>

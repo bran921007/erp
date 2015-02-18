@@ -5,14 +5,15 @@ var app = angular.module("app", ['ngRoute','controllers', 'app-directives']);
 
 app.config(function($routeProvider)
 {
-
-    $routeProvider.when("/",
-    {
+    $routeProvider.when("/clientes",{
  		templateUrl: "../templates/home.html",
         controller: "homeController"
-
-
-    }).otherwise({reditrectTo:"/"});
+    })
+    .when("/", {
+      templateUrl : "../templates/clientes.html",
+      controller : "clientesController"
+    })
+    .otherwise({reditrectTo:"/"});
 
 });
 
