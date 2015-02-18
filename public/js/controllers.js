@@ -1,11 +1,10 @@
+(function(){
+
+    var app = angular.module('controllers',[]);
+
 app.controller("homeController", function($scope,$http)
 {
-	// this.datos;
-	$scope.nombre;
-	$scope.apellido;
-	$scope.email;
-	//$scope.datos;
-	$scope.datos = {};
+
     $http.get('/getData').success(function(data) 
     {
         $scope.datos = data.posts;//así enviamos los posts a la vista
@@ -13,27 +12,23 @@ app.controller("homeController", function($scope,$http)
 
     $scope.agregarCliente = function(){
 
-
-		console.log($scope.datos);
-
-		 var cliente = {
-            nombre: $scope.nombre,
-            apellido: $scope.apellido,
-            email: $scope.email,
+         var customer = {
+            nombre:   $scope.cliente.nombre,
+            apellido: $scope.cliente.apellido,
+            email:    $scope.cliente.email
             
         };
+        
+        $scope.datos.push(customer);
 
-        // $scope.cliente = {};
-        // $scope.cliente.nombre   = $scope.nombre;
-        // $scope.cliente.apellido = $scope.apellido;
-        // $scope.cliente.email    = $scope.email;
+        $http.post('/getData', customer);
 
-        $scope.datos.push(cliente);
+        $scope.cliente = {};
 
-        console.log($scope.datos);
-
-
-        $http.post('/getData', cliente);
     };
 
 });
+
+})();
+
+
