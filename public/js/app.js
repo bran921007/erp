@@ -5,19 +5,32 @@ var app = angular.module("app", ['ngRoute','controllers', 'app-directives']);
 
 app.config(function($routeProvider)
 {
-    $routeProvider.when("/clientes",{
- 		templateUrl: "../templates/home.html",
-        controller: "homeController"
-    })
-    .when("/", {
+    $routeProvider.when("/", {
       templateUrl : "../templates/clientes.html",
       controller : "clientesController"
     })
+    .when("/clientes",{
+ 		templateUrl: "../templates/home.html",
+        controller: "homeController"
+    })
+    
     .when("/home", {
       templateUrl : "../templates/dashboard.html",
       controller : "dashboardController"
     })
-    .otherwise({reditrectTo:"/"});
+    .when("/pedidos",{
+      templateUrl : "../templates/pedidos.html",
+      controller : "pedidosController"
+    })    
+	.when("/inventario",{
+	  templateUrl : "../templates/inventario.html",
+	  controller : "inventarioController"
+    })
+	.when("/informe",{
+	  templateUrl : "../templates/informe.html",
+      controller : "informeController"
+	})
+	.otherwise({reditrectTo:"/"});
 
 });
 
