@@ -74,8 +74,15 @@ app.controller("homeController", function($scope,$http)
 });
 
 app.controller('ModalInstanceCtrl', function($scope, $http){
+});
 
+app.controller("dashboardController", function($scope,$http)
+{
+});
 
+app.controller("tabsController", function($scope)
+{
+  $scope.fecha = Date.now();
 });
 
 })();
