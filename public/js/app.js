@@ -13,6 +13,10 @@ app.config(function($routeProvider)
       templateUrl : "../templates/clientes.html",
       controller : "clientesController"
     })
+    .when("/home", {
+      templateUrl : "../templates/dashboard.html",
+      controller : "dashboardController"
+    })
     .otherwise({reditrectTo:"/"});
 
 });

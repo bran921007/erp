@@ -66,6 +66,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/angular-locale_es-es.js"></script>
 
 	<script>
 	$(document).ready(function(){
@@ -86,13 +87,13 @@
 
 			<!-- Only visible on smartphones, menu toggle -->
 			<ul class="nav navbar-nav">
-				<li class="nav-toggle"><a href="#" title=""><i class="icon-reorder"></i></a></li>
+				<li class="nav-toggle"><a href="#/" title=""><i class="icon-reorder"></i></a></li>
 			</ul>
 
 			<!-- Logo -->
 			<a class="navbar-brand" href="index.html">
 				<img src="melon/assets/img/logo.png" alt="logo" />
-				<strong>ME</strong>LON
+				<strong>E</strong>RP
 			</a>
 			<!-- /logo -->
 
@@ -153,7 +154,7 @@
 	</header>
 	<!-- /.header -->
 
-	<div id="container">
+	<div id="container" ng-controller="tabsController">
 		<!-- Sidebar -->
 		<div id="sidebar" class="sidebar-fixed">
 			<div id="sidebar-content">
@@ -200,12 +201,19 @@
 				 <div id="content">
 				            <div class="container">
 											<div class="crumbs">
+												<!-- Current Container Section -->
 												<ul id="breadcrumbs" class="breadcrumb">
 												 <li ng-show="tab === 1"> <i class="icon-home"></i> <a href="#/home">Dashboard</a> </li>
 												 <li ng-show="tab === 2"> <i class="icon-shopping-cart"></i> <a href="#/pedidos">Pedidos</a> </li>
 												 <li ng-show="tab === 3"> <i class="icon-group"></i> <a href="#/clientes">Clientes</a> </li>
 												 <li ng-show="tab === 4"> <i class="icon-barcode"></i> <a href="#/inventario">Inventario</a> </li>
 												 <li ng-show="tab === 5"> <i class="icon-calendar"></i> <a href="#/informe">Informe</a> </li>
+												</ul>
+												<!-- Info Panel -->
+												<ul class="crumb-buttons">
+													<li class="">
+														<a > <i class="icon-calendar"></i> <span>@{{fecha | date:'fullDate'}}</span> </a>
+													</li>
 												</ul>
 												</div>
 											<br>
