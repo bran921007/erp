@@ -161,7 +161,7 @@
 				<ul id="nav" ng-init="tab = 1">
 					<li ng-class="{ current : tab === 1 }" >
 						<a href="#/home" ng-click="tab = 1">
-							<i class="icon-dashboard"></i>
+							<i class="icon-home"></i>
 							Dashboard
 						</a>
 					</li>
@@ -199,7 +199,15 @@
 				<!-- AQUI VA EL CONTENT -->
 				 <div id="content">
 				            <div class="container">
-											<div class="crumbs"> <ul id="breadcrumbs" class="breadcrumb"> <li> <i class="icon-home"></i> <a href="#/clientes">Clientes</a> </li>  </ul> </div>
+											<div class="crumbs">
+												<ul id="breadcrumbs" class="breadcrumb">
+												 <li ng-show="tab === 1"> <i class="icon-home"></i> <a href="#/home">Dashboard</a> </li>
+												 <li ng-show="tab === 2"> <i class="icon-shopping-cart"></i> <a href="#/pedidos">Pedidos</a> </li>
+												 <li ng-show="tab === 3"> <i class="icon-group"></i> <a href="#/clientes">Clientes</a> </li>
+												 <li ng-show="tab === 4"> <i class="icon-barcode"></i> <a href="#/inventario">Inventario</a> </li>
+												 <li ng-show="tab === 5"> <i class="icon-calendar"></i> <a href="#/informe">Informe</a> </li>
+												</ul>
+												</div>
 											<br>
 												<div ng-view></div>
 				            </div>
