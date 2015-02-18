@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<title>Empty File | Melon - Flat &amp; Responsive Admin Template</title>
+	<title>ERP</title>
 
 	<!--=== CSS ===-->
 
@@ -65,6 +65,7 @@
 
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
 
 	<script>
 	$(document).ready(function(){
@@ -78,7 +79,6 @@
 </head>
 
 <body>
-
 	<!-- Header -->
 	<header class="header navbar navbar-fixed-top" role="banner">
 		<!-- Top Navigation Bar -->
@@ -86,7 +86,7 @@
 
 			<!-- Only visible on smartphones, menu toggle -->
 			<ul class="nav navbar-nav">
-				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+				<li class="nav-toggle"><a href="#" title=""><i class="icon-reorder"></i></a></li>
 			</ul>
 
 			<!-- Logo -->
@@ -118,7 +118,7 @@
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-male"></i>
-						<span class="username">John Doe</span>
+						<span class="username">Amalia Linarez</span>
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
@@ -130,13 +130,45 @@
 			<!-- /Top Right Menu -->
 		</div>
 		<!-- /top navigation bar -->
-	</header> <!-- /.header -->
+	</header>
+	<!-- /.header -->
 
 	<div id="container">
-		<main-sidebar></main-sidebar>
+		<!-- Sidebar -->
+		<div id="sidebar" class="sidebar-fixed">
+			<div id="sidebar-content">
+				<!--=== Navigation ===-->
+				<ul id="nav">
+					<li class="current">
+						<a href="#/home">
+							<i class="icon-dashboard"></i>
+							Dashboard
+						</a>
+					</li>
+					<li>
+						<a href="#/pedidos">
+							<i class="icon-group"></i>
+							Pedidos
+						</a>
+					</li>
+					<li>
+						<a href="#/clientes">
+							<i class="icon-group"></i>
+							Clientes
+						</a>
+					</li>
+				</ul>
+				<!-- /Navigation -->
+			</div>
+			<div id="divider" class="resizeable"></div>
+		</div>
+		<!-- /Sidebar -->
+
 				<!-- AQUI VA EL CONTENT -->
 				 <div id="content">
 				            <div class="container">
+											<div class="crumbs"> <ul id="breadcrumbs" class="breadcrumb"> <li> <i class="icon-home"></i> <a href="#/clientes">Clientes</a> </li>  </ul> </div>
+											<br>
 												<div ng-view></div>
 				            </div>
 				 </div>
