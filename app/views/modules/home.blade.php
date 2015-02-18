@@ -133,52 +133,14 @@
 	</header> <!-- /.header -->
 
 	<div id="container">
-		<div id="sidebar" class="sidebar-fixed">
-			<div id="sidebar-content">
-
-				<!--=== Navigation ===-->
-				<ul id="nav">
-					<li class="current">
-						<a href="index.html">
-							<i class="icon-dashboard"></i>
-							Entry #1
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">
-							<i class="icon-desktop"></i>
-							Entry #2
-							<span class="label label-info pull-right">6</span>
-						</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="ui_general.html">
-								<i class="icon-angle-right"></i>
-								Entry #2.1
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<!-- /Navigation -->
-			</div>
-			<div id="divider" class="resizeable"></div>
-		</div>
-		<!-- /Sidebar -->
-
-<!-- AQUI VA EL CONTENT -->
- <div id="content">
-            <div class="container">
-                <!-- Breadcrumbs line -->
-
-	<div class="row" ng-view></div>
-
-            </div>
-            <!-- /.container -->
-
-        </div>
-<!-- AQUI TERMINA EL CONTENT -->
-
+		<main-sidebar></main-sidebar>
+				<!-- AQUI VA EL CONTENT -->
+				 <div id="content">
+				            <div class="container">
+												<div ng-view></div>
+				            </div>
+				 </div>
+				<!-- AQUI TERMINA EL CONTENT -->
 	</div>
 </div>
 </body>
