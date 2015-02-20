@@ -168,26 +168,67 @@
 							Dashboard
 						</a>
 					</li>
-					<li ng-class="{ current : tab === 2 }">
-						<a href="#/pedidos" ng-click="tab = 2">
+					<li ng-class="{ current : tab === 2 || tab === 3 || tab === 4 }">
+						<a >
 							<i class="icon-shopping-cart"></i>
 							Pedidos
 						</a>
+						<ul class="sub-menu">
+							<li ng-class="{ current : tab === 2 }">
+								<a href="#/pedidos" ng-click="tab = 2">
+									<i class="icon-shopping-cart"></i>
+									Crear Pedido
+								</a>
+							</li>
+							<li ng-class="{ current : tab === 3 }">
+								<a href="#/pedidos" ng-click="tab = 3">
+									<i class="icon-shopping-cart"></i>
+									Factura Pedidos
+								</a>
+							</li>
+							<li ng-class="{ current : tab === 4 }">
+								<a href="#/pedidos" ng-click="tab = 4">
+									<i class="icon-shopping-cart"></i>
+									Manejar Pedidos
+								</a>
+							</li>
+						</ul>
 					</li>
-					<li ng-class="{ current : tab === 3 }">
-						<a href="#/clientes" ng-click="tab = 3">
+					<li ng-class="{ current : tab === 5 }">
+						<a href="#/clientes" ng-click="tab = 5">
 							<i class="icon-group"></i>
 							Clientes
 						</a>
 					</li>
-					<li ng-class="{ current : tab === 4 }">
-						<a href="#/inventario" ng-click="tab = 4">
+					<li ng-class="{ current : tab === 6 || tab === 7 || tab === 8}">
+						<a >
 							<i class="icon-barcode"></i>
-							Inventario
+							Productos
+
 						</a>
+						<ul class="sub-menu">
+							<li ng-class="{ current : tab === 6  }">
+								<a href="#/inventario" ng-click="tab = 6">
+									<i class="icon-barcode"></i>
+									Manejar Productos
+								</a>
+							</li>
+							<li ng-class="{ current : tab === 7 }">
+								<a href="#/" ng-click="tab = 7">
+									<i class="icon-barcode"></i>
+									Categorias
+								</a>
+							</li>
+							<li ng-class="{ current : tab === 8 }">
+								<a href="#/" ng-click="tab = 8">
+									<i class="icon-barcode"></i>
+									Distribuidores
+								</a>
+							</li>
+						</ul>
 					</li>
-					<li ng-class="{ current : tab === 5 }">
-						<a href="#/informe" ng-click="tab = 5">
+					<li ng-class="{ current : tab === 9 }">
+						<a href="#/informe" ng-click="tab = 9">
 							<i class="icon-calendar"></i>
 							Informe
 						</a>
