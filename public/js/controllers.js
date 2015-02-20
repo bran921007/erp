@@ -2,13 +2,22 @@
 
     var app = angular.module('controllers',[]);
 
-app.controller("homeController", function($scope,$http)
+app.controller("homeController", function($scope,$http,$modal)
 {
-    $scope.cliente = {};
+    //===============
+    //Abrir Modal
+    $scope.showModal = false;
+    $scope.agregarModal = function(){
+        $scope.showModal = !$scope.showModal;
+    };
+    //=====================
 
-    $http.get('/getData').success(function(data) 
+    $scope.cliente = {};
+    $scope.datos = {};
+
+    $http.get('/getClientes').success(function(data)
     {
-        $scope.datos = data.posts;//así enviamos los posts a la vista
+        $scope.datos = data.clientes;//así enviamos los posts a la vista
     });
 
     $scope.agregarCliente = function(){
@@ -22,16 +31,22 @@ app.controller("homeController", function($scope,$http)
         
         $scope.datos.push(customer);
 
-        $http.post('/getData', customer);
+        $http.post('/postClientes', customer);
 
         $scope.cliente = {};
+        $scope.showModal = false;
 
     };
 
-    $scope.borrarCliente = function(cliente){
+    
+
+    $scope.borrarCliente = function(){
+
+        $scope.showConfirmacion = false;
+        
+        var cliente = $scope.datoCliente;
 
          var index = $scope.datos.indexOf(cliente);
-
          
         if (index != -1) {
             // Remove todo-item from array
@@ -42,48 +57,34 @@ app.controller("homeController", function($scope,$http)
         console.log(cliente.id);
         $http.delete('borrarCliente/'+cliente.id);
 
-        
-
     };
 
-    $scope.abrirModal = function(size){
-       
-
-        // var modalInstance = $modal.open({
-        //   templateUrl: '../partials/modal.html',
-        //   controller: 'ModalInstanceCtrl',
-        //   size: size,
-        //   resolve: {
-        //     items: function () {
-        //       return $scope.items;
-        //     }
-        //   }
-
-        // });
-        // modalInstance.result.then(function (selectedItem) {
-        //   $scope.selected = selectedItem;
-        // }, function () {
-        //   $log.info('Modal dismissed at: ' + new Date());
-        // });
+    
+    $scope.bodyModal = "Estas seguro de que deseas borrar este articulo?";
+    $scope.showConfirmacion = false;
+    $scope.confirmacionModal = function(data){
+        $scope.showConfirmacion = !$scope.showConfirmacion;
+        $scope.datoCliente = {};
+        $scope.datoCliente = data;
     };
+
     $scope.editarCliente = function(cliente){
 
-        // this.nombre   = cliente.nombre; 
-        // this.apellido =
-        // this.email    =
+        $scope.showModal = true;
         $scope.cliente = cliente;
-
 
     };
 
-});
 
-app.controller('ModalInstanceCtrl', function($scope, $http){
 });
 
 
 app.controller("dashboardController", function($scope,$http)
 {
+});
+
+app.controller("inventarioController", function($scope,$http){
+
 });
 
 app.controller("tabsController", function($scope)

@@ -10,7 +10,7 @@ app.config(function($routeProvider)
       controller : "clientesController"
     })
     .when("/clientes",{
- 		templateUrl: "../templates/home.html",
+ 		    templateUrl: "../templates/home.html",
         controller: "homeController"
     })
     
@@ -22,12 +22,12 @@ app.config(function($routeProvider)
       templateUrl : "../templates/pedidos.html",
       controller : "pedidosController"
     })    
-	.when("/inventario",{
+	 .when("/inventario",{
 	  templateUrl : "../templates/inventario.html",
-	  controller : "inventarioController"
+	  controller : "homeController"
     })
 	.when("/informe",{
-	  templateUrl : "../templates/informe.html",
+	    templateUrl : "../templates/informe.html",
       controller : "informeController"
 	})
 	.otherwise({reditrectTo:"/"});

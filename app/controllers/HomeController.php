@@ -20,6 +20,35 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function getClientes()
+	{
+	   $clientes = DB::table("clientes")->get();
+	    return Response::json(array(
+	        "clientes"        =>        $clientes
+	    ));
+	}
+
+	public function postClientes()
+	{
+		return Cliente::create(Input::all());
+	}	
+
+	
+
+	public function getProductos()
+	{
+	   $productos = DB::table("productos")->get();
+	    return Response::json(array(
+	        "productos"        =>        $productos
+	    ));
+	}
+
+	public function postProductos()
+	{
+		return Producto::create(Input::all());
+	}
+
+
 	public function destroy($id)
 	{
     	User::destroy($id);

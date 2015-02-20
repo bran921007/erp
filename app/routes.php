@@ -20,21 +20,10 @@ Route::get('/home', function()
 	return View::make('modules.home');
 });
 //Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'HomeController@dashboard']);
-Route::get("getData", function()
-{
- 
-    $posts = DB::table("users")->get();
-    return Response::json(array(
-        "posts"        =>        $posts
-    ));
- 
-});
 
-Route::post("/getData", function()
-{    
-    return User::create(Input::all());
+Route::get('/getClientes', ['as' => 'cliente', 'uses' => 'HomeController@getClientes']);
+Route::post('/postClientes', ['as' => 'cliente', 'uses' => 'HomeController@postClientes']);
 
-});
 
 Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeController@destroy']);
 
