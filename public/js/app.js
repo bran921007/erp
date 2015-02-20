@@ -24,7 +24,7 @@ app.config(function($routeProvider)
     })    
 	 .when("/inventario",{
 	  templateUrl : "../templates/inventario.html",
-	  controller : "homeController"
+	  controller : "inventarioController"
     })
 	.when("/informe",{
 	    templateUrl : "../templates/informe.html",

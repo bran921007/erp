@@ -23,7 +23,13 @@ Route::get('/home', function()
 
 Route::get('/getClientes', ['as' => 'cliente', 'uses' => 'HomeController@getClientes']);
 Route::post('/postClientes', ['as' => 'cliente', 'uses' => 'HomeController@postClientes']);
+Route::put('/actualizarCliente',['as' => 'cliente', 'uses' => 'HomeController@actualizarClientes']);
+Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeController@borrarCliente']);
 
+//Inventario de Productos
 
-Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeController@destroy']);
+Route::get('/getProductos', ['as' => 'cliente', 'uses' => 'HomeController@getProductos']);
+Route::post('/postProductos', ['as' => 'cliente', 'uses' => 'HomeController@postProductos']);
+Route::put('/actualizarProductos',['as' => 'cliente', 'uses' => 'HomeController@actualizarProductos']);
+Route::delete('/borrarProducto/{id}', ['as' => 'cliente', 'uses' => 'HomeController@borrarProducto']);
 

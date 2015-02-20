@@ -31,9 +31,19 @@ class HomeController extends BaseController {
 	public function postClientes()
 	{
 		return Cliente::create(Input::all());
-	}	
+	}
 
-	
+	public function actualizarClientes(){
+		
+	}
+
+	public function destroy($id)
+	{
+    	Cliente::destroy($id);
+	}
+
+ //================= 
+ // Productos 
 
 	public function getProductos()
 	{
@@ -46,12 +56,19 @@ class HomeController extends BaseController {
 	public function postProductos()
 	{
 		return Producto::create(Input::all());
-	}
-
-
-	public function destroy($id)
+	}	
+	
+	public function actualizarProducto()
 	{
-    	User::destroy($id);
+		
+	}	
+
+	public function borrarProducto($id)
+	{
+		Producto::destroy($id);
 	}
+
+
+	
 	
 }
