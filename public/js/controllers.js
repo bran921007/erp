@@ -6,10 +6,14 @@ app.controller("homeController", function($scope,$http,$modal,$log)
 {
     //===============
     //Abrir Modal
-   
+
     $scope.showModal = false;
     $scope.agregarModal = function(){
+      $scope.cliente = {};
         $scope.showModal = !$scope.showModal;
+    };
+    $scope.toggleModal = function(){
+        $scope.showConfirmacion = !$scope.showConfirmacion;
     };
     //=====================
 
@@ -28,9 +32,9 @@ app.controller("homeController", function($scope,$http,$modal,$log)
             nombre:   $scope.cliente.nombre,
             apellido: $scope.cliente.apellido,
             email:    $scope.cliente.email
-            
+
         };
-        
+
         $scope.datos.push(customer);
 
         $http.post('/postClientes', customer);
@@ -43,11 +47,11 @@ app.controller("homeController", function($scope,$http,$modal,$log)
     $scope.borrarCliente = function(){
 
         $scope.showConfirmacion = false;
-        
+
         var cliente = $scope.datoCliente;
 
          var index = $scope.datos.indexOf(cliente);
-         
+
         if (index != -1) {
             // Remove todo-item from array
             $scope.datos.splice( index, 1 );
@@ -60,7 +64,7 @@ app.controller("homeController", function($scope,$http,$modal,$log)
     };
 
 
-    $scope.bodyModal = "Estas seguro de que deseas borrar este articulo?";
+    $scope.bodyModal = "Estas seguro de que deseas borrar este cliente?";
     $scope.showConfirmacion = false;
     $scope.confirmacionModal = function(data){
         $scope.showConfirmacion = !$scope.showConfirmacion;
@@ -88,7 +92,7 @@ app.controller("inventarioController", function($scope,$http){
 
 //===============
     //Abrir Modal
-   
+
     $scope.showModal = false;
     $scope.agregarModal = function(){
         $scope.showModal = !$scope.showModal;
@@ -110,9 +114,9 @@ app.controller("inventarioController", function($scope,$http){
             articulo:   $scope.producto.articulo,
             cantidad:   $scope.producto.cantidad,
             distribuidor:$scope.producto.distribuidor
-            
+
         };
-        
+
         $scope.datos.push(inventario);
 
         $http.post('/postProductos', inventario);
@@ -125,11 +129,11 @@ app.controller("inventarioController", function($scope,$http){
     $scope.borrarProducto = function(){
 
         $scope.showConfirmacion = false;
-        
+
         var producto = $scope.datoProducto;
 
          var index = $scope.datos.indexOf(producto);
-         
+
         if (index != -1) {
             // Remove todo-item from array
             $scope.datos.splice( index, 1 );
@@ -157,7 +161,7 @@ app.controller("inventarioController", function($scope,$http){
         $scope.datoProducto = data;
     };
 
-    
+
 
 });
 
@@ -167,5 +171,3 @@ app.controller("tabsController", function($scope)
 });
 
 })();
-
-

@@ -1,14 +1,24 @@
 
+
+
 <div class="row ">
-    <div class="col-md-12">
-        <div class="pull-rigth">
-            <button ng-click="agregarModal()" class="btn btn-lg btn-primary" >Agregar Producto</button>
+  <div class="col-md-12">
+    <div class="widget">
+
+      <div class="widget-content">
+        <div class="row">
+          <div class="col-md-3">
+            <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
+              <div>Agregar Producto</div> </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
 <div class="row">
-         
+
         <div class="col-md-12">
             <div class="widget box">
 
@@ -21,27 +31,51 @@
                         </div>
                     </div>
                 </div>
-                
 
-                  <modal title="Agregar Inventario" visible="showModal">
+
+                  <modal title="Agregar Producto" visible="showModal">
 
                     <form class="form-horizontal row-border" ng-submit="agregarProducto()" novalidate="novalidate">
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Articulo <span class="required">*</span></label>
+                            <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
                             <div class="col-md-9">
                                 <input type="text" ng-model="producto.articulo" class="form-control required">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="producto.cantidad" class="form-control required email">
-                            </div>
+                          <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+                          <div class="col-md-9">
+                            <input type="text" ng-model="producto.cantidad" class="form-control required email">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
+                          <div class="col-md-9">
+                            <select ng-model="producto.categoria" class="form-control">
+                              <option value="0" >Seleccione Categoria</option>
+                              <option value="postres">Postres</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-3 control-label">Precio Venta <span class="required">*</span></label>
+                          <div class="col-md-9">
+                            <input type="text" ng-model="producto.precioVenta" class="form-control required">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
+                          <div class="col-md-9">
+                            <input type="text" ng-model="producto.precioVenta" class="form-control required">
+                          </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
                             <div class="col-md-9">
-                                <input type="text" ng-model="producto.distribuidor" class="form-control required url">
+                              <select ng-model="producto.distribuidor" class="form-control">
+                                <option value="0" >Seleccione Distribuidor</option>
+                                <option value="postres">SRL</option>
+                              </select>
                             </div>
                         </div>
 
@@ -60,10 +94,10 @@
                   </modal>
 
 
-                    
+
     <div  class="container">
                       <!-- <h1>Modal example</h1> -->
-                  
+
                 <div class="widget-content no-padding" style="display: block;">
                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="dataTables_header clearfix">
                         <div class="col-md-6">
@@ -113,7 +147,7 @@
                                         <span><input type="checkbox" class="uniform"></span>
                                     </div>
                                 </th>
-                                
+
                                 <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending">Articulo
                                 </th>
                                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">Cantidad
@@ -123,10 +157,10 @@
                                 <th data-hide="phone,tablet" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status
                                 </th>
                             </tr>
-                        </thead>    
-                        
+                        </thead>
+
                     <tbody role="alert" aria-live="polite" aria-relevant="all"  >
-                        
+
                         <tr class="odd" ng-repeat="data in datos | filter:query">
                                 <td class="checkbox-column  sorting_1">
                                     <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
@@ -139,7 +173,7 @@
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
                                     <span class="icon-edit-sign" ng-click="editarProducto(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
-                                    
+
                                 </td>
                         </tr>
 

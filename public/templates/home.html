@@ -1,14 +1,89 @@
 
+
 <div class="row ">
-    <div class="col-md-12">
-        <div class="pull-rigth">
-            <button ng-click="agregarModal()" class="btn btn-lg btn-primary" >Agregar Cliente</button>
+  <div class="col-md-12">
+    <div class="widget">
+
+      <div class="widget-content">
+        <div class="row">
+            <div class="col-md-3">
+              <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-group fa-2x"></i>
+                <div>Agregar Clientes</div> </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+
+
+
+<!-- Modal Agregar Clientes -->
+    <modal title="Nuevo Cliente" visible="showModal">
+
+      <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
+        <div class="form-group">
+          <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.nombre" class="form-control required">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.apellido" class="form-control required email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Correo <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.email" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Telefono <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.telefono" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Cedula <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.cedula" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Dirección <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.cedula" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+        </div>
+      </form>
+
+    </modal>
+    <!-- END Modal Agregar Clientes -->
+
+    <!-- Begin Modal Confirmacion -->
+    <modal title="Confirmar Eliminación" visible='showConfirmacion'>
+      {{bodyModal}}
+      <div class="modal-footer">
+        <button ng-click="toggleModal()" type="button" class="btn btn-default">Cancelar</button>
+        <button ng-click="borrarCliente(datos)" type="button" class="btn btn-primary">Si</button>
+        </div>
+    </modal>
+    <!-- END Modal Confirmacion -->
+
+
 
 <div class="row">
-         
+
         <div class="col-md-12">
             <div class="widget box">
 
@@ -21,78 +96,12 @@
                         </div>
                     </div>
                 </div>
-                
 
 
-                  <modal title="Login form" visible="showModal">
-
-                    <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.nombre" class="form-control required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.apellido" class="form-control required email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Email <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.email" class="form-control required url">
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <input type="submit" value="Guardar" class="btn btn-primary pull-right">
-                        </div>
-                    </form>
-
-                  </modal>
-
-                  <modal title="confirmacion" visible='showConfirmacion'>
-                      {{bodyModal}}
-                      <form class="form-horizontal row-border" ng-submit="borrarCliente()" novalidate="novalidate">
-                        <input type="submit" value='borrar'>
-                      </form>
-                  </modal>
-
-
-                    
-    <div  class="container">
-                      <!-- <h1>Modal example</h1> -->
-                  
                 <div class="widget-content no-padding" style="display: block;">
                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="dataTables_header clearfix">
-                        <div class="col-md-6">
-                            <div id="DataTables_Table_0_length" class="dataTables_length">
-                                <label>
-                                    <div class="select2-container" id="s2id_autogen3" style="width: 75px;"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">
-                                        <span class="select2-chosen">5</span>
-                                        <abbr class="select2-search-choice-close"></abbr>
-                                        <span class="select2-arrow"><b></b></span></a>
-                                        <input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen4">
-                                        <div class="select2-drop select2-display-none">
-                                            <div class="select2-search select2-search-hidden select2-offscreen">
-                                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">
-                                            </div>
-                                            <ul class="select2-results">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <select size="1" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="select2-offscreen" tabindex="-1">
-                                        <option value="5" selected="selected">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="-1">All</option>
-                                    </select>
-                                    records per page</label>
-                                </div>
-                            </div>
+                      <div class="col-md-6">
+                      </div>
                             <div class="col-md-6">
                                 <div class="dataTables_filter" id="DataTables_Table_0_filter">
                                     <label>
@@ -113,13 +122,13 @@
                                         <span><input type="checkbox" class="uniform"></span>
                                     </div>
                                 </th>
-                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending">First Name
+                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Nombre
                                 </th>
-                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">Last Name
+                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Apellido
                                 </th>
-                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Username: activate to sort column ascending">Username
+                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Correo
                                 </th>
-                                <th data-hide="phone,tablet" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status
+                                <th  >Acción
                                 </th>
                             </tr>
                         </thead>
@@ -138,7 +147,7 @@
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
                                     <span class="icon-edit-sign" ng-click="editarCliente(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
-                                    
+
                                 </td>
                         </tr>
 
@@ -165,7 +174,6 @@
                 </div>
             </div>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -204,7 +212,7 @@
                 </div>
             </div>
             <!-- /Validation Example 1 -->
-        </div> -->
+        </div>
    </div>
 
                     <!-- /Example Box -->
