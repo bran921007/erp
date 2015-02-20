@@ -58,9 +58,16 @@ class HomeController extends BaseController {
 		return Producto::create(Input::all());
 	}	
 	
-	public function actualizarProducto()
+	public function actualizarProducto($id)
 	{
-		
+		// $producto = Producto::find($id);
+	 //    $producto->articulo       = Input::get('name');
+	 //    $producto->cantidad       = Input::get('cantidad');
+	 //    $producto->distribuidor       = Input::get('distribuidor');
+	 //    $nerd->save();
+		$input = Input::all();
+
+  		Producto::find($id)->update($input);
 	}	
 
 	public function borrarProducto($id)

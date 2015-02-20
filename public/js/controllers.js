@@ -70,8 +70,9 @@ app.controller("homeController", function($scope,$http,$modal,$log)
 
     $scope.editarCliente = function(cliente){
 
-        $scope.showModal = true;
+        $scope.showModal = false;
         $scope.cliente = cliente;
+        
 
     };
 
