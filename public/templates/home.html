@@ -1,14 +1,64 @@
 
+
 <div class="row ">
-    <div class="col-md-12">
-        <div class="pull-rigth">
-            <button ng-click="agregarModal()" class="btn btn-lg btn-primary" >Agregar Cliente</button>
+  <div class="col-md-12">
+    <div class="widget">
+
+      <div class="widget-content">
+        <div class="row">
+            <div class="col-md-3">
+              <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-group fa-2x"></i>
+                <div>Agregar Clientes</div> </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+
+
+
+<!-- Modal Agregar Clientes -->
+    <modal title="Login form" visible="showModal">
+
+      <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
+        <div class="form-group">
+          <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.nombre" class="form-control required">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.apellido" class="form-control required email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Email <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.email" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+        </div>
+      </form>
+
+    </modal>
+    <!-- END Modal Agregar Clientes -->
+
+    <!-- Begin Modal Confirmacion -->
+    <modal title="confirmacion" visible='showConfirmacion'>
+      {{bodyModal}}
+      <form class="form-horizontal row-border" ng-submit="borrarCliente(datos)" novalidate="novalidate">
+        <input type="submit" value='borrar'>
+      </form>
+    </modal>
 
 <div class="row">
-         
+
         <div class="col-md-12">
             <div class="widget box">
 
@@ -21,50 +71,8 @@
                         </div>
                     </div>
                 </div>
-                
 
 
-                  <modal title="Login form" visible="showModal">
-
-                    <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.nombre" class="form-control required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.apellido" class="form-control required email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Email <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.email" class="form-control required url">
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <input type="submit" value="Guardar" class="btn btn-primary pull-right">
-                        </div>
-                    </form>
-
-                  </modal>
-
-                  <modal title="confirmacion" visible='showConfirmacion'>
-                      {{bodyModal}}
-                      <form class="form-horizontal row-border" ng-submit="borrarCliente(datos)" novalidate="novalidate">
-                        <input type="submit" value='borrar'>
-                      </form>
-                  </modal>
-
-
-                    
-    <div  class="container">
-                      <!-- <h1>Modal example</h1> -->
-                  
                 <div class="widget-content no-padding" style="display: block;">
                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="dataTables_header clearfix">
                         <div class="col-md-6">
@@ -90,7 +98,7 @@
                                         <option value="50">50</option>
                                         <option value="-1">All</option>
                                     </select>
-                                    records per page</label>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -138,7 +146,7 @@
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
                                     <span class="icon-edit-sign" ng-click="editarCliente(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
-                                    
+
                                 </td>
                         </tr>
 
@@ -165,7 +173,6 @@
                 </div>
             </div>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -204,7 +211,7 @@
                 </div>
             </div>
             <!-- /Validation Example 1 -->
-        </div> -->
+        </div>
    </div>
 
                     <!-- /Example Box -->
