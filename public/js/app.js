@@ -6,17 +6,16 @@ var app = angular.module("app", ['ngRoute','controllers', 'app-directives','ui.b
 app.config(function($routeProvider)
 {
     $routeProvider.when("/", {
-      templateUrl : "../templates/clientes.html",
-      controller : "clientesController"
-    })
-    .when("/clientes",{
- 		    templateUrl: "../templates/home.html",
-        controller: "homeController"
-    })
-    
-    .when("/home", {
       templateUrl : "../templates/dashboard.html",
       controller : "dashboardController"
+    })
+    .when("/dashboard", {
+      templateUrl : "../templates/dashboard.html",
+      controller : "dashboardController"
+    })
+    .when("/clientes",{
+        templateUrl: "../templates/clientes.html",
+        controller: "clientesController"
     })
     .when("/pedidos",{
       templateUrl : "../templates/pedidos.html",

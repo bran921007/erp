@@ -62,13 +62,27 @@
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
-	<script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+	
+	<!-- Librerias externas -->
+	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
+	<script type="text/javascript" src="lib/angular-locale_es-es.js"></script>
 
+	<!--BEGIN MVC AngularJS -->
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/directives.js"></script>
+		<script type="text/javascript" src="js/services.js"></script>
+		<!-- Controllers -->
+		<script type="text/javascript" src="js/controllers/controllers.js"></script>
 
-	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="js/controllers.js"></script>
-	<script type="text/javascript" src="js/directives.js"></script>
-	<script type="text/javascript" src="js/angular-locale_es-es.js"></script>
+		<script type="text/javascript" src="js/controllers/dashboard.js"></script>
+		<script type="text/javascript" src="js/controllers/clientes.js"></script>
+		<script type="text/javascript" src="js/controllers/pedidos.js"></script>
+		<script type="text/javascript" src="js/controllers/inventario.js"></script>
+		<script type="text/javascript" src="js/controllers/informe.js"></script>
+	
+	
+	<!-- END MVC AngularJS	 -->
+		
 
 	<script>
 	$(document).ready(function(){
@@ -163,7 +177,7 @@
 				<!--=== Navigation ===-->
 				<ul id="nav" ng-init="tab = 1">
 					<li ng-class="{ current : tab === 1 }" >
-						<a href="#/home" ng-click="tab = 1">
+						<a href="#/dashboard" ng-click="tab = 1">
 							<i class="icon-home"></i>
 							Dashboard
 						</a>
@@ -243,23 +257,24 @@
 				<!-- AQUI VA EL CONTENT -->
 				 <div id="content">
 				            <div class="container">
-											<div class="crumbs">
-												<!-- Current Container Section -->
-												<ul id="breadcrumbs" class="breadcrumb">
-												 <li ng-show="tab === 1"> <i class="icon-home"></i> <a href="#/home">Dashboard</a> </li>
-												 <li ng-show="tab === 2"> <i class="icon-shopping-cart"></i> <a href="#/pedidos">Pedidos</a> </li>
-												 <li ng-show="tab === 3"> <i class="icon-group"></i> <a href="#/clientes">Clientes</a> </li>
-												 <li ng-show="tab === 4"> <i class="icon-barcode"></i> <a href="#/inventario">Inventario</a> </li>
-												 <li ng-show="tab === 5"> <i class="icon-calendar"></i> <a href="#/informe">Informe</a> </li>
-												</ul>
-												<!-- Info Panel -->
-												<ul class="crumb-buttons">
-													<li class="">
-														<a > <i class="icon-calendar"></i> <span>@{{fecha | date:'fullDate'}}</span> </a>
-													</li>
-												</ul>
-												</div>
-											<br>
+								<div class="crumbs">
+									<!-- Current Container Section -->
+									<ul id="breadcrumbs" class="breadcrumb">
+									 <li ng-show="tab === 1"> <i class="icon-home"></i> <a href="#/home">Dashboard</a> </li>
+									 <li ng-show="tab === 2"> <i class="icon-shopping-cart"></i> <a href="#/pedidos">Pedidos</a> </li>
+									 <li ng-show="tab === 3"> <i class="icon-group"></i> <a href="#/clientes">Clientes</a> </li>
+									 <li ng-show="tab === 4"> <i class="icon-barcode"></i> <a href="#/inventario">Inventario</a> </li>
+									 <li ng-show="tab === 5"> <i class="icon-calendar"></i> <a href="#/informe">Informe</a> </li>
+									</ul>
+									<!-- Info Panel -->
+									<ul class="crumb-buttons">
+										<li class="">
+											<a > <i class="icon-calendar"></i> <span>@{{fecha | date:'fullDate'}}</span> </a>
+										</li>
+									</ul>
+									</div>
+								<br>
+												
 												<div ng-view></div>
 				            </div>
 				 </div>

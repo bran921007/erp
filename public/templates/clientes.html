@@ -1,0 +1,220 @@
+
+
+<div class="row ">
+  <div class="col-md-12">
+    <div class="widget">
+
+      <div class="widget-content">
+        <div class="row">
+            <div class="col-md-3">
+              <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-group fa-2x"></i>
+                <div>Agregar Clientes</div> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<!-- Modal Agregar Clientes -->
+    <modal title="Nuevo Cliente" visible="showModal">
+
+      <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
+        <div class="form-group">
+          <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.nombre" class="form-control required">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.apellido" class="form-control required email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Correo <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.email" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Telefono <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.telefono" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Cedula <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.cedula" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Dirección <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.cedula" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+        </div>
+      </form>
+
+    </modal>
+    <!-- END Modal Agregar Clientes -->
+
+    <!-- Begin Modal Confirmacion -->
+    <modal title="Confirmar Eliminación" visible='showConfirmacion'>
+      {{bodyModal}}
+      <div class="modal-footer">
+        <button ng-click="toggleModal()" type="button" class="btn btn-default">Cancelar</button>
+        <button ng-click="borrarCliente(datos)" type="button" class="btn btn-primary">Si</button>
+        </div>
+    </modal>
+    <!-- END Modal Confirmacion -->
+
+
+
+<div class="row">
+
+        <div class="col-md-12">
+            <div class="widget box">
+
+                <div class="widget-header">
+
+                    <h4><i class="icon-reorder"></i> Listado Clientes <code>clientes</code></h4>
+                    <div class="toolbar no-padding">
+                        <div class="btn-group">
+                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="widget-content no-padding" style="display: block;">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="dataTables_header clearfix">
+                      <div class="col-md-6">
+                      </div>
+                            <div class="col-md-6">
+                                <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                                    <label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="icon-search"></i></span>
+                                            <input ng-model="query" type="text" aria-controls="DataTables_Table_0" class="form-control">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="checkbox-column sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="">
+                                    <div class="checker">
+                                        <span><input type="checkbox" class="uniform"></span>
+                                    </div>
+                                </th>
+                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Nombre
+                                </th>
+                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Apellido
+                                </th>
+                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Correo
+                                </th>
+                                <th  >Acción
+                                </th>
+                            </tr>
+                        </thead>
+
+                    <tbody role="alert" aria-live="polite" aria-relevant="all"  >
+
+                        <tr class="odd" ng-repeat="data in datos | filter:query">
+                                <td class="checkbox-column  sorting_1">
+                                    <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
+                                </td>
+                                <td ng-model="data.nombre" class=""><span class="responsiveExpander">{{data.nombre}}</span></td>
+                                <td  class="" ng-model="data.apellido">{{data.apellido}}</td>
+                                <td ng-model="data.email" class="">{{data.email}}</td>
+                                <td class="">
+                                    <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
+                                    <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
+                                    <span class="icon-edit-sign" ng-click="editarCliente(data)"></span>
+                                    <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
+
+                                </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="dataTables_footer clearfix">
+                            <div class="col-md-6">
+                                <div class="dataTables_info" id="DataTables_Table_0_info">Showing 1 to 5 of 8 entries</div>
+                            </div><div class="col-md-6">
+                            <div class="dataTables_paginate paging_bootstrap">
+                                <ul class="pagination">
+                                    <li class="prev disabled">
+                                        <a href="#">← Previous</a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li class="next"><a href="#">Next → </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+        </div>
+    </div>
+
+<div>
+
+<!--         <div class="col-md-6" >
+            <div class="widget box">
+                <div class="widget-header">
+                    <h4><i class="icon-reorder"></i> Guardar Cliente</h4>
+                </div>
+                <div class="widget-content">
+                    <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <input type="text" ng-model="cliente.nombre" class="form-control required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <input type="text" ng-model="cliente.apellido" class="form-control required email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email <span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <input type="text" ng-model="cliente.email" class="form-control required url">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /Validation Example 1 -->
+        </div>
+   </div>
+
+                    <!-- /Example Box -->
+               <!--  </div> --> <!-- /.row -->
+                <!-- /Page Content -->

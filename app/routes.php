@@ -15,7 +15,7 @@ Route::get('/', function()
 {
 	return View::make('modules.home');
 });
-Route::get('/home', function()
+Route::get('/dashboard', function()
 {
 	return View::make('modules.home');
 });
