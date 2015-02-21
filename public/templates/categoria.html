@@ -1,0 +1,189 @@
+
+
+
+<div class="row ">
+  <div class="col-md-12">
+    <div class="widget">
+
+      <div class="widget-content">
+        <div class="row">
+          <div class="col-md-3">
+            <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
+              <div>Nuevo Producto</div> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  Modal Agregar Producto -->
+  <modal title="Agregar Producto" visible="showModal">
+
+    <form class="form-horizontal row-border" ng-submit="agregarProducto()" novalidate="novalidate">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.articulo" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.cantidad" class="form-control required email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.categoria" class="form-control">
+            <option value="0" >Seleccione Categoria</option>
+            <option value="postres">Postres</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Precio Venta <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.distribuidor" class="form-control">
+            <option value="0" >Seleccione Distribuidor</option>
+            <option value="postres">SRL</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+      </div>
+    </form>
+
+  </modal>
+<!-- END Modal Agregar Producto -->
+
+<!-- Modal Confirmacion Producto  -->
+  <modal title="Confirmación Eliminación" visible='showConfirmacion'>
+    {{bodyModal}}
+    <form class="form-horizontal row-border" ng-submit="borrarProducto(datos)" novalidate="novalidate">
+      <input type="submit" value='borrar'>
+    </form>
+  </modal>
+  <!-- END Modal Confirmacion Producto  -->
+
+
+
+<div class="row">
+
+        <div class="col-md-12">
+            <div class="widget box">
+
+                <div class="widget-header">
+
+                    <h4><i class="icon-reorder"></i> Listado Productos <code>Inventario de productos</code></h4>
+                    <div class="toolbar no-padding">
+                        <div class="btn-group">
+                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="widget-content no-padding" style="display: block;">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="dataTables_header clearfix">
+                        <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                                    <label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="icon-search"></i></span>
+                                            <input ng-model="query" type="text" aria-controls="DataTables_Table_0" class="form-control">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-bordered table-hover table-checkable table-responsive datatable dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="checkbox-column sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="">
+                                    <div class="checker">
+                                        <span><input type="checkbox" class="uniform"></span>
+                                    </div>
+                                </th>
+
+                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Articulo
+                                </th>
+                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Cantidad
+                                </th>
+                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Precio Venta
+                                </th>
+                                <th >Acción
+                                </th>
+                            </tr>
+                        </thead>
+
+                    <tbody role="alert" aria-live="polite" aria-relevant="all"  >
+
+                        <tr class="odd" ng-repeat="data in datos | filter:query">
+                                <td class="checkbox-column  sorting_1">
+                                    <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
+                                </td>
+                                <td ng-model="data.articulo" class=""><span class="responsiveExpander">{{data.articulo}}</span></td>
+                                <td  class="" ng-model="data.cantidad">{{data.cantidad}}</td>
+                                <td ng-model="data.distribuidor" class="">{{data.distribuidor}}</td>
+                                <td class="">
+                                    <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
+                                    <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
+                                    <span class="icon-edit-sign" ng-click="editarProducto(data)"></span>
+                                    <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
+
+                                </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="dataTables_footer clearfix">
+                            <div class="col-md-6">
+                                <div class="dataTables_info" id="DataTables_Table_0_info">Showing 1 to 5 of 8 entries</div>
+                            </div><div class="col-md-6">
+                            <div class="dataTables_paginate paging_bootstrap">
+                                <ul class="pagination">
+                                    <li class="prev disabled">
+                                        <a href="#">← Previous</a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li class="next"><a href="#">Next → </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+        </div>
+    </div>
+
+<div>
+
+
+        </div>
+   </div>

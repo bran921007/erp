@@ -79,6 +79,9 @@
 		<script type="text/javascript" src="js/controllers/pedidos.js"></script>
 		<script type="text/javascript" src="js/controllers/inventario.js"></script>
 		<script type="text/javascript" src="js/controllers/informe.js"></script>
+		<script type="text/javascript" src="js/controllers/distribuidor.js"></script>
+		<script type="text/javascript" src="js/controllers/categoria.js"></script>
+		<script type="text/javascript" src="js/controllers/factura.js"></script>
 	
 	
 	<!-- END MVC AngularJS	 -->
@@ -228,13 +231,13 @@
 								</a>
 							</li>
 							<li ng-class="{ current : tab === 7 }">
-								<a href="#/" ng-click="tab = 7">
+								<a href="#/categoria" ng-click="tab = 7">
 									<i class="icon-barcode"></i>
 									Categorias
 								</a>
 							</li>
 							<li ng-class="{ current : tab === 8 }">
-								<a href="#/" ng-click="tab = 8">
+								<a href="#/distribuidor" ng-click="tab = 8">
 									<i class="icon-barcode"></i>
 									Distribuidores
 								</a>
@@ -272,10 +275,11 @@
 											<a > <i class="icon-calendar"></i> <span>@{{fecha | date:'fullDate'}}</span> </a>
 										</li>
 									</ul>
-									</div>
-								<br>
-												
-												<div ng-view></div>
+								</div>
+									<br>
+										<!-- BEGIN VISTA DEL CONTENT -->
+										<div ng-view></div>
+										<!-- END VISTA DEL CONTENT -->
 				            </div>
 				 </div>
 				<!-- AQUI TERMINA EL CONTENT -->

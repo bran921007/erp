@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module('controllers',['clientes','dashboard','informe','inventario','pedidos']);
+    var app = angular.module('controllers',['clientes','dashboard','informe','inventario','pedidos','distribuidor','factura','categoria']);
 
     app.controller("tabsController", function($scope)
     {

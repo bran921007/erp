@@ -20,14 +20,26 @@ app.config(function($routeProvider)
     .when("/pedidos",{
       templateUrl : "../templates/pedidos.html",
       controller : "pedidosController"
-    })    
+    })
 	 .when("/inventario",{
 	  templateUrl : "../templates/inventario.html",
 	  controller : "inventarioController"
     })
 	.when("/informe",{
-	    templateUrl : "../templates/informe.html",
+      templateUrl : "../templates/informe.html",
       controller : "informeController"
+  })
+  .when("/distribuidor",{
+      templateUrl : "../templates/distribuidor.html",
+      controller : "distribuidorController"
+  })
+  .when("/categoria",{
+      templateUrl : "../templates/categoria.html",
+      controller : "categoriaController"
+  })
+  .when("/factura",{
+	    templateUrl : "../templates/factura.html",
+      controller : "facturaController"
 	})
 	.otherwise({reditrectTo:"/"});
 
