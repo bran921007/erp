@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUsersTable extends Migration {
+class CreateDistribuidoresTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,34 +12,24 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table)
+		Schema::create('distribuidores', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('nombre');
-			$table->string('apellido');
+			$table->string('empresa');
 			$table->string('email');
-			$table->string('password');
-			$table->string('cedula');
+			$table->string('telefono');
+			$table->string('email');
 			$table->string('direccion');
+			$table->string('rnc');
+			$table->string('cedula');
+			$table->string('unidades');
+			$table->string('total_pagado');
 			$table->enum('estado', array('activado', 'desactivado'));
-			$table->enum('nivel', array('empleado', 'admin'));
+			$table->date('fecha');
 			$table->timestamps();
 		});
-
-
-		// User testing default
-		DB::table('users')->insert(
-		array(
-			'nombre'=>'Amalia',
-			'apellido'=>'Linarez',
-			'email'=>'linaresamalia@gmail.com',
-			'password'=>Hash::make('musica'),
-			)
-		);
-
 	}
-
-
 
 
 	/**
@@ -49,7 +39,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::drop('distribuidores');
 	}
 
 }
