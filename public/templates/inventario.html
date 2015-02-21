@@ -9,13 +9,79 @@
         <div class="row">
           <div class="col-md-3">
             <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
-              <div>Agregar Producto</div> </a>
+              <div>Nuevo Producto</div> </a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!--  Modal Agregar Producto -->
+  <modal title="Agregar Producto" visible="showModal">
+
+    <form class="form-horizontal row-border" ng-submit="agregarProducto()" novalidate="novalidate">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.articulo" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.cantidad" class="form-control required email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.categoria" class="form-control">
+            <option value="0" >Seleccione Categoria</option>
+            <option value="postres">Postres</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Precio Venta <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.distribuidor" class="form-control">
+            <option value="0" >Seleccione Distribuidor</option>
+            <option value="postres">SRL</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+      </div>
+    </form>
+
+  </modal>
+<!-- END Modal Agregar Producto -->
+
+<!-- Modal Confirmacion Producto  -->
+  <modal title="Confirmación Eliminación" visible='showConfirmacion'>
+    {{bodyModal}}
+    <form class="form-horizontal row-border" ng-submit="borrarProducto(datos)" novalidate="novalidate">
+      <input type="submit" value='borrar'>
+    </form>
+  </modal>
+  <!-- END Modal Confirmacion Producto  -->
+
+
 
 <div class="row">
 
@@ -24,7 +90,7 @@
 
                 <div class="widget-header">
 
-                    <h4><i class="icon-reorder"></i> Listado Inventario <code>Inventario de productos</code></h4>
+                    <h4><i class="icon-reorder"></i> Listado Productos <code>Inventario de productos</code></h4>
                     <div class="toolbar no-padding">
                         <div class="btn-group">
                             <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
@@ -33,98 +99,10 @@
                 </div>
 
 
-                  <modal title="Agregar Producto" visible="showModal">
-
-                    <form class="form-horizontal row-border" ng-submit="agregarProducto()" novalidate="novalidate">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="producto.articulo" class="form-control required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
-                          <div class="col-md-9">
-                            <input type="text" ng-model="producto.cantidad" class="form-control required email">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
-                          <div class="col-md-9">
-                            <select ng-model="producto.categoria" class="form-control">
-                              <option value="0" >Seleccione Categoria</option>
-                              <option value="postres">Postres</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-3 control-label">Precio Venta <span class="required">*</span></label>
-                          <div class="col-md-9">
-                            <input type="text" ng-model="producto.precioVenta" class="form-control required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
-                          <div class="col-md-9">
-                            <input type="text" ng-model="producto.precioVenta" class="form-control required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
-                            <div class="col-md-9">
-                              <select ng-model="producto.distribuidor" class="form-control">
-                                <option value="0" >Seleccione Distribuidor</option>
-                                <option value="postres">SRL</option>
-                              </select>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <input type="submit" value="Guardar" class="btn btn-primary pull-right">
-                        </div>
-                    </form>
-
-                  </modal>
-
-                  <modal title="confirmacion" visible='showConfirmacion'>
-                      {{bodyModal}}
-                      <form class="form-horizontal row-border" ng-submit="borrarProducto(datos)" novalidate="novalidate">
-                        <input type="submit" value='borrar'>
-                      </form>
-                  </modal>
-
-
-
-    <div  class="container">
-                      <!-- <h1>Modal example</h1> -->
-
                 <div class="widget-content no-padding" style="display: block;">
                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid"><div class="row"><div class="dataTables_header clearfix">
                         <div class="col-md-6">
-                            <div id="DataTables_Table_0_length" class="dataTables_length">
-                                <label>
-                                    <div class="select2-container" id="s2id_autogen3" style="width: 75px;"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">
-                                        <span class="select2-chosen">5</span>
-                                        <abbr class="select2-search-choice-close"></abbr>
-                                        <span class="select2-arrow"><b></b></span></a>
-                                        <input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen4">
-                                        <div class="select2-drop select2-display-none">
-                                            <div class="select2-search select2-search-hidden select2-offscreen">
-                                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">
-                                            </div>
-                                            <ul class="select2-results">
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <select size="1" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="select2-offscreen" tabindex="-1">
-                                        <option value="5" selected="selected">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="-1">All</option>
-                                    </select>
-                                    records per page</label>
-                                </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="dataTables_filter" id="DataTables_Table_0_filter">
@@ -148,13 +126,13 @@
                                     </div>
                                 </th>
 
-                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending">Articulo
+                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Articulo
                                 </th>
-                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending">Cantidad
+                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Cantidad
                                 </th>
-                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Username: activate to sort column ascending">distribuidor
+                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Precio Venta
                                 </th>
-                                <th data-hide="phone,tablet" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status
+                                <th >Acción
                                 </th>
                             </tr>
                         </thead>
@@ -200,7 +178,7 @@
                 </div>
             </div>
                 </div>
-            </div>
+
         </div>
     </div>
 
