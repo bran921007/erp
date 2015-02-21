@@ -19,7 +19,6 @@ class CreateDistribuidoresTable extends Migration {
 			$table->string('empresa');
 			$table->string('email');
 			$table->string('telefono');
-			$table->string('email');
 			$table->string('direccion');
 			$table->string('rnc');
 			$table->string('cedula');
