@@ -60,7 +60,7 @@ class HomeController extends BaseController {
 		return Producto::create(Input::all());
 	}	
 	
-	public function actualizarProducto($id)
+	public function editarProducto($id)
 	{
 		// $producto = Producto::find($id);
 	 //    $producto->articulo       = Input::get('name');
@@ -105,6 +105,31 @@ class HomeController extends BaseController {
 		Categoria::destroy($id);
 	}
 
+	//Distribuidor
+
+	public function getDistribuidores(){
+		$distribuidores = DB::table("distribuidores")->get();
+	    return Response::json(array(
+	        "distribuidores"        =>        $distribuidores
+	    ));
+
+	}
+    public function postDistribuidor(){
+
+    	return Distribuidor::create(Input::all());
+
+    }
+    public function editarDistribuidor($id){
+
+		$input = Input::all();
+
+  		Distribuidor::find($id)->update($input);
+    }
+    public function borrarDistribuidor($id){
+
+    	Distribuidor::destroy($id);
+
+    }
 
 	
 	

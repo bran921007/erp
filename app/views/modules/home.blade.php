@@ -110,7 +110,7 @@
 			</ul>
 
 			<!-- Logo -->
-			<a class="navbar-brand" href="index.html">
+			<a class="navbar-brand" href="#/dashboard">
 				<img src="melon/assets/img/logo.png" alt="logo" />
 				<strong>E</strong>RP
 			</a>

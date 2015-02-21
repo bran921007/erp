@@ -17,50 +17,56 @@
     </div>
   </div>
 
+
   <!--  Modal Agregar Producto -->
   <modal title="Agregar Producto" visible="showModal">
 
-    <form class="form-horizontal row-border" ng-submit="agregarProducto()" novalidate="novalidate">
+    <form class="form-horizontal row-border" ng-submit="agregarDistribuidor()" novalidate="novalidate">
       <div class="form-group">
         <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
         <div class="col-md-9">
-          <input type="text" ng-model="producto.articulo" class="form-control required">
+          <input type="text" ng-model="distribuidor.nombre" class="form-control required">
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+        <label class="col-md-3 control-label">Empresa <span class="required">*</span></label>
         <div class="col-md-9">
-          <input type="text" ng-model="producto.cantidad" class="form-control required email">
+          <input type="text" ng-model="distribuidor.empresa" class="form-control required email">
         </div>
       </div>
-      <div class="form-group">
+<!--       <div class="form-group">
         <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
         <div class="col-md-9">
-          <select ng-model="producto.categoria" class="form-control">
+          <select ng-model="distribuidor.categoria" class="form-control">
             <option value="0" >Seleccione Categoria</option>
-            <option value="postres">Postres</option>
+            <option  ng-repeat="cat in categoria" value="{{cat.titulo}}">{{cat.titulo}}</option>
           </select>
         </div>
-      </div>
+      </div> -->
       <div class="form-group">
-        <label class="col-md-3 control-label">Precio Venta <span class="required">*</span></label>
+        <label class="col-md-3 control-label">Telefono <span class="required">*</span></label>
         <div class="col-md-9">
-          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+          <input type="text" ng-model="distribuidor.telefono" class="form-control required">
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
+        <label class="col-md-3 control-label">Direccion <span class="required">*</span></label>
         <div class="col-md-9">
-          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+          <input type="text" ng-model="distribuidor.direccion" class="form-control required">
         </div>
-      </div>
+      </div>      
+
       <div class="form-group">
-        <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
+        <label class="col-md-3 control-label">RNC <span class="required">*</span></label>
         <div class="col-md-9">
-          <select ng-model="producto.distribuidor" class="form-control">
-            <option value="0" >Seleccione Distribuidor</option>
-            <option value="postres">SRL</option>
-          </select>
+          <input type="text" ng-model="distribuidor.rnc" class="form-control required">
+        </div>
+      </div>      
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">Cedula <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.cedula" class="form-control required">
         </div>
       </div>
 
@@ -70,15 +76,70 @@
     </form>
 
   </modal>
+<!-- END Modal Agregar Producto -->  
+
+<!--  Modal Editar Producto -->
+  <modal title="Agregar Producto"  visible="editModal">
+
+    <form class="form-horizontal row-border" ng-submit="editarDistribuidor()" novalidate="novalidate">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.nombre" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Empresa <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.empresa" class="form-control required email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">Telefono <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.telefono" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Direccion <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.direccion" class="form-control required">
+        </div>
+      </div>      
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">RNC <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.rnc" class="form-control required">
+        </div>
+      </div>      
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">Cedula <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="distribuidor.cedula" class="form-control required">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Editar" class="btn btn-primary pull-right">
+      </div>
+    </form>
+
+  </modal>
 <!-- END Modal Agregar Producto -->
 
 <!-- Modal Confirmacion Producto  -->
-  <modal title="Confirmación Eliminación" visible='showConfirmacion'>
-    {{bodyModal}}
-    <form class="form-horizontal row-border" ng-submit="borrarProducto(datos)" novalidate="novalidate">
-      <input type="submit" value='borrar'>
-    </form>
-  </modal>
+<!-- Begin Modal Confirmacion -->
+    <modal title="Confirmar Eliminación" visible='showConfirmacion'>
+      {{bodyModal}}
+      <div class="modal-footer">
+        <button ng-click="toggleModal()" type="button" class="btn btn-default">Cancelar</button>
+        <button ng-click="borrarDistribuidor()" type="button" class="btn btn-primary">Si</button>
+        </div>
+    </modal>
+    <!-- END Modal Confirmacion -->
   <!-- END Modal Confirmacion Producto  -->
 
 
@@ -143,13 +204,13 @@
                                 <td class="checkbox-column  sorting_1">
                                     <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
                                 </td>
-                                <td ng-model="data.articulo" class=""><span class="responsiveExpander">{{data.articulo}}</span></td>
-                                <td  class="" ng-model="data.cantidad">{{data.cantidad}}</td>
-                                <td ng-model="data.distribuidor" class="">{{data.distribuidor}}</td>
+                                <td ng-model="data.nombre" class=""><span class="responsiveExpander">{{data.nombre}}</span></td>
+                                <td  class="" ng-model="data.empresa">{{data.empresa}}</td>
+                                <td ng-model="data.telefono" class="">{{data.telefono}}</td>
                                 <td class="">
                                     <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
-                                    <span class="icon-edit-sign" ng-click="editarProducto(data)"></span>
+                                    <span class="icon-edit-sign" ng-click="editarModal(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
 
                                 </td>
