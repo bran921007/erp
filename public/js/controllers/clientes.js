@@ -28,12 +28,13 @@
 
     $scope.agregarCliente = function(){
 
-         var customer = {
-            nombre:   $scope.cliente.nombre,
-            apellido: $scope.cliente.apellido,
-            email:    $scope.cliente.email
+        //  var customer = {
+        //     nombre:   $scope.cliente.nombre,
+        //     apellido: $scope.cliente.apellido,
+        //     email:    $scope.cliente.email
 
-        };
+        // };
+        var customer = $scope.cliente;
 
         $scope.datos.push(customer);
 
@@ -58,25 +59,34 @@
         }
 
         // // Now remove todo-items from laravel
-        console.log(cliente.id);
         $http.delete('borrarCliente/'+cliente.id);
 
+    };
+
+    $scope.editarCliente = function (){
+        $scope.editModal = false;
+        
+        $http.put('/editarCliente/'+$scope.datoCliente.id, $scope.datoCliente);
+        
     };
 
 
     $scope.bodyModal = "Estas seguro de que deseas borrar este cliente?";
     $scope.showConfirmacion = false;
+
     $scope.confirmacionModal = function(data){
         $scope.showConfirmacion = !$scope.showConfirmacion;
         $scope.datoCliente = {};
         $scope.datoCliente = data;
     };
 
-    $scope.editarCliente = function(cliente){
+    $scope.editarModal = function(cliente){
 
-        $scope.showModal = false;
+        $scope.editModal = true;
         $scope.cliente = cliente;
-        
+        $scope.datoCliente = {};
+        $scope.datoCliente = cliente;
+
 
     };
 

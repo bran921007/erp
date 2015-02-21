@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-3">
               <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-group fa-2x"></i>
-                <div>Agregar Clientes</div> </a>
+                <div>Nuevo Cliente</div> </a>
               </div>
             </div>
           </div>
@@ -21,7 +21,7 @@
 <!-- Modal Agregar Clientes -->
     <modal title="Nuevo Cliente" visible="showModal">
 
-      <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
+      <form class="form-horizontal row-border"  novalidate="novalidate">
         <div class="form-group">
           <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
           <div class="col-md-9">
@@ -58,13 +58,67 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Dirección <span class="required">*</span></label>
           <div class="col-md-9">
+            <input type="text" ng-model="cliente.direccion" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-actions" >
+          <input type="submit" value="Guardar"  ng-click="agregarCliente()" class="btn btn-primary pull-right">
+        </div>        
+      </form>
+
+    </modal>
+    <!-- END Modal Agregar Clientes -->
+
+    <!-- Modal Agregar Clientes -->
+    <modal title="Nuevo Cliente" visible="editModal">
+
+      <form class="form-horizontal row-border"  novalidate="novalidate">
+        <div class="form-group">
+          <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.nombre" class="form-control required">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.apellido" class="form-control required email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Correo <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.email" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Telefono <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.telefono" class="form-control required url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Cedula <span class="required">*</span></label>
+          <div class="col-md-9">
             <input type="text" ng-model="cliente.cedula" class="form-control required url">
           </div>
         </div>
 
-        <div class="form-actions">
-          <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+        <div class="form-group">
+          <label class="col-md-3 control-label">Dirección <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="cliente.direccion" class="form-control required url">
+          </div>
         </div>
+
+        <div class="form-actions" >
+          <input type="submit" value="Actualizar" ng-click="editarCliente()" class="btn btn-primary pull-right">
+        </div>      
+
+
       </form>
 
     </modal>
@@ -75,7 +129,7 @@
       {{bodyModal}}
       <div class="modal-footer">
         <button ng-click="toggleModal()" type="button" class="btn btn-default">Cancelar</button>
-        <button ng-click="borrarCliente(datos)" type="button" class="btn btn-primary">Si</button>
+        <button ng-click="borrarCliente()" type="button" class="btn btn-primary">Si</button>
         </div>
     </modal>
     <!-- END Modal Confirmacion -->
@@ -145,7 +199,7 @@
                                 <td class="">
                                     <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
-                                    <span class="icon-edit-sign" ng-click="editarCliente(data)"></span>
+                                    <span class="icon-edit-sign" ng-click="editarModal(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
 
                                 </td>
@@ -179,39 +233,6 @@
 
 <div>
 
-<!--         <div class="col-md-6" >
-            <div class="widget box">
-                <div class="widget-header">
-                    <h4><i class="icon-reorder"></i> Guardar Cliente</h4>
-                </div>
-                <div class="widget-content">
-                    <form class="form-horizontal row-border" ng-submit="agregarCliente()" novalidate="novalidate">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.nombre" class="form-control required">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Apellido <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.apellido" class="form-control required email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Email <span class="required">*</span></label>
-                            <div class="col-md-9">
-                                <input type="text" ng-model="cliente.email" class="form-control required url">
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <input type="submit" value="Guardar" class="btn btn-primary pull-right">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- /Validation Example 1 -->
         </div>
    </div>
 

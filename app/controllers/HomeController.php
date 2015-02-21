@@ -33,11 +33,13 @@ class HomeController extends BaseController {
 		return Cliente::create(Input::all());
 	}
 
-	public function actualizarClientes(){
-		
+	public function editarCliente($id){
+		$input = Input::all();
+
+  		Cliente::find($id)->update($input);
 	}
 
-	public function destroy($id)
+	public function borrarCliente($id)
 	{
     	Cliente::destroy($id);
 	}
@@ -73,6 +75,34 @@ class HomeController extends BaseController {
 	public function borrarProducto($id)
 	{
 		Producto::destroy($id);
+	}
+
+	//Categoria
+
+	public function getCategorias()
+	{
+	   $categorias = DB::table("categorias")->get();
+	    return Response::json(array(
+	        "categorias"        =>        $categorias
+	    ));
+	}
+
+	public function postCategoria()
+	{
+		return Categoria::create(Input::all());
+	}	
+	
+	public function actualizarCategoria($id)
+	{
+		
+		$input = Input::all();
+
+  		Categoria::find($id)->update($input);
+	}	
+
+	public function borrarCategoria($id)
+	{
+		Categoria::destroy($id);
 	}
 
 

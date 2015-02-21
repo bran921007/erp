@@ -23,7 +23,7 @@ Route::get('/dashboard', function()
 
 Route::get('/getClientes', ['as' => 'cliente', 'uses' => 'HomeController@getClientes']);
 Route::post('/postClientes', ['as' => 'cliente', 'uses' => 'HomeController@postClientes']);
-Route::put('/actualizarCliente',['as' => 'cliente', 'uses' => 'HomeController@actualizarClientes']);
+Route::put('/editarCliente/{id}',['as' => 'cliente', 'uses' => 'HomeController@editarCliente']);
 Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeController@borrarCliente']);
 
 //Inventario de Productos
@@ -32,4 +32,16 @@ Route::get('/getProductos', ['as' => 'cliente', 'uses' => 'HomeController@getPro
 Route::post('/postProductos', ['as' => 'cliente', 'uses' => 'HomeController@postProductos']);
 Route::put('/actualizarProductos',['as' => 'cliente', 'uses' => 'HomeController@actualizarProductos']);
 Route::delete('/borrarProducto/{id}', ['as' => 'cliente', 'uses' => 'HomeController@borrarProducto']);
+
+//Categorias
+
+Route::get('/getCategorias' ,          ['as' => 'categoria', 'uses' => 'HomeController@getCategorias']);
+Route::post('/postCategoria' ,         ['as' => 'categoria', 'uses' => 'HomeController@postCategoria']);
+Route::put('/actualizarCategoria',     ['as' => 'categoria', 'uses' => 'HomeController@actualizarCategoria']);
+Route::delete('/borrarCategoria/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarCategoria']);
+
+
+
+
+
 
