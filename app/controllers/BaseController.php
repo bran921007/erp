@@ -7,6 +7,14 @@ class BaseController extends Controller {
 	 *
 	 * @return void
 	 */
+	protected $autorizado;
+
+	public function __construct() {
+      $this->autorizado = (Auth::check());
+
+
+    }
+
 	protected function setupLayout()
 	{
 		if ( ! is_null($this->layout))

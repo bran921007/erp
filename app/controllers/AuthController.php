@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AuthController extends \BaseController {
 
@@ -10,8 +11,39 @@ class AuthController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('home.login');
 	}
+
+	public function login()
+	{
+
+		$data = Input::only('email', 'password', 'remember');
+
+        $credentials = ['email' => $data['email'], 'password' => $data['password']];
+
+
+        if (Auth::attempt($credentials, $data['remember']))
+        {	
+            return Redirect::intended('/dashboard');   
+        }else{
+        	return Redirect::intended('/login');
+        }
+
+          return Response::json(array(
+              'success' => false,
+              'errors' => 'La contraseña es incorrecta. Asegúrate de usar la contraseña de tu cuenta.'
+          ));
+	}
+
+
+	public function logout()
+    {
+      if(Auth::check())
+      {
+        Auth::logout();
+      }
+      return Redirect::to('login');
+    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -19,68 +51,13 @@ class AuthController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function registrar()
 	{
-		//
+		$input = Input::all();
+		$input['password'] = Hash::make($input['password']);
+		return User::create($input);
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /auth
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
 
-	/**
-	 * Display the specified resource.
-	 * GET /auth/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /auth/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /auth/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /auth/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 
 }

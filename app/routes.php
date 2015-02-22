@@ -10,16 +10,20 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/login', ['as' => 'cliente', 'uses' => 'AuthController@index']);
+Route::get('/logout', ['as' => 'cliente', 'uses' => 'AuthController@logout']);
+Route::post('/login', ['as' => 'cliente', 'uses' => 'AuthController@login']);
+Route::post('/registrar', ['as' => 'cliente', 'uses' => 'AuthController@registrar']);
 
-Route::get('/', function()
-{
-	return View::make('modules.home');
-});
-Route::get('/dashboard', function()
-{
-	return View::make('modules.home');
-});
+
 //Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'HomeController@dashboard']);
+
+// SOLO SI ESTAS LOGUEADO PODRAS ACCEDER
+Route::group(array('before' => 'auth'),function()
+{
+
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/dashboard', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/getClientes', ['as' => 'cliente', 'uses' => 'HomeController@getClientes']);
 Route::post('/postClientes', ['as' => 'cliente', 'uses' => 'HomeController@postClientes']);
@@ -47,5 +51,4 @@ Route::post('/postDistribuidor' ,         ['as' => 'categoria', 'uses' => 'HomeC
 Route::put('/editarDistribuidor/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarDistribuidor']);
 Route::delete('/borrarDistribuidor/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarDistribuidor']);
 
-
-
+});

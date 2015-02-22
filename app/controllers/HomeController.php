@@ -14,6 +14,16 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	public function __construct(){
+		
+
+	}
+
+	public function index()
+	{
+		if(!$this->autorizado) return Redirect::to('/login');
+		return View::make('modules.home');
+	}
 
 	public function showWelcome()
 	{
@@ -62,11 +72,6 @@ class HomeController extends BaseController {
 	
 	public function editarProducto($id)
 	{
-		// $producto = Producto::find($id);
-	 //    $producto->articulo       = Input::get('name');
-	 //    $producto->cantidad       = Input::get('cantidad');
-	 //    $producto->distribuidor       = Input::get('distribuidor');
-	 //    $nerd->save();
 		$input = Input::all();
 
   		Producto::find($id)->update($input);

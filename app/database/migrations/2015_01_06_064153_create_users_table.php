@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password');
 			$table->string('cedula');
 			$table->string('direccion');
+			$table->string('remember_token')->nullable();
 			$table->enum('estado', array('activado', 'desactivado'));
 			$table->enum('nivel', array('empleado', 'admin'));
 			$table->timestamps();

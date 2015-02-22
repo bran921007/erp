@@ -38,9 +38,13 @@ app.config(function($routeProvider)
       controller : "categoriaController"
   })
   .when("/factura",{
-	    templateUrl : "../templates/factura.html",
+      templateUrl : "../templates/factura.html",
       controller : "facturaController"
-	})
+  })  
+ //  .when("/login",{
+	    
+ //      controller : "authController"
+	// })
 	.otherwise({reditrectTo:"/"});
 
 });
