@@ -21,7 +21,7 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		if(!$this->autorizado) return Redirect::to('/login');
+		//if(!$this->autorizado) return Redirect::to('/login');
 		return View::make('modules.home');
 	}
 

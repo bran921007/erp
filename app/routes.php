@@ -17,13 +17,11 @@ Route::post('/registrar', ['as' => 'cliente', 'uses' => 'AuthController@registra
 
 
 //Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'HomeController@dashboard']);
-
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/dashboard', ['as' => 'home', 'uses' => 'HomeController@index']);
 // SOLO SI ESTAS LOGUEADO PODRAS ACCEDER
 Route::group(array('before' => 'auth'),function()
 {
-
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('/dashboard', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/getClientes', ['as' => 'cliente', 'uses' => 'HomeController@getClientes']);
 Route::post('/postClientes', ['as' => 'cliente', 'uses' => 'HomeController@postClientes']);
@@ -32,9 +30,9 @@ Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeControlle
 
 //Inventario de Productos
 
-Route::get('/getProductos', ['as' => 'cliente', 'uses' => 'HomeController@getProductos']);
-Route::post('/postProductos', ['as' => 'cliente', 'uses' => 'HomeController@postProductos']);
-Route::put('/editarProductos/{id}',['as' => 'cliente', 'uses' => 'HomeController@editarProductos']);
+Route::get('/getProductos',  ['as' => 'cliente', 'uses' => 'HomeController@getProductos']);
+Route::post('/postProductos',         ['as' => 'cliente', 'uses' => 'HomeController@postProductos']);
+Route::put('/editarProductos/{id}',   ['as' => 'cliente', 'uses' => 'HomeController@editarProductos']);
 Route::delete('/borrarProducto/{id}', ['as' => 'cliente', 'uses' => 'HomeController@borrarProducto']);
 
 //Categorias
