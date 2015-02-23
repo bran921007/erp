@@ -1,3 +1,56 @@
+<modal title="Realizar Pedido" visible="pedidoModal">
+
+  <div class="row">
+
+
+  <div class="form-group">
+    <label class="col-md-4 control-label " style="padding-left: 48px;"><h5>Monto en Efectivo:</h5></label>
+     <div class="col-md-7">
+      <div class="input-group">
+        <span class="input-group-addon">RD$</span>
+        <input type="number" class="form-control" placeholder="Digite Monto" ng-model="monto" ng-init="monto=0">
+      </div>
+    </div> 
+
+  </div>
+  <table class="table table-hover">
+    <thead>
+    </thead>
+    <tbody>
+
+      <tr>
+
+        <td>   </td>
+
+        <td><h5>Monto a Pagar</h5></td>
+        <td class="text-right"><h5><strong>RD${{total}}</strong></h5></td>
+      </tr>
+      <tr>
+
+
+        <td>   </td>
+        <td><h5>Devolver</h5></td>
+        <td ng-if="monto===0 || monto== ''" class="text-right"><h5><strong>RD$0</strong></h5></td>
+        <td ng-if="monto>0" class="text-right"><h5><strong>RD${{cambio=monto-total}}</strong></h5></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <button type="button" ng-if="monto < total" ng-click="crearPedido()" disabled class="btn btn-success">
+            Pagar Ahora <span class="glyphicon glyphicon-play"></span>
+          </button>
+          <button type="button" ng-if="monto >= total" ng-click="crearPedido()" class="btn btn-success">
+            Pagar Ahora <span class="glyphicon glyphicon-play"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</modal>
+
 <div class="row">
   <div class="col-md-12">
     <h5 class="widget-title"><i class="icon-hand-up"></i> Crear Pedido</h5>
@@ -36,6 +89,8 @@
             <div class="col-md-2" ng-repeat="data in inventario |filter: query" ng-mouseenter="hover(data)" ng-mouseleave="hover(data)">
               <div class="" >
                 <span class="label label-primary span-precio">RD${{data.precioVenta}}</span>
+                <span ng-if="data.cantidad === 0" class="label label-danger span-cantidad">{{data.cantidad}}</span>
+                <span ng-if="data.cantidad >0" class="label label-success span-cantidad">{{data.cantidad}}</span>
                 <img  src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;">
                 <h5 class="sin-margen">{{data.articulo}}</h5>
                 <span ng-show="data.showDelete" class="" style="
@@ -43,7 +98,7 @@
                 top: 14px;
                 right: 57px;
                 ">
-                <button ng-click="addCarrito(data)" class="btn btn-xs btn-primary btn-circle"><i class="fa fa-plus"></i></button>
+                <button ng-if="data.cantidad >0" ng-click="addCarrito(data)" class="btn btn-xs btn-primary btn-circle"><i class="fa fa-plus"></i></button>
               </span>
               </div>
             </div>
@@ -53,33 +108,52 @@
         </div>
 
         <div class="col-md-4">
-          <form class="form-horizontal row-border" action="#">
+
 
             <div class="col-sm-8">
-              <div class="form-group">
-                <label>Factura Numero</label>
-                <input type="text" placeholder="" class="form-control" name="invoice_code" readonly="" value="3c616352ea6e9cc">
-              </div>
 
               <div class="form-group">
                 <label>Cliente</label>
-                <select name="Cliente" class="select2 form-control" ng-controller="clientesController">
+                <select ng-model="id_cliente" name="Cliente" class="select2 form-control" ng-controller="clientesController">
                   <option>Seleciona un cliente</option>
-                  <option value="1" ng-repeat="d in datos">{{d.nombre}} {{d.apellido}}</option>
+                  <option ng-repeat="d in datos" value="{{d.id}}">{{d.nombre}} {{d.apellido}}</option>
                 </select>
               </div>
 
+              <div class="form-group">
+                <label>Estado</label>
+                <select ng-model="estado" name="estado" class="select2 form-control" >
+                  <option value="pagado" >Pagado</option>
+                  <option value="pendiente">Pendiente</option>
+
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Tipo</label>
+                <select ng-model="tipo" name="tipo" class="select2 form-control" >
+                  <option value="venta">Venta</option>
+                  <option value="cotizacion">Cotizacion</option>
+
+                </select>
+              </div>
+              <div class="form-group" >
+                <div class="input-group date col-lg-13" >
+                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input ng-model="fecha" type="tex" class="form-control" value="" >
+              </div>
+              </div>
+<!--
                                   <div class="form-group" >
                                     <label>Fecha</label>
                                     <div class="input-group date col-lg-13" ng-controller="tabsController">
                                       <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                       <input type="text" class="form-control" name="timestamp" required="" value="{{fecha | date:'dd/MM/yyyy'}}">
                                     </div>
-                                  </div>
+                                  </div> -->
 
                                 </div>
 
-          </form>
+
         </div>
       </div>
       </div>
@@ -121,10 +195,10 @@
                                     </div>
                                   </div></td>
                                   <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="number" class="form-control" id="cantidad" value="{{cart.cantidad}}">
+                                    <input type="number" class="form-control" id="cantidad" ng-model="cart.cantidad">
                                   </td>
                                   <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.precio}}</strong></td>
-                                  <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.precio * cart.cantidad}}</strong></td>
+                                  <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.subtotal = cart.precio * cart.cantidad}}</strong></td>
                                   <td class="col-sm-1 col-md-1">
                                     <button ng-click="deleteArticulo(cart)" class="btn btn-sm"><i class="icon-trash"></i></button>
                                   </td>
@@ -143,20 +217,20 @@
                                 <td>   </td>
 
                                 <td><h5>Sub-total</h5></td>
-                                <td class="text-right"><h5><strong>RD${{subtotal}}</strong></h5></td>
+                                <td class="text-right"><h5><strong>RD${{subtotal = subtotales()}}</strong></h5></td>
                               </tr>
                               <tr>
 
 
                                 <td>   </td>
                                 <td><h5>ITBIS</h5></td>
-                                <td class="text-right"><h5><strong>RD${{itbis}}</strong></h5></td>
+                                <td class="text-right"><h5><strong>RD${{itbis = subtotal* 18 / 100}}</strong></h5></td>
                               </tr>
                               <tr>
 
                                 <td>   </td>
                                 <td><h3>Total</h3></td>
-                                <td class="text-right"><h3><strong>RD${{total}}</strong></h3></td>
+                                <td class="text-right"><h3><strong>RD${{total = subtotal + itbis}}</strong></h3></td>
                               </tr>
                               <tr>
 
@@ -164,10 +238,10 @@
                                 <td>Metodo de Pago:</td>
                                 <td class="col-sm-4">
 
-                                  <select   class="select2 form-control ">
-                                    <option>Efectivo</option>
-                                    <option>Tarjeta</option>
-                                    <option>Banco</option>
+                                  <select ng-model="metodo"   class="select2 form-control ">
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="tarjeta">Tarjeta</option>
+                                    <option value="banco">Banco</option>
 
                                   </select>
 
@@ -179,7 +253,10 @@
                                   <td></td>
                                   <td></td>
                                   <td>
-                                    <button type="button" class="btn btn-success">
+                                    <button ng-if="subtotal === 0" type="button" ng-click="realizarPedidoModal()" class="btn btn-success" disabled>
+                                      Realizar Pedido <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                    <button ng-if="subtotal > 0" type="button" ng-click="realizarPedidoModal()" class="btn btn-success">
                                       Realizar Pedido <span class="glyphicon glyphicon-play"></span>
                                     </button>
                                   </td>
