@@ -134,7 +134,38 @@ class HomeController extends BaseController {
 
     	Distribuidor::destroy($id);
 
+    }	
+
+    //Orden
+
+	public function getOrdenes(){
+		// $distribuidores = DB::table("distribuidores")->get();
+	 //    return Response::json(array(
+	 //        "distribuidores"        =>        $distribuidores
+	 //    ));
+
+	}
+    public function postOrden(){
+
+    	// return Distribuidor::create(Input::all());
+
     }
+    public function editarOrden($id){
+
+		// $input = Input::all();
+
+  // 		Distribuidor::find($id)->update($input);
+    }
+    public function borrarOrden($id){
+
+    	// Distribuidor::destroy($id);
+
+    }
+
+
+
+
+
 
 	
 	

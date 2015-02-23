@@ -49,4 +49,16 @@ Route::post('/postDistribuidor' ,         ['as' => 'categoria', 'uses' => 'HomeC
 Route::put('/editarDistribuidor/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarDistribuidor']);
 Route::delete('/borrarDistribuidor/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarDistribuidor']);
 
+//Factura
+Route::get('/getOrdenes' ,          ['as' => 'categoria', 'uses' => 'HomeController@getOrdenes']);
+Route::post('/postOrden' ,         ['as' => 'categoria', 'uses' => 'HomeController@postOrden']);
+Route::put('/editarOrden/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarOrden']);
+Route::delete('/borrarOrden/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarOrden']);
+
+//Manejar Pedidos
+// Route::get('/getDistribuidores' ,          ['as' => 'categoria', 'uses' => 'HomeController@getDistribuidores']);
+// Route::post('/postDistribuidor' ,         ['as' => 'categoria', 'uses' => 'HomeController@postDistribuidor']);
+// Route::put('/editarDistribuidor/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarDistribuidor']);
+// Route::delete('/borrarDistribuidor/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarDistribuidor']);
+
 });

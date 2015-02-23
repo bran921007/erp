@@ -40,6 +40,14 @@ app.config(function($routeProvider)
   .when("/factura",{
       templateUrl : "../templates/factura.html",
       controller : "facturaController"
+  })    
+  .when("/factura-pedidos",{
+      templateUrl : "../templates/factura_pedidos.html",
+      controller : "facturaPedidosController"
+  })
+  .when("/manejar-pedidos",{
+      templateUrl : "../templates/manejar_pedidos.html",
+      controller : "manejarPedidosController"
   })  
  //  .when("/login",{
 	    
@@ -48,6 +56,7 @@ app.config(function($routeProvider)
 	.otherwise({reditrectTo:"/"});
 
 });
+
 
 })();
 

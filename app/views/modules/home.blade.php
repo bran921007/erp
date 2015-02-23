@@ -82,6 +82,8 @@
 		<script type="text/javascript" src="js/controllers/distribuidor.js"></script>
 		<script type="text/javascript" src="js/controllers/categoria.js"></script>
 		<script type="text/javascript" src="js/controllers/factura.js"></script>
+		<script type="text/javascript" src="js/controllers/manejar_pedidos.js"></script>
+		<script type="text/javascript" src="js/controllers/factura_pedidos.js"></script>
 	
 	
 	<!-- END MVC AngularJS	 -->
@@ -198,13 +200,13 @@
 								</a>
 							</li>
 							<li ng-class="{ current : tab === 3 }">
-								<a href="#/pedidos" ng-click="tab = 3">
+								<a href="#/factura-pedidos" ng-click="tab = 3">
 									<i class="icon-shopping-cart"></i>
 									Factura Pedidos
 								</a>
 							</li>
 							<li ng-class="{ current : tab === 4 }">
-								<a href="#/pedidos" ng-click="tab = 4">
+								<a href="#/manejar-pedidos" ng-click="tab = 4">
 									<i class="icon-shopping-cart"></i>
 									Manejar Pedidos
 								</a>
