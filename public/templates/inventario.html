@@ -36,9 +36,9 @@
       <div class="form-group">
         <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
         <div class="col-md-9">
-          <select ng-model="producto.categoria" class="form-control">
+          <select ng-model="producto.categoria" class="form-control" ng-controller="categoriaController">
             <option value="0" >Seleccione Categoria</option>
-            <option value="postres">Postres</option>
+            <option ng-repeat="cate in datos" value="{{cate.id}}">{{cate.titulo}}</option>
           </select>
         </div>
       </div>
@@ -51,15 +51,15 @@
       <div class="form-group">
         <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
         <div class="col-md-9">
-          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+          <input type="text" ng-model="producto.precioCompra" class="form-control required">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
         <div class="col-md-9">
-          <select ng-model="producto.distribuidor" class="form-control">
+          <select ng-model="producto.distribuidor" class="form-control" ng-controller="categoriaController">
             <option value="0" >Seleccione Distribuidor</option>
-            <option value="postres">SRL</option>
+            <option value="10">Casero</option>
           </select>
         </div>
       </div>
