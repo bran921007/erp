@@ -1,0 +1,197 @@
+<div class="row">
+  <div class="col-md-12">
+    <h5 class="widget-title"><i class="icon-hand-up"></i> Crear Pedido</h5>
+  </div>
+</div>
+
+
+<div class="row ">
+  <div class="col-md-12">
+    <div class="widget box">
+      <!-- <div class="widget-header">
+        <h4><i class="icon-reorder"></i> </h4>
+      </div> -->
+      <div class="widget-content">
+        <div class="row column-seperation">
+        <div class="col-md-8" >
+
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-6">
+              <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                <label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-search"></i></span>
+                    <input ng-model="query" type="text" aria-controls="DataTables_Table_0" class="form-control">
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="" style="margin-top: 4px;">
+            <div class="col-md-2" ng-repeat="data in inventario |filter: query" ng-mouseenter="hover(data)" ng-mouseleave="hover(data)">
+              <div class="" >
+                <span class="label label-primary span-precio">RD${{data.precioVenta}}</span>
+                <img  src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;">
+                <h5 class="sin-margen">{{data.articulo}}</h5>
+                <span ng-show="data.showDelete" class="" style="
+                position: absolute;
+                top: 14px;
+                right: 57px;
+                ">
+                <button ng-click="addCarrito(data)" class="btn btn-xs btn-primary btn-circle"><i class="fa fa-plus"></i></button>
+              </span>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+          <form class="form-horizontal row-border" action="#">
+
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label>Factura Numero</label>
+                <input type="text" placeholder="" class="form-control" name="invoice_code" readonly="" value="3c616352ea6e9cc">
+              </div>
+
+              <div class="form-group">
+                <label>Cliente</label>
+                <select name="Cliente" class="select2 form-control" ng-controller="clientesController">
+                  <option>Seleciona un cliente</option>
+                  <option value="1" ng-repeat="d in datos">{{d.nombre}} {{d.apellido}}</option>
+                </select>
+              </div>
+
+                                  <div class="form-group" >
+                                    <label>Fecha</label>
+                                    <div class="input-group date col-lg-13" ng-controller="tabsController">
+                                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      <input type="text" class="form-control" name="timestamp" required="" value="{{fecha | date:'dd/MM/yyyy'}}">
+                                    </div>
+                                  </div>
+
+                                </div>
+
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="widget box">
+      <div class="widget-content">
+        <div class="container">
+
+
+
+                      <div class="row column-seperation">
+                        <div class="col-md-8">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th class="text-center">Precio</th>
+                                <th class="text-center">Total</th>
+                                <th> </th>
+                              </tr>
+                            </thead>
+                            <tbody >
+                              <tr ng-repeat="cart in carrito">
+                                <td class="col-sm-8 col-md-6">
+                                  <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                      <h4 class="media-heading"><a href="#">{{cart.producto}}</a></h4>
+
+                                      <!-- <span>Status: </span><span class="text-success"><strong>In Stock</strong></span> -->
+                                    </div>
+                                  </div></td>
+                                  <td class="col-sm-1 col-md-1" style="text-align: center">
+                                    <input type="number" class="form-control" id="cantidad" value="{{cart.cantidad}}">
+                                  </td>
+                                  <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.precio}}</strong></td>
+                                  <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.precio * cart.cantidad}}</strong></td>
+                                  <td class="col-sm-1 col-md-1">
+                                    <button ng-click="deleteArticulo(cart)" class="btn btn-sm"><i class="icon-trash"></i></button>
+                                  </td>
+                                </tr>
+
+                              </tbody>
+                            </table>
+                          </div>
+                        <div class="col-md-4">
+                          <table class="table table-hover">
+                            <thead>
+                            </thead>
+                            <tbody>
+                              <tr>
+
+                                <td>   </td>
+
+                                <td><h5>Sub-total</h5></td>
+                                <td class="text-right"><h5><strong>RD${{subtotal}}</strong></h5></td>
+                              </tr>
+                              <tr>
+
+
+                                <td>   </td>
+                                <td><h5>ITBIS</h5></td>
+                                <td class="text-right"><h5><strong>RD${{itbis}}</strong></h5></td>
+                              </tr>
+                              <tr>
+
+                                <td>   </td>
+                                <td><h3>Total</h3></td>
+                                <td class="text-right"><h3><strong>RD${{total}}</strong></h3></td>
+                              </tr>
+                              <tr>
+
+                                <td>   </td>
+                                <td>Metodo de Pago:</td>
+                                <td class="col-sm-4">
+
+                                  <select   class="select2 form-control ">
+                                    <option>Efectivo</option>
+                                    <option>Tarjeta</option>
+                                    <option>Banco</option>
+
+                                  </select>
+
+
+                                </td>
+
+                                </tr>
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td>
+                                    <button type="button" class="btn btn-success">
+                                      Realizar Pedido <span class="glyphicon glyphicon-play"></span>
+                                    </button>
+                                  </td>
+                                </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                    </div>
+      </div>
+    </div>
+
+  </div>
+</div>
