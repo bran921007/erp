@@ -27,6 +27,9 @@ app.controller("inventarioController", function($scope,$http){
          var inventario = {
             articulo:   $scope.producto.articulo,
             cantidad:   $scope.producto.cantidad,
+            categoria:   $scope.producto.categoria,
+            precioVenta:   $scope.producto.precioVenta,
+            precioCompra:   $scope.producto.precioCompra,
             distribuidor:$scope.producto.distribuidor
 
         };
