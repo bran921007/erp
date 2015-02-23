@@ -54,7 +54,7 @@
 	<script type="text/javascript" src="melon/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script type="text/javascript" src="melon/plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
 	<script type="text/javascript" src="melon/plugins/select2/select2.js"></script> <!-- Styled select boxes -->
-		
+
 	<!-- App -->
 	<script type="text/javascript" src="melon/assets/js/app.js"></script>
 	<script type="text/javascript" src="melon/assets/js/plugins.js"></script>
@@ -63,7 +63,7 @@
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
-	
+
 	<!-- Librerias externas -->
 	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
 	<script type="text/javascript" src="lib/angular-locale_es-es.js"></script>
@@ -85,11 +85,11 @@
 		<script type="text/javascript" src="js/controllers/factura.js"></script>
 		<script type="text/javascript" src="js/controllers/manejar_pedidos.js"></script>
 		<script type="text/javascript" src="js/controllers/factura_pedidos.js"></script>
-	
-	
+
+
 	<!-- END MVC AngularJS	 -->
-	
-	
+
+
 		<style >
 	.column-seperation > div[class*="col-"] {
 		border-right: 1px solid #ddd;
@@ -103,6 +103,11 @@
 	.span-precio{
 		top: -6px;
 		right: 31px;
+		position: absolute;
+	}
+	.span-cantidad{
+		top: 54px;
+		right: 36px;
 		position: absolute;
 	}
 	.btn-circle{
@@ -119,7 +124,7 @@
 	.sin-margen {
 		margin-top: 2px !important;
 	}
-	</style>		
+	</style>
 
 	<script>
 	$(document).ready(function(){
