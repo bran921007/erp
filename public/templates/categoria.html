@@ -22,6 +22,7 @@
 
     <form class="form-horizontal row-border" ng-submit="agregarCategoria()" novalidate="novalidate">
       <div class="form-group">
+        <input type="text" ng-model="categoria.id" hidden>
         <label class="col-md-3 control-label">Titulo <span class="required">*</span></label>
         <div class="col-md-9">
           <input type="text" ng-model="categoria.titulo" class="form-control required email">
@@ -40,6 +41,31 @@
 
   </modal>
 <!-- END Modal Agregar Producto -->
+
+  <!--  Modal Editar Producto -->
+  <modal title="Agregar Categoria" visible="editModal">
+
+    <form class="form-horizontal row-border" ng-submit="editarCategoria()" novalidate="novalidate">
+      <div class="form-group">
+        <input type="text" ng-model="categoria.id" hidden>
+        <label class="col-md-3 control-label">Titulo <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="categoria.titulo" class="form-control required email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Descripcion <span class="required">*</span></label>
+        <div class="col-md-9">
+          <textarea name="" ng-model="categoria.descripcion" id="" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <input type="submit" value="Actualizar" class="btn btn-primary pull-right">
+      </div>
+    </form>
+
+  </modal>
+<!-- END Modal Editar Producto -->
 
 <!-- Modal Confirmacion Producto  -->
   <modal title="Confirmación Eliminación" visible='showConfirmacion'>
@@ -94,6 +120,12 @@
                                     <div class="checker">
                                         <span><input type="checkbox" class="uniform"></span>
                                     </div>
+                                </th>                                
+
+                                <th class="checkbox-column sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="">
+                                    <div class="">
+                                        <span>ID</span>
+                                    </div>
                                 </th>
                                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Titulo
                                 </th>
@@ -111,12 +143,13 @@
                                     <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
                                 </td>
                                 
+                                <td  class="" ng-model="data.id">{{data.id}}</td>
                                 <td  class="" ng-model="data.titulo">{{data.titulo}}</td>
                                 <td ng-model="data.descripcion" class="">{{data.descripcion}}</td>
                                 <td class="">
                                     <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
-                                    <span class="icon-edit-sign" ng-click="editarProducto(data)"></span>
+                                    <span class="icon-edit-sign" ng-click="editarModal(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
 
                                 </td>

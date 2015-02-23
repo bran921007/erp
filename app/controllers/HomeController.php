@@ -40,7 +40,13 @@ class HomeController extends BaseController {
 
 	public function postClientes()
 	{
-		return Cliente::create(Input::all());
+		$cliente = Cliente::create(Input::all());
+		$cliente_id = $cliente->id;
+		
+		return Response::json(array(
+			'success' => true,
+			'id'	  => $cliente_id 
+		));
 	}
 
 	public function editarCliente($id){
@@ -67,7 +73,13 @@ class HomeController extends BaseController {
 
 	public function postProductos()
 	{
-		return Producto::create(Input::all());
+		$producto = Producto::create(Input::all());
+		$producto_id = $producto->id;
+		
+		return Response::json(array(
+			'success' => true,
+			'id'	  => $producto_id 
+		));
 	}	
 	
 	public function editarProducto($id)
@@ -94,10 +106,16 @@ class HomeController extends BaseController {
 
 	public function postCategoria()
 	{
-		return Categoria::create(Input::all());
+		$categoria =  Categoria::create(Input::all());
+		$categoria_id = $categoria->id;
+		
+		return Response::json(array(
+			'success' => true,
+			'id'	  => $categoria_id 
+		));
 	}	
 	
-	public function actualizarCategoria($id)
+	public function editarCategoria($id)
 	{
 		
 		$input = Input::all();
@@ -121,7 +139,13 @@ class HomeController extends BaseController {
 	}
     public function postDistribuidor(){
 
-    	return Distribuidor::create(Input::all());
+    	$distribuidor = Distribuidor::create(Input::all());
+    	$distribuidor_id = $distribuidor->id;
+		
+		return Response::json(array(
+			'success' => true,
+			'id'	  => $distribuidor_id 
+		));
 
     }
     public function editarDistribuidor($id){
@@ -147,8 +171,13 @@ class HomeController extends BaseController {
 	}
     public function postOrden(){
 
-    	// return Distribuidor::create(Input::all());
-
+    	// $distribuidor =  Distribuidor::create(Input::all());
+  		// $distribuidor_id = $distribuidor->id;
+		
+		// return Response::json(array(
+		// 	'success' => true,
+		// 	'id'	  => $distribuidor_id 
+		// ));
     }
     public function editarOrden($id){
 
