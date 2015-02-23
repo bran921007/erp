@@ -16,10 +16,12 @@ class CreatePedidosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('id_cliente');
-			$table->string('metodo');
+			$table->enum('metodo', array('pendiente','pagado'));
 			$table->integer('subtotal');
 			$table->integer('itbis');
 			$table->integer('total');
+			$table->enum('estado', array('pendiente','pagado'));
+			$table->enum('tipo', array('cotizacion','venta'));
 			$table->date('fecha');
 			$table->timestamps();
 		});
