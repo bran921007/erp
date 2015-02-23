@@ -20,8 +20,8 @@ Route::post('/registrar', ['as' => 'cliente', 'uses' => 'AuthController@registra
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/dashboard', ['as' => 'home', 'uses' => 'HomeController@index']);
 // SOLO SI ESTAS LOGUEADO PODRAS ACCEDER
-Route::group(array('before' => 'auth'),function()
-{
+// Route::group(array('before' => 'auth'),function()
+// {
 
 Route::get('/getClientes', ['as' => 'cliente', 'uses' => 'HomeController@getClientes']);
 Route::post('/postClientes', ['as' => 'cliente', 'uses' => 'HomeController@postClientes']);
@@ -61,4 +61,4 @@ Route::delete('/borrarOrden/{id}', ['as' => 'categoria', 'uses' => 'HomeControll
 // Route::put('/editarDistribuidor/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarDistribuidor']);
 // Route::delete('/borrarDistribuidor/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarDistribuidor']);
 
-});
+// });
