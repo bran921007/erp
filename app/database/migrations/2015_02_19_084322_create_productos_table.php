@@ -17,9 +17,11 @@ class CreateProductosTable extends Migration {
 			$table->increments('id');
 			$table->string('articulo');
 			$table->integer('cantidad');
-			$table->string('distribuidor');
+			$table->integer('precioVenta');
+			$table->integer('precioCompra');
+			$table->integer('distribuidor');
 			$table->date('fecha');
-			$table->string('tiempo');
+			$table->string('vencimiento');
 			$table->timestamps();
 		});
 	}
