@@ -28,7 +28,7 @@
 	<![endif]-->
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-
+	<link href='melon/plugins/select2/select2-bootstrap.css' rel='stylesheet' type='text/css'>
 	<!--=== JavaScript ===-->
 
 	<script type="text/javascript" src="melon/assets/js/libs/jquery-1.10.2.min.js"></script>
@@ -53,7 +53,8 @@
 	<script type="text/javascript" src="melon/plugins/cookie/jquery.cookie.min.js"></script>
 	<script type="text/javascript" src="melon/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script type="text/javascript" src="melon/plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
-
+	<script type="text/javascript" src="melon/plugins/select2/select2.js"></script> <!-- Styled select boxes -->
+		
 	<!-- App -->
 	<script type="text/javascript" src="melon/assets/js/app.js"></script>
 	<script type="text/javascript" src="melon/assets/js/plugins.js"></script>
@@ -87,7 +88,38 @@
 	
 	
 	<!-- END MVC AngularJS	 -->
-		
+	
+	
+		<style >
+	.column-seperation > div[class*="col-"] {
+		border-right: 1px solid #ddd;
+		height: 20em;
+	}
+
+	.column-seperation > div[class*="col-"]:last-child {
+		border-right: 0px;
+
+	}
+	.span-precio{
+		top: -6px;
+		right: 31px;
+		position: absolute;
+	}
+	.btn-circle{
+		margin-top: 4px;
+		width: 30px;
+		height: 30px;
+		padding: 6px 0;
+		border-radius: 15px;
+		text-align: center;
+		font-size: 12px;
+		line-height: 1.428571429;
+	}
+
+	.sin-margen {
+		margin-top: 2px !important;
+	}
+	</style>		
 
 	<script>
 	$(document).ready(function(){
