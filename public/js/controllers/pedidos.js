@@ -4,6 +4,7 @@
 
 	app.controller("pedidosController", function($scope,$http,$log,$filter){
 
+		$scope.carrito = [];
 
 		$scope.realizarPedidoModal = function(){
 			$scope.pedidoModal = !$scope.pedidoModal;
@@ -14,7 +15,16 @@
 		{
 			$scope.inventario = data.productos;//así enviamos los posts a la vista
 		});
+		//$scope.id_cliente = 0;
 
+		$scope.detectarId = function(id){
+
+			$scope.id_cliente = id;
+		};
+
+		$scope.verCarrito = function(cart){
+			console.log($scope.carrito);
+		}
 
 		$scope.crearPedido = function(){
 			var pedido = {
@@ -24,10 +34,42 @@
 				itbis: $scope.itbis,
 				total: $scope.total,
 				estado: $scope.estado,
-				tipo: $scope.tipo,
-				fecha: $scope.fecha
+				tipo: $scope.tipo
+				//fecha: $scope.fecha
 			};
-			$http.post('/postPedido', pedido);
+
+			$scope.id_pedido = 0;
+			$http.post('/postPedido', pedido).success(function(data){
+				console.log(data.success);
+				//detalle.id_pedido = data.id;
+				//console.log("id_pedido:"+detalle.id_pedido);
+
+				for (var i = 0; i < $scope.carrito.length; i++) {
+
+					var detalle ={
+						id_pedido   : data.id,
+						id_producto : $scope.carrito[i].id,
+						articulo    : $scope.carrito[i].producto,
+						cantidad    : $scope.carrito[i].cantidad,
+						precio      : $scope.carrito[i].precio,
+						total       : $scope.carrito[i].subtotal,
+						fecha       : $scope.carrito[i].fecha
+					};
+					console.log(detalle);
+					$http.post('/postPedidoDetalle',detalle).success(function(data){
+						console.log(data);
+						$scope.carrito = [];
+					});
+
+				}
+
+			});
+
+
+
+
+
+
 			$scope.pedidoModal = !$scope.pedidoModal;
 		};
 
@@ -36,7 +78,7 @@
 			return p.showDelete = ! p.showDelete;
 		};
 
-		$scope.carrito = [];
+
 		$scope.subtotal = 0;
 		$scope.itbis = 0;
 		$scope.total = 0;
@@ -69,6 +111,8 @@
 			} else {
 				producto.cantidad++;
 			}
+
+			console.log($scope.carrito);
 			// $scope.carrito.push(producto);
 			// console.log($scope.carrito);
 			// $scope.subtotal = $scope.subtotal + articulo.precioVenta;

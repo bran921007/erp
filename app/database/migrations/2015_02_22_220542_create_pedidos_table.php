@@ -16,7 +16,7 @@ class CreatePedidosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('id_cliente');
-			$table->enum('metodo', array('pendiente','pagado'));
+			$table->enum('metodo', array('efectivo','tarjeta','banco'));
 			$table->integer('subtotal');
 			$table->integer('itbis');
 			$table->integer('total');
@@ -24,6 +24,10 @@ class CreatePedidosTable extends Migration {
 			$table->enum('tipo', array('cotizacion','venta'));
 			$table->date('fecha');
 			$table->timestamps();
+
+
+
+
 		});
 	}
 

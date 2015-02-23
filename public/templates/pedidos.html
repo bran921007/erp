@@ -112,9 +112,9 @@
 
             <div class="col-sm-8">
 
-              <div class="form-group">
+              <div ng-controller="clientesController" class="form-group">
                 <label>Cliente</label>
-                <select ng-model="id_cliente" name="Cliente" class="select2 form-control" ng-controller="clientesController">
+                <select ng-model="id_cliente" ng-change="detectarId(id_cliente)"  name="Cliente" class="select2 form-control" >
                   <option>Seleciona un cliente</option>
                   <option ng-repeat="d in datos" value="{{d.id}}">{{d.nombre}} {{d.apellido}}</option>
                 </select>
@@ -173,6 +173,7 @@
 
                       <div class="row column-seperation">
                         <div class="col-md-8">
+                          
                           <table class="table table-hover">
                             <thead>
                               <tr>
@@ -184,7 +185,7 @@
                               </tr>
                             </thead>
                             <tbody >
-                              <tr ng-repeat="cart in carrito">
+                              <tr ng-repeat="cart in carrito" >
                                 <td class="col-sm-8 col-md-6">
                                   <div class="media">
                                     <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
@@ -195,7 +196,7 @@
                                     </div>
                                   </div></td>
                                   <td class="col-sm-1 col-md-1" style="text-align: center">
-                                    <input type="number" class="form-control" id="cantidad" ng-model="cart.cantidad">
+                                    <input type="number" class="form-control" id="cantidad" ng-model="cart.cantidad" ng-change="verCarrito(cart.cantidad)">
                                   </td>
                                   <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.precio}}</strong></td>
                                   <td class="col-sm-1 col-md-1 text-center"><strong>RD${{cart.subtotal = cart.precio * cart.cantidad}}</strong></td>

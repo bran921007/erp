@@ -55,6 +55,18 @@ Route::post('/postOrden' ,         ['as' => 'categoria', 'uses' => 'HomeControll
 Route::put('/editarOrden/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarOrden']);
 Route::delete('/borrarOrden/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarOrden']);
 
+
+Route::post('/postPedido' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedido']);
+Route::post('/postPedidoDetalle' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedidoDetalle']);
+Route::get('/prueba',function(){
+  // $input = [{"id":2,"producto":"pastelito de queso","cantidad":2,"precio":25,"subtotal":50},{"id":3,"producto":"quipes","cantidad":1,"precio":25,"subtotal":25}];
+  // foreach($input as $key => $value){
+  //   echo $value[$key];
+  // }
+});
+// Route::post('/postPedidoDetalle' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedidoDetalle']);
+
+
 //Manejar Pedidos
 // Route::get('/getDistribuidores' ,          ['as' => 'categoria', 'uses' => 'HomeController@getDistribuidores']);
 // Route::post('/postDistribuidor' ,         ['as' => 'categoria', 'uses' => 'HomeController@postDistribuidor']);
