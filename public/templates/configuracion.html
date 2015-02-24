@@ -1,0 +1,133 @@
+
+
+
+
+    <!--=== Page Content ===-->
+    <!--=== Inline Tabs ===-->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Tabs-->
+        <div class="tabbable tabbable-custom tabbable-full-width">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="@" data-toggle="tab">Editar Información</a></li>
+          </ul>
+          <div class="tab-content row">
+
+
+            <!--=== Edit Account ===-->
+            <div class="tab-pane active" id="tab_edit_account">
+              <form class="form-horizontal" action="#">
+                <div class="col-md-12">
+                  <div class="widget">
+                    <div class="widget-header">
+                      <h4>Información general</h4>
+                    </div>
+                    <div class="widget-content">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">Empresa</label>
+                            <div class="col-md-8"><input type="text" ng-model="configuracion.empresa" name="regular" class="form-control" value="D' Apetito"></div>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">RNC</label>
+                            <div class="col-md-8"><input type="text" ng-model="configuracion.rnc" name="regular" class="form-control" value="44542"></div>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">Telefono</label>
+                            <div class="col-md-8"><input type="text" ng-model="configuracion.telefono" name="regular" class="form-control" value="8095843423"></div>
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">Dirección</label>
+                            <div class="col-md-8"><input ng-model="configuracion.direccion" type="text" name="regular" class="form-control" value="C/ Andres Julio Aybar"></div>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">Ciudad</label>
+                            <div class="col-md-8">
+                              <select name="ciudad" id="ciudad" class="select2 form-control" ng-model="configuracion.ciudad"  ng-disabled="!configuracion.pais"  ng-options="configuracion.ciudad for (ciudad, pr) in ciudades">
+                                <option value=""  >Seleccione una Ciudad</option>
+                              </select>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="col-md-4 control-label">Pais</label>
+                            <div class="col-md-8">
+                              <select name="paises" id="paises" class="select2 form-control" ng-model="configuracion.pais" ng-options="pais for (pais, ciudades) in paises">
+                                <option value="">Seleccione Pais</option>
+                              </select>
+                              </div>
+                          </div>
+
+
+                        </div>
+                      </div> <!-- /.row -->
+                    </div> <!-- /.widget-content -->
+                  </div> <!-- /.widget -->
+                </div> <!-- /.col-md-12 -->
+
+                <div class="col-md-12 form-vertical no-margin">
+                  <div class="widget">
+                    <div class="widget-header">
+                      <h4>Ajustes Usuario</h4>
+                    </div>
+                    <div class="widget-content">
+                      <div class="row">
+                        <div class="col-md-4 col-lg-2">
+                          <strong class="subtitle padding-top-10px">Correo</strong>
+                          <!-- <p class="text-muted">Dolor sit amet.</p> -->
+                        </div>
+
+                        <div class="col-md-8 col-lg-10">
+                          <div class="form-group">
+                            <label class="control-label padding-top-10px">Correo:</label>
+                            <input type="text" name="username" class="form-control" value="amalialinarez@gmail.com" disabled="disabled">
+                          </div>
+                        </div>
+                      </div> <!-- /.row -->
+                      <div class="row">
+                        <div class="col-md-4 col-lg-2">
+                          <strong class="subtitle">Cambiar Contraseña:</strong>
+                          <!-- <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                        </div>
+
+                        <div class="col-md-8 col-lg-10">
+                          <div class="form-group">
+                            <label class="control-label">Actual Contraseña:</label>
+                            <input type="password" name="old_password" class="form-control" placeholder="Escriba su Contraseña actual">
+                          </div>
+
+                          <div class="form-group">
+                            <label class="control-label">Nueva Contraseña:</label>
+                            <input type="password" name="new_password" class="form-control" placeholder="Escriba su nueva Contraseña">
+                          </div>
+
+                          <div class="form-group">
+                            <label class="control-label">Repeti nueva Contraseña:</label>
+                            <input type="password" name="new_password_repeat" class="form-control" placeholder="Repite su nueva Contraseña">
+                          </div>
+                        </div>
+                      </div> <!-- /.row -->
+                    </div> <!-- /.widget-content -->
+                  </div> <!-- /.widget -->
+
+                  <div class="form-actions">
+                    <input type="submit" value="Actualizar Cuenta" class="btn btn-primary pull-right">
+                  </div>
+                </div> <!-- /.col-md-12 -->
+              </form>
+            </div>
+            <!-- /Edit Account -->
+          </div> <!-- /.tab-content -->
+        </div>
+        <!--END TABS-->
+      </div>
+    </div> <!-- /.row -->
+    <!-- /Page Content -->

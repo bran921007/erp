@@ -40,7 +40,7 @@ app.config(function($routeProvider)
   .when("/factura/:id",{
       templateUrl : "../templates/factura.html",
       controller : "facturaController"
-  })    
+  })
   .when("/factura-pedidos",{
       templateUrl : "../templates/factura_pedidos.html",
       controller : "facturaPedidosController"
@@ -48,9 +48,13 @@ app.config(function($routeProvider)
   .when("/manejar-pedidos",{
       templateUrl : "../templates/manejar_pedidos.html",
       controller : "manejarPedidosController"
-  })  
+  })
+  .when("/configuracion",{
+    templateUrl : "../templates/configuracion.html",
+    controller : "configuracionController"
+  })
  //  .when("/login",{
-	    
+
  //      controller : "authController"
 	// })
 	.otherwise({reditrectTo:"/"});

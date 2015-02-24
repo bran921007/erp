@@ -1,18 +1,6 @@
-(function(){
-
-  var app = angular.module('configuracion',[]);
-
-  app.controller("configuracionController", function($scope,$http)
-{
-  $scope.configuracion = {};
-
-  $scope.actualizarConfiguracion = function(){
-    $http.post('/postConfiguracion', $scope.configuracion).success(function(data){
-    });
-  };
-
-  $scope.paises = {
-    "Estados Unidos": [
+[
+  {
+  "Estados Unidos": [
     "Alabama",
     "Alaska",
     "Arizona",
@@ -64,8 +52,9 @@
     "West Virginia",
     "Wisconsin",
     "Wyoming"
-    ],
-    "República Dominicana": [
+  ],
+  
+  "República Dominicana": [
     "La Romana",
     "Independencia",
     "Hato Mayor",
@@ -97,9 +86,6 @@
     "Valverde",
     "San Jose de Ocoa",
     "Santo Domingo",
-    ]
-  };
-})
-
-
-})();
+  ]
+}
+]
