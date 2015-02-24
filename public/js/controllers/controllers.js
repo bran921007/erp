@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module('controllers',['clientes','dashboard','informe','inventario','pedidos','distribuidor','factura','categoria','factura_pedidos','manejar_pedidos']);
+    var app = angular.module('controllers',['clientes','dashboard','informe','inventario','pedidos','distribuidor','factura','categoria','factura_pedidos','manejar_pedidos','configuracion']);
 
     app.controller("tabsController", function($scope,$http)
     {
@@ -8,14 +8,14 @@
     });
 
     app.controller("authController", function($scope,$http){
-		
+
      	$scope.registro = {};
 
 		$scope.registrar = function($event)
-		{	
+		{
 			$event.preventDefault();
-			
-			console.log($scope.registro);			
+
+			console.log($scope.registro);
 			$http.post('/registrar',$scope.registro);
         };
 
@@ -24,7 +24,7 @@
     $scope.login = function($event)
     {
     	$event.preventDefault();
-    	
+
     	var log ={
     		email:     $scope.acceso.email,
     		password:  $scope.acceso.password

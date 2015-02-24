@@ -63,6 +63,7 @@
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-resource.js"></script>-->
 
 	<!-- Librerias externas -->
 	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
@@ -85,6 +86,7 @@
 		<script type="text/javascript" src="js/controllers/factura.js"></script>
 		<script type="text/javascript" src="js/controllers/manejar_pedidos.js"></script>
 		<script type="text/javascript" src="js/controllers/factura_pedidos.js"></script>
+		<script type="text/javascript" src="js/controllers/configuracion.js"></script>
 
 
 	<!-- END MVC AngularJS	 -->
@@ -168,24 +170,29 @@
 						Dashboard
 					</a>
 				</li>
-				<li ng-show="tab === 2">
+				<li ng-show=" tab === 2 || tab === 3 || tab === 4">
 					<a href="#">
 						Pedidos
 					</a>
 				</li>
-				<li ng-show="tab === 3">
+				<li ng-show="tab === 5">
 					<a href="#">
 						Clientes
 					</a>
 				</li>
-				<li ng-show="tab === 4">
+				<li ng-show="tab === 6 || tab === 7 || tab === 8">
 					<a href="#">
-						Inventario
+						Productos
 					</a>
 				</li>
-				<li ng-show="tab === 5">
+				<li ng-show="tab === 9">
 					<a href="#">
 						Informe
+					</a>
+				</li>
+				<li ng-show="tab === 10">
+					<a href="#">
+						Configuración
 					</a>
 				</li>
 			</ul>
@@ -289,6 +296,12 @@
 							Informe
 						</a>
 					</li>
+					<li ng-class="{ current : tab === 10 }">
+						<a href="#/configuracion" ng-click="tab = 10">
+							<i class="icon-calendar"></i>
+							Configuración
+						</a>
+					</li>
 				</ul>
 				<!-- /Navigation -->
 			</div>
@@ -303,10 +316,11 @@
 									<!-- Current Container Section -->
 									<ul id="breadcrumbs" class="breadcrumb">
 									 <li ng-show="tab === 1"> <i class="icon-home"></i> <a href="#/home">Dashboard</a> </li>
-									 <li ng-show="tab === 2"> <i class="icon-shopping-cart"></i> <a href="#/pedidos">Pedidos</a> </li>
-									 <li ng-show="tab === 3"> <i class="icon-group"></i> <a href="#/clientes">Clientes</a> </li>
-									 <li ng-show="tab === 4"> <i class="icon-barcode"></i> <a href="#/inventario">Inventario</a> </li>
-									 <li ng-show="tab === 5"> <i class="icon-calendar"></i> <a href="#/informe">Informe</a> </li>
+									 <li ng-show=" tab === 2 || tab === 3 || tab === 4"> <i class="icon-shopping-cart"></i> <a href="#/pedidos">Pedidos</a> </li>
+									 <li ng-show="tab === 5"> <i class="icon-group"></i> <a href="#/clientes">Clientes</a> </li>
+									 <li ng-show="tab === 6 || tab === 7 || tab === 8"> <i class="icon-barcode"></i> <a href="#/inventario">Productos</a> </li>
+									 <li ng-show="tab === 9"> <i class="icon-calendar"></i> <a href="#/informe">Informe</a> </li>
+									 <li ng-show="tab === 10"> <i class="icon-calendar"></i> <a href="#/informe">Configuración</a> </li>
 									</ul>
 									<!-- Info Panel -->
 									<ul class="crumb-buttons">

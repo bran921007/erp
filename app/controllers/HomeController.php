@@ -30,6 +30,17 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function postConfiguracion()
+	{
+		$configuracion = Configuracion::create(Input::all());
+		$configuracion_id = $configuracion->id;
+
+		return Response::json(array(
+			'success' => true,
+			'id'	  => $configuracion_id
+		));
+	}
+
 	public function getClientes()
 	{
 	   $clientes = DB::table("clientes")->get();
@@ -162,28 +173,28 @@ class HomeController extends BaseController {
 		//Pedidos
     public function getPedido(){
     	$pedidos = DB::table("pedidos")->get();
-    	 
+
     	foreach($pedidos as $key => $value){
     		$id = $pedidos[$key]->id_cliente;
 			$cliente = Cliente::find($id);
     		$pedidos[$key]->id_cliente = $cliente->nombre." ".$cliente->apellido;
     	}
-    	
+
 	    return Response::json(array(
 		 'pedidos'=>	$pedidos
 		));
 
-    }    
+    }
 
     public function pedido($id){
     	//$pedido = new Pedido();
     	$pedido = Pedido::find($id);
-    	$detalle = Detalle::where('id_pedido','=',$id)->get(); 
+    	$detalle = Detalle::where('id_pedido','=',$id)->get();
 
 		$id = $pedido->id_cliente;
 		$cliente = Cliente::find($id);
-    	$pedido->id_cliente = $cliente->nombre." ".$cliente->apellido;	
-    	
+    	$pedido->id_cliente = $cliente->nombre." ".$cliente->apellido;
+
 	    return Response::json(array(
 		 'pedido'=>	$pedido,
 		 'detalles'=>	$detalle
