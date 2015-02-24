@@ -223,6 +223,21 @@ class HomeController extends BaseController {
 
     }
 
+    public function actualizarStock(){
+    	//$detalle = new Detalle();
+    	$id 	  = Input::get('id');
+    	$cantidad = Input::get('cantidad');
+
+    	$producto = Producto::find($id);
+    	$producto->cantidad = $cantidad;
+    	$producto->save();
+    	return Response::json(array(
+    	 'success'=>true,
+    	 'cantidad'=> $cantidad,
+    	 'id'=> $id
+    	));
+    }
+
     public function postPedidoDetalle(){
 
 		$input = Input::all();

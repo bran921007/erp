@@ -2,7 +2,7 @@
 
 	var app = angular.module('pedidos',[]);
 
-	app.controller("pedidosController", function($scope,$http,$log,$filter){
+	app.controller("pedidosController", function($scope,$http,$log,$filter, $location){
 
 		$scope.carrito = [];
 
@@ -55,13 +55,24 @@
 						total       : $scope.carrito[i].subtotal,
 						fecha       : $scope.carrito[i].fecha
 					};
-					console.log(detalle);
+					//console.log(detalle);
 					$http.post('/postPedidoDetalle',detalle).success(function(data){
 						console.log(data);
 						$scope.carrito = [];
 					});
+					var cantidadNueva ={
+						id:       $scope.inventario[i].id,
+						cantidad: $scope.inventario[i].cantidad
+					};
+
+					$http.post('/actualizarStock',cantidadNueva).success(function(data){
+						console.log(data);
+					});
+					//console.log($scope.inventario[i].cantidad);
+					//console.log($scope.inventario[i].cantidad - $scope.carrito[i].cantidad);
 
 				}
+				$location.url("/factura/"+data.id);
 
 			});
 
@@ -99,7 +110,6 @@
 					$scope.inventario[i].cantidad--;
 				}
 			}
-
 
 			if (!producto) {
 				$scope.carrito.push({
