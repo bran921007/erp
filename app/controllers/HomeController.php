@@ -160,74 +160,73 @@ class HomeController extends BaseController {
 
     }
 		//Pedidos
+    public function getPedido(){
+    	$pedidos = DB::table("pedidos")->get();
+    	 
+    	foreach($pedidos as $key => $value){
+    		$id = $pedidos[$key]->id_cliente;
+			$cliente = Cliente::find($id);
+    		$pedidos[$key]->id_cliente = $cliente->nombre." ".$cliente->apellido;
+    	}
+    	
+	    return Response::json(array(
+		 'pedidos'=>	$pedidos
+		));
 
-		public function postPedido(){
+    }    
 
-			$pedido =  Pedido::create(Input::all());
-			$pedido_id = $pedido->id;
+    public function pedido($id){
+    	//$pedido = new Pedido();
+    	$pedido = Pedido::find($id);
+    	$detalle = Detalle::where('id_pedido','=',$id)->get(); 
 
-			return Response::json(array(
-				'success' => true,
-				'msg'			=> "Venta realizada satisfactoriamente",
-				'id'	  => $pedido_id
-			));
-		}
-		public function postPedidoDetalle(){
+		$id = $pedido->id_cliente;
+		$cliente = Cliente::find($id);
+    	$pedido->id_cliente = $cliente->nombre." ".$cliente->apellido;	
+    	
+	    return Response::json(array(
+		 'pedido'=>	$pedido,
+		 'detalles'=>	$detalle
+		));
 
-			$input = Input::all();
-			// $detalle2 = '';
-			// foreach($input as $key => $value){
-			//   $detalle2 =	$value[$key];
-			// }
+    }
 
-			$pedidoDetalle =  Detalle::create($input);
-			$pedidoDetalle_id = $pedidoDetalle->id;
+	public function postPedido(){
 
-			return Response::json(array(
-				'success' => true,
-				'msg'			=> "Venta realizada satisfactoriamente",
-				'detalle' => $input,
-				//'detalle2'=> $detalle2,
-				// 'id'	  => $pedidoDetalle_id
-			));
-		}
+		$pedido =  Pedido::create(Input::all());
+		$pedido_id = $pedido->id;
 
+		return Response::json(array(
+			'success' => true,
+			'msg'			=> "Venta realizada satisfactoriamente",
+			'id'	  => $pedido_id
+		));
+	}
 
+	//Pedidos detalle
+	public function getPedidoDetalle(){
+    	$pedidos = DB::table("pedidosdetalles")->get();
+	    return Response::json(array(
+	        "distribuidores"        =>        $distribuidores
+	    ));
 
-    //Orden
+    }
 
-	//public function getOrdenes(){
-		// $distribuidores = DB::table("distribuidores")->get();
-	 //    return Response::json(array(
-	 //        "distribuidores"        =>        $distribuidores
-	 //    ));
+    public function postPedidoDetalle(){
 
-	// }
-  //   public function postOrden(){
+		$input = Input::all();
 
-    	// $distribuidor =  Distribuidor::create(Input::all());
-  		// $distribuidor_id = $distribuidor->id;
+		$pedidoDetalle =  Detalle::create($input);
+		$pedidoDetalle_id = $pedidoDetalle->id;
 
-		// return Response::json(array(
-		// 	'success' => true,
-		// 	'id'	  => $distribuidor_id
-		// ));
-    // }
-    // public function editarOrden($id){
-
-		// $input = Input::all();
-
-  // 		Distribuidor::find($id)->update($input);
-    // }
-    // public function borrarOrden($id){
-
-    	// Distribuidor::destroy($id);
-
-    // }
-
-
-
-
+		return Response::json(array(
+			'success' => true,
+			'msg'			=> "Venta realizada satisfactoriamente",
+			'detalle' => $input,
+			//'detalle2'=> $detalle2,
+			// 'id'	  => $pedidoDetalle_id
+		));
+	}
 
 
 

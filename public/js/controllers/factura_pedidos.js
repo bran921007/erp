@@ -2,7 +2,13 @@
 
 	var app = angular.module('factura_pedidos',[]);
 
-	app.controller("facturaPedidosController", function($scope,$http){
+	app.controller("facturaPedidosController", function($scope,$http,$location){
+
+    $scope.verFactura = function(pedido){
+
+        $location.url("/factura/"+pedido.id);
+    };
+
 
     $scope.showModal = false;
     $scope.agregarModal = function(){
@@ -17,9 +23,11 @@
     $scope.factura = {};
     $scope.datos = {};
 
-    $http.get('/getFactura').success(function(data)
+    $http.get('/getPedido').success(function(data)
     {
-        $scope.datos = data.distribuidores;//así enviamos los posts a la vista
+        $scope.datos = data.pedidos;//así enviamos los posts a la vista
+        
+        console.log($scope.datos);
     });
 
     $scope.agregar = function(){

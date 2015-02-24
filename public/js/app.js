@@ -37,7 +37,7 @@ app.config(function($routeProvider)
       templateUrl : "../templates/categoria.html",
       controller : "categoriaController"
   })
-  .when("/factura",{
+  .when("/factura/:id",{
       templateUrl : "../templates/factura.html",
       controller : "facturaController"
   })    

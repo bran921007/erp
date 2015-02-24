@@ -239,15 +239,15 @@
 							<li ng-class="{ current : tab === 3 }">
 								<a href="#/factura-pedidos" ng-click="tab = 3">
 									<i class="icon-shopping-cart"></i>
-									Factura Pedidos
+									Manejar Pedidos
 								</a>
 							</li>
-							<li ng-class="{ current : tab === 4 }">
+					<!-- 		<li ng-class="{ current : tab === 4 }">
 								<a href="#/manejar-pedidos" ng-click="tab = 4">
 									<i class="icon-shopping-cart"></i>
 									Manejar Pedidos
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</li>
 					<li ng-class="{ current : tab === 5 }">

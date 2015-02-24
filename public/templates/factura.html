@@ -39,8 +39,8 @@
 									<h2>Company Name</h2>
 								</div>
 								<div class="pull-right">
-									<p class="invoice-nr"><strong>Invoice:</strong> #1631-17</h3></p>
-									<p class="invoice-date">17 September 2013</p>
+									<p class="invoice-nr"><strong>Invoice:</strong> #{{pedidos.id}}</h3></p>
+									<p class="invoice-date">{{fecha | date}}</p>
 								</div>
 							</div>
 							<div class="widget-content">
@@ -60,7 +60,7 @@
 										<h3>Client Information</h3>
 
 										<address>
-											<strong>John Doe</strong><br>
+											<strong>{{pedidos.id_cliente}}</strong><br>
 											1111 N. Sample<br>
 											Mt. Prospect, IL 60000<br>
 											<abbr title="Phone">P:</abbr> (123) 456-7890
@@ -74,23 +74,24 @@
 											<thead>
 												<tr>
 													<th>#</th>
-													<th>Item</th>
-													<th class="hidden-xs">Description</th>
-													<th class="hidden-xs">Quantity</th>
-													<th class="hidden-xs">Unit Cost</th>
+													<th>Producto</th>
+													<!-- <th class="hidden-xs">Descripcion</th> -->
+													<th class="hidden-xs">Cantidad</th>
+													<th class="hidden-xs">Precio c/u</th>
 													<th>Total</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>1</td>
-													<td>Hardware</td>
-													<td class="hidden-xs">Lorem ipsum dolor sit amet</td>
-													<td class="hidden-xs">3</td>
-													<td class="hidden-xs">$239</td>
-													<td>$717</td>
+												<tr ng-repeat="pedido in detalles">
+													<td ng-model="pedido.id_pedido">{{pedido.id_pedido}}</td>
+													<td ng-model="pedido.articulo" >{{pedido.articulo}}</td>
+													<!-- <td ng-model="pedido.">{{pedido.}}</td> -->
+													<td ng-model="pedido.cantidad" class="hidden-xs">{{pedido.cantidad}}</td>
+													<td ng-model="pedido.precio" class="hidden-xs">{{pedido.precio}}</td>
+													<td ng-model="pedido.total" class="hidden-xs">RD${{pedido.total}}</td>
+													<!-- <td ng-model="pedido.">$717</td> -->
 												</tr>
-												<tr>
+<!-- 												<tr>
 													<td>2</td>
 													<td>Software</td>
 													<td class="hidden-xs">Consetetur sadipscing elitr</td>
@@ -113,7 +114,7 @@
 													<td class="hidden-xs">500</td>
 													<td class="hidden-xs">$3</td>
 													<td>$1500</td>
-												</tr>
+												</tr> -->
 											</tbody>
 										</table>
 									</div>
@@ -129,10 +130,10 @@
 
 									<div class="col-md-6 align-right">
 										<ul class="list-unstyled amount padding-bottom-5px">
-											<li><strong>Subtotal:</strong> $11,069</li>
-											<li><strong>Delivery:</strong> $5</li>
-											<li><strong>VAT (10%):</strong> $1107.40</li>
-											<li class="total"><strong>Total:</strong> $12,181.40</li>
+											<li><strong>Subtotal:</strong> RD${{pedidos.subtotal}}</li>
+											<!-- <li><strong>Delivery:</strong> $5</li> -->
+											<li><strong>ITBIS (18%):</strong> RD${{pedidos.itbis}}</li>
+											<li class="total"><strong>Total:</strong> RD${{pedidos.total}}</li>
 										</ul>
 
 										<div class="buttons">

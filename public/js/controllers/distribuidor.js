@@ -34,11 +34,11 @@
         //     email:    $scope.distribuidor.email
 
         // };
-        var distribuidor = $scope.distribuidor;
+        //var distribuidor = $scope.distribuidor;
 
-        $scope.datos.push(distribuidor);
+        $scope.datos.push($scope.distribuidor);
 
-        $http.post('/postDistribuidor', distribuidor);
+        $http.post('/postDistribuidor', $scope.distribuidor);
 
         $scope.distribuidor = {};
         $scope.showModal = false;
