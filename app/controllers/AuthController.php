@@ -10,7 +10,12 @@ class AuthController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{
+	{	
+		// if(!$this->autorizado) return Redirect::to('/login');
+		if(Auth::check()){
+			return Redirect::to('dashboard');
+
+      	}
 		return View::make('home.login');
 	}
 
@@ -24,11 +29,11 @@ class AuthController extends \BaseController {
 
         if (Auth::attempt($credentials, $data['remember']))
         {	
-            return Redirect::intended('/dashboard');   
-        }else{
-        	return Redirect::intended('/login');
+            return Response::json(array(
+            	'success'=>true
+            	// 'email'=> Auth::user()->email
+            )); 
         }
-
           return Response::json(array(
               'success' => false,
               'errors' => 'La contraseña es incorrecta. Asegúrate de usar la contraseña de tu cuenta.'

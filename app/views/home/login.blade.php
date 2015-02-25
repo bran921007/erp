@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" >
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -52,19 +52,21 @@
 
 	<!-- App -->
 	<script type="text/javascript" src="melon/assets/js/login.js"></script>
-
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
 	
-	<!-- Librerias externas -->
+	
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-resource.js"></script>
+
+	Librerias externas
 	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
 	<script type="text/javascript" src="lib/angular-locale_es-es.js"></script>
 
-	<!--BEGIN MVC AngularJS -->
+	BEGIN MVC AngularJS 
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/directives.js"></script>
 		<script type="text/javascript" src="js/services.js"></script>
-		<!-- Controllers -->
+		Controllers 
 		<script type="text/javascript" src="js/controllers/controllers.js"></script>
 
 		<script type="text/javascript" src="js/controllers/dashboard.js"></script>
@@ -75,7 +77,12 @@
 		<script type="text/javascript" src="js/controllers/distribuidor.js"></script>
 		<script type="text/javascript" src="js/controllers/categoria.js"></script>
 		<script type="text/javascript" src="js/controllers/factura.js"></script>
-	
+		<script type="text/javascript" src="js/controllers/manejar_pedidos.js"></script>
+		<script type="text/javascript" src="js/controllers/factura_pedidos.js"></script>
+		<script type="text/javascript" src="js/controllers/configuracion.js"></script>-->
+
+	<!--BEGIN MVC AngularJS -->
+		
 	
 	<!-- END MVC AngularJS	 -->
 	<script>
@@ -87,7 +94,7 @@
 	</script>
 </head>
 
-<body class="login" ng-controller="authController">
+<body class="login"  >
 	<!-- Logo -->
 	<div class="logo">
 		<img src="melon/assets/img/logo.png" alt="logo" />
@@ -99,7 +106,7 @@
 	<div class="box">
 		<div class="content">
 			<!-- Login Formular -->
-			<form class="form-vertical login-form"   >
+			<form class="form-vertical login-form" action="/login" novalidate >
 				<!-- Title -->
 				<h3 class="form-title">Sign In to your Account</h3>
 
@@ -114,14 +121,14 @@
 					<!--<label for="username">Username:</label>-->
 					<div class="input-icon">
 						<i class="icon-user"></i>
-						<input type="text" name="email" class="form-control" ng-model="acceso.email" placeholder="Email" autofocus="autofocus" data-rule-required="true" data-msg-required="Please enter your username." />
+						<input type="text" name="email"  id="email" class="form-control"  placeholder="Email" autofocus="autofocus" data-rule-required="true" data-msg-required="Please enter your username." />
 					</div>
 				</div>
 				<div class="form-group">
 					<!--<label for="password">Password:</label>-->
 					<div class="input-icon">
 						<i class="icon-lock"></i>
-						<input type="password" name="password" class="form-control" ng-model="acceso.password" placeholder="Password" data-rule-required="true" data-msg-required="Please enter your password." />
+						<input type="password" name="password" id="password" class="form-control"  placeholder="Password" data-rule-required="true" data-msg-required="Please enter your password." />
 					</div>
 				</div>
 				<!-- /Input Fields -->
@@ -129,7 +136,7 @@
 				<!-- Form Actions -->
 				<div class="form-actions">
 					<label class="checkbox pull-left"><input type="checkbox" class="uniform" name="remember"> Remember me</label>
-					<button type="submit" ng-click="login($event)" class="submit btn btn-primary pull-right">
+					<button type="submit" id="loginSubmit" class="submit btn btn-primary pull-right">
 						Sign In <i class="icon-angle-right"></i>
 					</button>
 				</div>
@@ -145,20 +152,20 @@
 				<div class="form-group">
 					<div class="input-icon">
 						<i class="icon-user"></i>
-						<input type="text" name="name" ng-model="registro.nombre" class="form-control" placeholder="Nombre" autofocus="autofocus" data-rule-required="true" />
+						<input type="text" name="name"  class="form-control" placeholder="Nombre" autofocus="autofocus" data-rule-required="true" />
 					</div>
 				</div>
 				<!--  -->
 				<div class="form-group">
 					<div class="input-icon">
 						<i class="icon-user"></i>
-						<input type="text" name="name" ng-model="registro.apellido" class="form-control" placeholder="Apellido" autofocus="autofocus" data-rule-required="true" />
+						<input type="text" name="name"  class="form-control" placeholder="Apellido" autofocus="autofocus" data-rule-required="true" />
 					</div>
 				</div>		
 				<div class="form-group">
 					<div class="input-icon">
 						<i class="icon-lock"></i>
-						<input type="password" name="lastname" ng-model="registro.password" class="form-control" placeholder="Password" id="register_password" data-rule-required="true" />
+						<input type="password" name="lastname"  class="form-control" placeholder="Password" id="register_password" data-rule-required="true" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -170,7 +177,7 @@
 				<div class="form-group">
 					<div class="input-icon">
 						<i class="icon-envelope"></i>
-						<input type="text" name="Email" class="form-control" ng-model="registro.email" placeholder="Email address" data-rule-required="true" data-rule-email="true" />
+						<input type="text" name="Email" class="form-control"  placeholder="Email address" data-rule-required="true" data-rule-email="true" />
 					</div>
 				</div>
 				<div class="form-group spacing-top">
@@ -237,3 +244,38 @@
 	<!-- /Footer -->
 </body>
 </html>
+<script >
+  $(document).ready(function(){
+
+
+});
+$('#loginSubmit').click(function(event){
+  event.preventDefault();
+
+  var email    = $("#email").val();
+  var password = $("#password").val();
+  console.log(email);
+  console.log(password);
+
+  $.ajax({
+    type: "POST",
+    url: '/login',
+    data: {
+    	email:email, 
+    	password:password
+    }
+  }).done(function(data) {
+    if(data.success == false){
+      // var errores = '';
+      // for(datos in data.errors){
+      //   errores += '<small >' + data.errors[datos] + '</small>';
+      // }
+      // $('#danger').fadeIn("fast").html(errores);
+    }else{
+      window.location.href = '/dashboard';
+      console.log(data.email);
+    }
+  });
+});
+  </script>
+
