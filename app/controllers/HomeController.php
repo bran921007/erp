@@ -30,14 +30,34 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function getConfiguracion(){
+		$id = 1; 
+		$configuracion = Configuracion::find($id);
+
+		return Response::json(array(
+			'success'=>true,
+			'configuracion' => $configuracion	 
+		));
+	}
+
 	public function postConfiguracion()
 	{
-		$configuracion = Configuracion::create(Input::all());
-		$configuracion_id = $configuracion->id;
+		//Auth::user()->id;
+		$id = 1;
+		$input = Input::all();
+		// $input = array(
+		//  'empresa'	 =>'Apetito',
+		//  'rnc'		  => '41241'
+		// );
+
+  		$configuracion = Configuracion::find($id)->update($input);
+
+		// $configuracion = Configuracion::create(Input::all());
+		// $configuracion_id = $configuracion->id;
 
 		return Response::json(array(
 			'success' => true,
-			'id'	  => $configuracion_id
+			'id'	  => $id
 		));
 	}
 

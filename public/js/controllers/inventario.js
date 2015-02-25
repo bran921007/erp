@@ -67,14 +67,13 @@ app.controller("inventarioController", function($scope,$http){
 
         console.log($scope.producto);
         // $scope.datos.indexOf($scope.producto);
-
+        
         var id_articulo = $scope.producto.articulo;
 
         var stock = {
             cantidad: $scope.producto.cantidad
         };
         
-
         $http.put('/editarProducto/'+id_articulo, stock).success(function(data){
             //if(data.success == 'true'){
                 $scope.notificacion = true;

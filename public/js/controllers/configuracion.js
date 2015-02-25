@@ -5,9 +5,16 @@
   app.controller("configuracionController", function($scope,$http)
 {
   $scope.configuracion = {};
+  $scope.dato = {};
+
+  $http.get('/getConfiguracion').success(function(data){
+    $scope.configuracion = data.configuracion;
+  });
 
   $scope.actualizarConfiguracion = function(){
+
     $http.post('/postConfiguracion', $scope.configuracion).success(function(data){
+
     });
   };
 

@@ -63,6 +63,10 @@ Route::get('/postPedido' ,         ['as' => 'categoria', 'uses' => 'HomeControll
 Route::post('/postPedidoDetalle' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedidoDetalle']);
 
 
+Route::post('/postConfiguracion' ,         ['as' => 'categoria', 'uses' => 'HomeController@postConfiguracion']);
+Route::get('/getConfiguracion' ,         ['as' => 'categoria', 'uses' => 'HomeController@getConfiguracion']);
+
+
 // Route::post('/postPedidoDetalle' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedidoDetalle']);
 
 
