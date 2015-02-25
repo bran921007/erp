@@ -98,6 +98,11 @@ class HomeController extends BaseController {
 		$input = Input::all();
 
   		Producto::find($id)->update($input);
+
+  		return Response::json(array(
+  			'success'=> true,
+  			'msg'	 => 'Cambio realizado satisfactoriamente'
+  		));
 	}
 
 	public function borrarProducto($id)

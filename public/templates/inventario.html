@@ -40,6 +40,11 @@
         </div>
       </div>
 
+       <div ng-show="notificacion === true" class="alert alert-success fade in">
+                <i class="icon-remove close" data-dismiss="alert"></i>
+                <strong>Success!</strong> {{msg}}.
+        </div>
+
       <div class="form-actions">
         <input type="submit" value="Guardar" class="btn btn-primary pull-right">
       </div>
@@ -238,7 +243,7 @@
                                 <td class="">
                                     <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->
-                                    <span class="icon-edit-sign" ng-click="editarProducto(data)"></span>
+                                    <span class="icon-edit-sign" ng-click="editarModal(data)"></span>
                                     <!-- <span class="icon-edit-sign" ng-click="editarCliente(data)"></span> -->
 
                                 </td>

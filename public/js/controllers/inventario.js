@@ -6,7 +6,7 @@ app.controller("inventarioController", function($scope,$http){
 
 //===============
     //Abrir Modal
-
+    $scope.notificacion = false;
     $scope.showModal = false;
     $scope.agregarModal = function(){
         $scope.showModal = !$scope.showModal;
@@ -58,7 +58,7 @@ app.controller("inventarioController", function($scope,$http){
         }
 
         // // Now remove todo-items from laravel
-        console.log(producto.id);
+        // var id = producto.articulo;
         $http.delete('borrarProducto/'+producto.id);
 
     };
@@ -66,7 +66,27 @@ app.controller("inventarioController", function($scope,$http){
     $scope.editarStock = function(){
 
         console.log($scope.producto);
-        //$http.put('/editarProducto/'+$scope.producto.id, $scope.producto);
+        // $scope.datos.indexOf($scope.producto);
+
+        var id_articulo = $scope.producto.articulo;
+
+        var stock = {
+            cantidad: $scope.producto.cantidad
+        };
+        
+
+        $http.put('/editarProducto/'+id_articulo, stock).success(function(data){
+            //if(data.success == 'true'){
+                $scope.notificacion = true;
+                $scope.msg = data.msg;
+                // var index = $scope.datos.indexOf($scope.producto);
+                // if(index != -1){
+                    $scope.datos[$scope.producto.articulo-1].cantidad = $scope.producto.cantidad;
+                // }
+
+           // }
+
+        });
     };
 
     $scope.editarProducto = function(){

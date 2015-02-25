@@ -32,7 +32,7 @@ Route::delete('borrarCliente/{id}', ['as' => 'cliente', 'uses' => 'HomeControlle
 
 Route::get('/getProductos',  ['as' => 'cliente', 'uses' => 'HomeController@getProductos']);
 Route::post('/postProductos',         ['as' => 'cliente', 'uses' => 'HomeController@postProductos']);
-Route::put('/editarProductos/{id}',   ['as' => 'cliente', 'uses' => 'HomeController@editarProductos']);
+Route::put('/editarProducto/{id}',   ['as' => 'cliente', 'uses' => 'HomeController@editarProducto']);
 Route::delete('/borrarProducto/{id}', ['as' => 'cliente', 'uses' => 'HomeController@borrarProducto']);
 
 //Categorias
