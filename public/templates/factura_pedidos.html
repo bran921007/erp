@@ -46,14 +46,14 @@
         <div class="col-md-9">
           <input type="text" ng-model="factura.direccion" class="form-control required">
         </div>
-      </div>      
+      </div>
 
       <div class="form-group">
         <label class="col-md-3 control-label">RNC <span class="required">*</span></label>
         <div class="col-md-9">
           <input type="text" ng-model="factura.rnc" class="form-control required">
         </div>
-      </div>      
+      </div>
 
       <div class="form-group">
         <label class="col-md-3 control-label">Cedula <span class="required">*</span></label>
@@ -128,7 +128,7 @@
                                 </th>
 
                                 <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Cliente
-                                </th>                                
+                                </th>
                                 <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Metodo
                                 </th>
                                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Total
@@ -151,10 +151,10 @@
                                 </td>
                                 <td ng-model="data.id_cliente" class=""><span class="responsiveExpander">{{data.id_cliente}}</span></td>
                                 <td ng-model="data.metodo" class=""><span class="responsiveExpander">{{data.metodo}}</span></td>
-                                <td class="" ng-model="data.total">{{data.total}}</td>
+                                <td class="" ng-model="data.total">RD${{data.total}}</td>
                                 <td ng-model="data.tipo" class="">{{data.tipo}}</td>
                                 <td ng-model="data.estado" ng-if="data.estado ==='pagado'"><span  class="label label-success">{{data.estado}}</span>
-                                </td> 
+                                </td>
                                 <td ng-model="data.estado" ng-if="data.estado ==='pendiente'"><span  class="label label-warning">{{data.estado}}</span>
                                 </td>
                                 <td class="">
@@ -196,4 +196,3 @@
 
         </div>
    </div>
-

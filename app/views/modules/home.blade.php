@@ -126,6 +126,12 @@
 	.sin-margen {
 		margin-top: 2px !important;
 	}
+	input.ng-invalid.ng-dirty {
+		border: 1px solid red;
+	}
+	input.ng-valid.ng-dirty {
+		border: 1px solid green;
+	}
 	</style>
 
 	<script>
