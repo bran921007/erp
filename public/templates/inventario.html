@@ -5,17 +5,46 @@
   <div class="col-md-12">
     <div class="widget">
 
+    
       <div class="widget-content">
         <div class="row">
           <div class="col-md-3">
             <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
               <div>Nuevo Producto</div> </a>
-            </div>
+          </div> 
+          <div class="col-md-3">
+            <a ng-click="stockModal = true" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
+              <div>Actualizar Stock</div> </a>
           </div>
         </div>
-      </div>
+      </div>      
+
+    </div>
     </div>
   </div>
+  
+  <modal title="Actualizar Stock" visible="stockModal">
+    <form class="form-horizontal row-border" ng-submit="editarStock()" novalidate="novalidate">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Producto <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.articulo" class="form-control" >
+            <option ng-repeat="cate in datos" value="{{cate.id}}">{{cate.articulo}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.cantidad" class="form-control required email">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Guardar" class="btn btn-primary pull-right">
+      </div>
+    </form>
+  </modal>
 
   <!--  Modal Agregar Producto -->
   <modal title="Agregar Producto" visible="showModal">
@@ -72,11 +101,71 @@
   </modal>
 <!-- END Modal Agregar Producto -->
 
+
+<!--  Modal Editar Producto -->
+  <modal title="Editar Producto" visible="editModal">
+
+    <form class="form-horizontal row-border" ng-submit="editarProducto()" novalidate="novalidate">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Nombre <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.articulo" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.cantidad" class="form-control required email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Categoria <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.categoria" class="form-control" ng-controller="categoriaController">
+            <option value="0" >Seleccione Categoria</option>
+            <option ng-repeat="cate in datos" value="{{cate.id}}">{{cate.titulo}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Precio Venta <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.precioVenta" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Precio Compra <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input type="text" ng-model="producto.precioCompra" class="form-control required">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
+        <div class="col-md-9">
+          <select ng-model="producto.distribuidor" class="form-control" ng-controller="categoriaController">
+            <option value="0" >Seleccione Distribuidor</option>
+            <option value="10">Casero</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="submit" value="Actualizar" class="btn btn-primary pull-right">
+      </div>
+    </form>
+
+  </modal>
+<!-- END Modal Agregar Producto -->
+
 <!-- Modal Confirmacion Producto  -->
   <modal title="Confirmación Eliminación" visible='showConfirmacion'>
     {{bodyModal}}
     <form class="form-horizontal row-border" ng-submit="borrarProducto(datos)" novalidate="novalidate">
-      <input type="submit" value='borrar'>
+      <div class="modal-footer">
+        <button type="button" ng-click="toggleModal()" class="btn btn-default">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Si</button>
+        
+      </div>
     </form>
   </modal>
   <!-- END Modal Confirmacion Producto  -->
@@ -145,7 +234,7 @@
                                 </td>
                                 <td ng-model="data.articulo" class=""><span class="responsiveExpander">{{data.articulo}}</span></td>
                                 <td  class="" ng-model="data.cantidad">{{data.cantidad}}</td>
-                                <td ng-model="data.distribuidor" class="">{{data.distribuidor}}</td>
+                                <td ng-model="data.precioVenta" class="">{{data.precioVenta}}</td>
                                 <td class="">
                                     <span class="icon-remove" ng-click="confirmacionModal(data)"></span>
                                     <!-- <span class="icon-remove" ng-click="borrarCliente(data)"></span> -->

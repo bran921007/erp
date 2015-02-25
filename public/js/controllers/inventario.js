@@ -11,6 +11,9 @@ app.controller("inventarioController", function($scope,$http){
     $scope.agregarModal = function(){
         $scope.showModal = !$scope.showModal;
     };
+    $scope.toggleModal = function(){
+        $scope.showConfirmacion = !$scope.showConfirmacion;
+    };
     //=====================
 
     $scope.producto = {};
@@ -27,9 +30,9 @@ app.controller("inventarioController", function($scope,$http){
          var inventario = {
             articulo:   $scope.producto.articulo,
             cantidad:   $scope.producto.cantidad,
-            categoria:   $scope.producto.categoria,
-            precioVenta:   $scope.producto.precioVenta,
-            precioCompra:   $scope.producto.precioCompra,
+            categoria:  $scope.producto.categoria,
+            precioVenta:$scope.producto.precioVenta,
+            precioCompra:$scope.producto.precioCompra,
             distribuidor:$scope.producto.distribuidor
 
         };
@@ -46,10 +49,8 @@ app.controller("inventarioController", function($scope,$http){
     $scope.borrarProducto = function(){
 
         $scope.showConfirmacion = false;
-
         var producto = $scope.datoProducto;
-
-         var index = $scope.datos.indexOf(producto);
+        var index = $scope.datos.indexOf(producto);
 
         if (index != -1) {
             // Remove todo-item from array
@@ -62,13 +63,17 @@ app.controller("inventarioController", function($scope,$http){
 
     };
 
-    $scope.editarProducto = function(producto){
+    $scope.editarStock = function(){
 
-        $scope.showModal = true;
-        $scope.producto = producto;
-
+        console.log($scope.producto);
+        //$http.put('/editarProducto/'+$scope.producto.id, $scope.producto);
     };
 
+    $scope.editarProducto = function(){
+
+        $scope.editModal = false;
+        $http.put('/editarProducto/'+$scope.datoProducto.id, $scope.datoProducto);
+    };
 
     $scope.bodyModal = "Estas seguro de que deseas borrar este articulo?";
     $scope.showConfirmacion = false;
@@ -79,6 +84,13 @@ app.controller("inventarioController", function($scope,$http){
         $scope.datoProducto = data;
     };
 
+    $scope.editarModal = function(producto){
+
+        $scope.editModal = true;
+        $scope.producto = producto;
+        $scope.datoProducto = {};
+        $scope.datoProducto = producto;
+    };
 
 
 });
