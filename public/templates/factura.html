@@ -1,33 +1,4 @@
-				<!--=== Page Header ===-->
-				<div class="page-header">
-					<div class="page-title">
-						<h3>Invoice</h3>
-						<span>Good morning, John!</span>
-					</div>
 
-					<!-- Page Stats -->
-					<ul class="page-stats">
-						<li>
-							<div class="summary">
-								<span>New orders</span>
-								<h3>17,561</h3>
-							</div>
-							<div id="sparkline-bar" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
-							<!-- Use instead of sparkline e.g. this:
-							<div class="graph circular-chart" data-percent="73">73%</div>
-							-->
-						</li>
-						<li>
-							<div class="summary">
-								<span>My balance</span>
-								<h3>$21,561.21</h3>
-							</div>
-							<div id="sparkline-bar2" class="graph sparkline hidden-xs">20,15,8,50,20,40,20,30,20,15,30,20,25,20</div>
-						</li>
-					</ul>
-					<!-- /Page Stats -->
-				</div>
-				<!-- /Page Header -->
 
 				<!--=== Page Content ===-->
 				<div class="row">
@@ -36,34 +7,34 @@
 						<div class="widget invoice">
 							<div class="widget-header">
 								<div class="pull-left">
-									<h2>Company Name</h2>
+									<h2>D' Apetito</h2>
 								</div>
 								<div class="pull-right">
-									<p class="invoice-nr"><strong>Invoice:</strong> #{{pedidos.id}}</h3></p>
-									<p class="invoice-date">{{fecha | date}}</p>
+									<p class="invoice-nr"><strong>Factura:</strong> #{{pedidos.id}}</h3></p>
+									<p class="invoice-date">{{fecha | date: 'fullDate'}}</p>
 								</div>
 							</div>
 							<div class="widget-content">
 								<div class="row">
 									<!--=== Adresses ===-->
 									<div class="col-md-6">
-										<h3>Company Information</h3>
+										<!-- <h3>Company Information</h3> -->
 
 										<address>
-											<strong>Twitter, Inc.</strong><br>
-											795 Folsom Ave, Suite 600<br>
-											San Francisco, CA 94107<br>
-											<abbr title="Phone">P:</abbr> (123) 456-7890
+											<strong>D' Apetito</strong><br>
+											C/ Andres Julio Aybar, #34<br>
+										Piantini, Santo Domingo, RD<br>
+											<abbr >Telefono:</abbr> 809 454-2342
 										</address>
 									</div>
 									<div class="col-md-6 align-right">
-										<h3>Client Information</h3>
+										<!-- <h3>Información Cliente</h3> -->
 
 										<address>
 											<strong>{{pedidos.id_cliente}}</strong><br>
-											1111 N. Sample<br>
-											Mt. Prospect, IL 60000<br>
-											<abbr title="Phone">P:</abbr> (123) 456-7890
+											Calle Jose Contreras, #34<br>
+
+											<abbr >Telefono:</abbr> 809-716-3217
 										</address>
 									</div>
 									<!-- /Adresses -->
@@ -76,8 +47,8 @@
 													<th>#</th>
 													<th>Producto</th>
 													<!-- <th class="hidden-xs">Descripcion</th> -->
-													<th class="hidden-xs">Cantidad</th>
-													<th class="hidden-xs">Precio c/u</th>
+													<th>Cantidad</th>
+													<th>Precio c/u</th>
 													<th>Total</th>
 												</tr>
 											</thead>
@@ -86,9 +57,9 @@
 													<td ng-model="pedido.id_pedido">{{pedido.id_pedido}}</td>
 													<td ng-model="pedido.articulo" >{{pedido.articulo}}</td>
 													<!-- <td ng-model="pedido.">{{pedido.}}</td> -->
-													<td ng-model="pedido.cantidad" class="hidden-xs">{{pedido.cantidad}}</td>
-													<td ng-model="pedido.precio" class="hidden-xs">{{pedido.precio}}</td>
-													<td ng-model="pedido.total" class="hidden-xs">RD${{pedido.total}}</td>
+													<td ng-model="pedido.cantidad" >{{pedido.cantidad}}</td>
+													<td ng-model="pedido.precio" >RD${{pedido.precio}}</td>
+													<td ng-model="pedido.total" >RD${{pedido.total}}</td>
 													<!-- <td ng-model="pedido.">$717</td> -->
 												</tr>
 <!-- 												<tr>
@@ -122,10 +93,8 @@
 								</div>
 
 								<div class="row padding-top-10px">
-									<div class="col-md-6">
-										<div class="well">
-											<p><strong>Notes: </strong> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-										</div>
+									<div class="col-md-6 ">
+
 									</div>
 
 									<div class="col-md-6 align-right">
@@ -137,11 +106,24 @@
 										</ul>
 
 										<div class="buttons">
-											<a class="btn btn-default btn-lg" href="javascript:void(0);" onclick="javascript:window.print();"><i class="icon-print"></i> Print</a>
-											<a class="btn btn-success btn-lg" href="javascript:void(0);">Proceed to Payment <i class="icon-angle-right"></i></a>
+											<a class="btn btn-default btn-lg" href="javascript:void(0);" onclick="javascript:window.print();"><i class="icon-print"></i> Imprimir</a>
+
 										</div>
 									</div>
+
+
 								</div> <!-- /.row -->
+
+								<div id="name">
+									<div class="col-md-6 ">
+										<div class="well">
+										<p><strong>Nota: </strong> Cualquier Devolución despues de recoger su pedido, sera denegado.</p>
+									</div>
+								</div>
+								<div class="col-md-6 align-right ">
+								</div>
+
+								</div>
 							</div>
 						</div> <!-- /.widget box -->
 					</div> <!-- /.col-md-12 -->
