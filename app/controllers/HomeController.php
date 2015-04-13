@@ -31,12 +31,12 @@ class HomeController extends BaseController {
 	}
 
 	public function getConfiguracion(){
-		$id = 1; 
+		$id = 1;
 		$configuracion = Configuracion::find($id);
 
 		return Response::json(array(
 			'success'=>true,
-			'configuracion' => $configuracion	 
+			'configuracion' => $configuracion
 		));
 	}
 
@@ -109,7 +109,8 @@ class HomeController extends BaseController {
 
 		return Response::json(array(
 			'success' => true,
-			'id'	  => $producto_id
+			'id'	  => $producto_id,
+			'producto'=> $producto
 		));
 	}
 
@@ -262,6 +263,22 @@ class HomeController extends BaseController {
     	 'id'=> $id
     	));
     }
+
+		public function agregarStock($id){
+			$cantidad = Input::get('cantidad');
+
+			$producto = Producto::find($id);
+			$producto->cantidad = $producto->cantidad + $cantidad;
+			$stock = $producto->cantidad;
+			$producto->save();
+			return Response::json(array(
+			 'success'=>true,
+			 'msg'=> 'Stock actualizado correctamente',
+			 'cantidad'=> $stock,
+			 'id'=> $id
+			));
+
+		}
 
     public function postPedidoDetalle(){
 

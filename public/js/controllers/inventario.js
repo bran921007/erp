@@ -37,9 +37,14 @@ app.controller("inventarioController", function($scope,$http){
 
         };
 
-        $scope.datos.push(inventario);
 
-        $http.post('/postProductos', inventario);
+        $scope.producto = {};
+        $http.post('/postProductos', inventario).success(function(data){
+          console.log(data);
+          inventario.id = data.id;
+          $scope.datos.push(inventario);
+
+        });
 
         $scope.producto = {};
         $scope.showModal = false;
@@ -63,24 +68,27 @@ app.controller("inventarioController", function($scope,$http){
 
     };
 
-    $scope.editarStock = function(){
+    $scope.agregarStock = function(){
 
         console.log($scope.producto);
         // $scope.datos.indexOf($scope.producto);
-        
+
         var id_articulo = $scope.producto.articulo;
 
         var stock = {
             cantidad: $scope.producto.cantidad
         };
-        
-        $http.put('/editarProducto/'+id_articulo, stock).success(function(data){
+
+        $http.put('/agregarStock/'+id_articulo, stock).success(function(data){
             //if(data.success == 'true'){
                 $scope.notificacion = true;
                 $scope.msg = data.msg;
+
                 // var index = $scope.datos.indexOf($scope.producto);
                 // if(index != -1){
-                    $scope.datos[$scope.producto.articulo-1].cantidad = $scope.producto.cantidad;
+                // $scope.producto.cantidad;
+                    $scope.datos[$scope.producto.articulo-1].cantidad = data.cantidad;
+                    $scope.producto = {};
                 // }
 
            // }
@@ -96,7 +104,7 @@ app.controller("inventarioController", function($scope,$http){
 
     $scope.bodyModal = "Estas seguro de que deseas borrar este articulo?";
     $scope.showConfirmacion = false;
-    
+
     $scope.confirmacionModal = function(data){
         $scope.showConfirmacion = !$scope.showConfirmacion;
         $scope.datoProducto = {};

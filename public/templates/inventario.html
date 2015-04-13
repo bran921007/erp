@@ -5,26 +5,26 @@
   <div class="col-md-12">
     <div class="widget">
 
-    
+
       <div class="widget-content">
         <div class="row">
           <div class="col-md-3">
             <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
               <div>Nuevo Producto</div> </a>
-          </div> 
+          </div>
           <div class="col-md-3">
             <a ng-click="stockModal = true" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
               <div>Actualizar Stock</div> </a>
           </div>
         </div>
-      </div>      
+      </div>
 
     </div>
     </div>
   </div>
-  
+
   <modal title="Actualizar Stock" visible="stockModal">
-    <form class="form-horizontal row-border" ng-submit="editarStock()" novalidate="novalidate">
+    <form class="form-horizontal row-border" ng-submit="agregarStock()" novalidate="novalidate">
       <div class="form-group">
         <label class="col-md-3 control-label">Producto <span class="required">*</span></label>
         <div class="col-md-9">
@@ -169,7 +169,7 @@
       <div class="modal-footer">
         <button type="button" ng-click="toggleModal()" class="btn btn-default">Cancelar</button>
         <button type="submit" class="btn btn-primary">Si</button>
-        
+
       </div>
     </form>
   </modal>

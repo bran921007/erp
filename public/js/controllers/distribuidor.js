@@ -65,9 +65,9 @@
 
     $scope.editarDistribuidor = function (){
         $scope.editModal = false;
-        
+
         $http.put('/editarDistribuidor/'+$scope.distribuidor.id, $scope.distribuidor);
-        
+
     };
 
 
@@ -91,5 +91,5 @@
     };
 
 });
-	
+
 })();

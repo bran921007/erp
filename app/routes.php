@@ -57,7 +57,7 @@ Route::delete('/borrarOrden/{id}', ['as' => 'categoria', 'uses' => 'HomeControll
 
 Route::get('/getPedido' ,         ['as' => 'categoria', 'uses' => 'HomeController@getPedido']);
 Route::get('/pedido/{id}' ,         ['as' => 'categoria', 'uses' => 'HomeController@pedido']);
-Route::post('/actualizarStock/' ,         ['as' => 'categoria', 'uses' => 'HomeController@actualizarStock']);
+Route::put('/agregarStock/{id}' ,         ['as' => 'categoria', 'uses' => 'HomeController@agregarStock']);
 Route::post('/postPedido' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedido']);
 Route::get('/postPedido' ,         ['as' => 'categoria', 'uses' => 'HomeController@getPedido']);
 Route::post('/postPedidoDetalle' ,         ['as' => 'categoria', 'uses' => 'HomeController@postPedidoDetalle']);
