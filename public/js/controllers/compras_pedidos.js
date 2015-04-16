@@ -2,7 +2,7 @@
 
 	var app = angular.module('manejar_pedidos',[]);
 
-	app.controller("manejarPedidosController", function($scope,$http){
+	app.controller("comprasPedidosController", function($scope,$http){
 
 	$scope.showModal = false;
 
@@ -18,10 +18,10 @@
     $scope.manejar = {};
     $scope.datos = {};
 
-    $http.get('/getManejarPedidos').success(function(data)
-    {
-        $scope.datos = data.distribuidores;//así enviamos los posts a la vista
-    });
+    // $http.get('/getManejarPedidos').success(function(data)
+    // {
+    //     $scope.datos = data.distribuidores;//así enviamos los posts a la vista
+    // });
 
     $scope.agregar = function(){
 

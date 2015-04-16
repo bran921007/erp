@@ -14,8 +14,10 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-	public function __construct(){
+	private $id = 0;
 
+	public function __construct(){
+		$this->id = Auth::user()->id;
 
 	}
 
@@ -35,8 +37,8 @@ class HomeController extends BaseController {
 	}
 
 	public function getConfiguracion(){
-		$id = 1;
-		$configuracion = Configuracion::find($id);
+		// $id = 1;
+		$configuracion = Configuracion::find($this->id);
 
 		return Response::json(array(
 			'success'=>true,
@@ -47,14 +49,14 @@ class HomeController extends BaseController {
 	public function postConfiguracion()
 	{
 		//Auth::user()->id;
-		$id = 1;
+		// $id = 1;
 		$input = Input::all();
 		// $input = array(
 		//  'empresa'	 =>'Apetito',
 		//  'rnc'		  => '41241'
 		// );
 
-  		$configuracion = Configuracion::find($id)->update($input);
+  		$configuracion = Configuracion::find($this->id)->update($input);
 
 		// $configuracion = Configuracion::create(Input::all());
 		// $configuracion_id = $configuracion->id;
@@ -203,10 +205,11 @@ class HomeController extends BaseController {
 		//Pedidos
     public function getPedido(){
     	$pedidos = DB::table("pedidos")->get();
+			
 
     	foreach($pedidos as $key => $value){
     		$id = $pedidos[$key]->id_cliente;
-			$cliente = Cliente::find($id);
+				$cliente = Cliente::find($id);
     		$pedidos[$key]->id_cliente = $cliente->nombre." ".$cliente->apellido;
     	}
 

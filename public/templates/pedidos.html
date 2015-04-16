@@ -114,10 +114,15 @@
 
               <div ng-controller="clientesController" class="form-group">
                 <label>Cliente</label>
-                <select ng-model="id_cliente"  ng-change="detectarId(id_cliente)"  name="Cliente" class="select2 form-control" >
-                  <!-- <option>Seleciona un cliente</option> -->
-                  <option ng-repeat="d in datos" value="{{d.id}}">{{d.nombre}} {{d.apellido}}</option>
-                </select>
+              <select ng-model="id_cliente"  ng-change="detectarId(id_cliente)"  name="Cliente" class="select2 form-control" >
+                
+                <option ng-repeat="d in datos" value="{{d.id}}">{{d.nombre}} {{d.apellido}}</option>
+
+              </select>
+
+                <!-- <select class="select2 form-control" ng-change="detectarId(id_cliente)" name="Cliente" ng-model="id_cliente" ng-options="cliente.id as (cliente.nombre + ' ' + cliente.apellido) for cliente in datos">
+
+                </select> -->
               </div>
 
 

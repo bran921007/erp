@@ -85,6 +85,7 @@
 		<script type="text/javascript" src="js/controllers/categoria.js"></script>
 		<script type="text/javascript" src="js/controllers/factura.js"></script>
 		<script type="text/javascript" src="js/controllers/manejar_pedidos.js"></script>
+		<script type="text/javascript" src="js/controllers/compras_pedidos.js"></script>
 		<script type="text/javascript" src="js/controllers/factura_pedidos.js"></script>
 		<script type="text/javascript" src="js/controllers/configuracion.js"></script>
 
@@ -213,7 +214,8 @@
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-male"></i>
-						<span class="username">Amalia Linarez</span>
+						<!-- <span class="username">Amalia Linarez</span> -->
+						<span class="username">{{Auth::user()->nombre}} {{ Auth::user()->apellido}}</span>
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
@@ -256,6 +258,12 @@
 								<a href="#/factura-pedidos" ng-click="tab = 3">
 									<i class="icon-shopping-cart"></i>
 									Manejar Pedidos
+								</a>
+							</li>
+							<li ng-class="{ current : tab === 4 }">
+								<a href="#/compras-pedidos" ng-click="tab = 4">
+									<i class="icon-shopping-cart"></i>
+									Compras
 								</a>
 							</li>
 					<!-- 		<li ng-class="{ current : tab === 4 }">

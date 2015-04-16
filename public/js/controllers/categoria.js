@@ -11,6 +11,8 @@
     $scope.agregarModal = function(){
       $scope.cliente = {};
         $scope.showModal = !$scope.showModal;
+				//combobox con valor default de: "Seleccione la categoria que desea"
+				// $scope.producto.categoria = 0;
     };
     $scope.toggleModal = function(){
         $scope.showConfirmacion = !$scope.showConfirmacion;

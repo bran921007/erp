@@ -5,6 +5,10 @@
 	app.controller("pedidosController", function($scope,$http,$log,$filter, $location){
 
 		$scope.carrito = [];
+		$scope.estado = 'pagado';
+		$scope.id_cliente = 1;
+		$scope.tipo = 'venta';
+		$scope.metodo = 'efectivo';
 
 		$scope.realizarPedidoModal = function(){
 			$scope.pedidoModal = !$scope.pedidoModal;
@@ -72,6 +76,8 @@
 					//console.log($scope.inventario[i].cantidad - $scope.carrito[i].cantidad);
 
 				}
+				// $scope.pedidoModal = !$scope.pedidoModal;
+				// window.location.href = "/factura/"+data.id;
 				$location.url("/factura/"+data.id);
 
 			});

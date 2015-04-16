@@ -23,6 +23,46 @@ class CreateClientesTable extends Migration {
 			$table->string('cedula');
 			$table->timestamps();
 		});
+
+		Cliente::create([
+			'nombre'=>'casual',
+			'apellido'=>'',
+			'email'=>'',
+			'telefono'=>'',
+			'direccion'=>'',
+			'cedula'=>''
+			]);
+
+		Cliente::create([
+			'nombre'=>'Miguel',
+			'apellido'=>'Perez',
+			'email'=>'',
+			'telefono'=>'809-221-6611',
+			'direccion'=>'',
+			'cedula'=>''
+			]);
+
+		Cliente::create([
+			'nombre'=>'Francisco',
+			'apellido'=>'Perez',
+			'email'=>'franciscoperez583@gmail.com',
+			'telefono'=>'809-858-6191',
+			'direccion'=>'',
+			'cedula'=>''
+			]);
+
+		Cliente::create([
+			'nombre'=>'Amalita',
+			'apellido'=>'Perez',
+			'email'=>'',
+			'telefono'=>'849-248-3803',
+			'direccion'=>'',
+			'cedula'=>''
+			]);
+
+
+
+
 	}
 
 

@@ -4,12 +4,16 @@
 
 app.controller("inventarioController", function($scope,$http){
 
+
 //===============
     //Abrir Modal
     $scope.notificacion = false;
     $scope.showModal = false;
     $scope.agregarModal = function(){
         $scope.showModal = !$scope.showModal;
+        $scope.producto.categoria = 0;
+        $scope.producto.distribuidor = 0;
+
     };
     $scope.toggleModal = function(){
         $scope.showConfirmacion = !$scope.showConfirmacion;

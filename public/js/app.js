@@ -49,6 +49,10 @@ app.config(function($routeProvider)
       templateUrl : "../templates/manejar_pedidos.html",
       controller : "manejarPedidosController"
   })
+  .when("/compras-pedidos",{
+      templateUrl : "../templates/compras_pedidos.html",
+      controller : "comprasPedidosController"
+  })
   .when("/configuracion",{
     templateUrl : "../templates/configuracion.html",
     controller : "configuracionController"
