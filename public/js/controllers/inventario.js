@@ -99,7 +99,9 @@ app.controller("inventarioController", function($scope,$http){
     $scope.editarProducto = function(){
 
         $scope.editModal = false;
-        $http.put('/editarProducto/'+$scope.datoProducto.id, $scope.datoProducto);
+        $http.put('/editarProducto/'+$scope.datoProducto.id, $scope.datoProducto).success(function(data){
+          $scope.producto = {};
+        });
     };
 
     $scope.bodyModal = "Estas seguro de que deseas borrar este articulo?";

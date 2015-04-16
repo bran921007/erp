@@ -66,7 +66,7 @@
       </div> -->
       <div class="widget-content">
         <div class="row column-seperation">
-        <div class="col-md-8" >
+        <div class="col-md-8" style="overflow: scroll;">
 
           <div class="row">
             <div class="col-md-2">
@@ -86,13 +86,13 @@
 
 
           <div class="" style="margin-top: 4px;">
-            <div class="col-md-2" ng-repeat="data in inventario |filter: query" ng-mouseenter="hover(data)" ng-mouseleave="hover(data)">
+            <div class="col-md-2" ng-repeat="data in inventario |filter: query" ng-mouseenter="hover(data)" ng-mouseleave="hover(data)" style="margin-bottom: 36px;">
               <div class="" >
                 <span class="label label-primary span-precio">RD${{data.precioVenta}}</span>
                 <span ng-if="data.cantidad === 0" class="label label-danger span-cantidad">{{data.cantidad}}</span>
                 <span ng-if="data.cantidad >0" class="label label-success span-cantidad">{{data.cantidad}}</span>
                 <img  src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;">
-                <h5 class="sin-margen">{{data.articulo}}</h5>
+                <h5 class="sin-margen" style="position:absolute;">{{data.articulo}}</h5>
                 <span ng-show="data.showDelete" class="" style="
                 position: absolute;
                 top: 14px;

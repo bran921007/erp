@@ -32,12 +32,12 @@
             titulo:         $scope.categoria.titulo,
             descripcion:    $scope.categoria.descripcion
         };
-        
+
         $scope.datos.push(categoria);
 
         $http.post('/postCategoria', categoria).success(function(data){
             categoria.id = data.id;
-            
+
         });
 
         $scope.categoria = {};
@@ -63,11 +63,13 @@
         $http.delete('borrarCategoria/'+categoria.id);
 
     };
-    
+
     $scope.editarCategoria = function (){
         $scope.editModal = false;
 
-        $http.put('/editarCategoria/'+$scope.categoria.id, $scope.categoria);
+        $http.put('/editarCategoria/'+$scope.categoria.id, $scope.categoria).success(function(data){
+					$scope.categoria = {};
+				});
     };
 
     $scope.bodyModal = "Estas seguro de que deseas borrar esta categoria?";
@@ -89,5 +91,5 @@
     };
 
 });
-	
+
 })();

@@ -181,6 +181,8 @@
 						Pedidos
 					</a>
 				</li>
+				@if(Auth::user()->nivel == 'admin')
+
 				<li ng-show="tab === 5">
 					<a href="#">
 						Clientes
@@ -191,6 +193,7 @@
 						Productos
 					</a>
 				</li>
+				@endif
 				<li ng-show="tab === 9">
 					<a href="#">
 						Informe
@@ -214,7 +217,7 @@
 						<i class="icon-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+						<li><a href="/logout"><i class="icon-key"></i> Log Out</a></li>
 					</ul>
 				</li>
 				<!-- /user login dropdown -->
@@ -263,12 +266,15 @@
 							</li> -->
 						</ul>
 					</li>
+					@if(Auth::user()->nivel == 'admin')
 					<li ng-class="{ current : tab === 5 }">
 						<a href="#/clientes" ng-click="tab = 5">
 							<i class="icon-group"></i>
 							Clientes
 						</a>
 					</li>
+					@endif
+					@if(Auth::user()->nivel == 'admin')
 					<li ng-class="{ current : tab === 6 || tab === 7 || tab === 8}">
 						<a >
 							<i class="icon-barcode"></i>
@@ -296,6 +302,7 @@
 							</li>
 						</ul>
 					</li>
+					@endif
 					<li ng-class="{ current : tab === 9 }">
 						<a href="#/informe" ng-click="tab = 9">
 							<i class="icon-calendar"></i>

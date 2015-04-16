@@ -52,8 +52,8 @@
 
 	<!-- App -->
 	<script type="text/javascript" src="melon/assets/js/login.js"></script>
-	
-	
+
+
 	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-resource.js"></script>
@@ -62,11 +62,11 @@
 	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
 	<script type="text/javascript" src="lib/angular-locale_es-es.js"></script>
 
-	BEGIN MVC AngularJS 
+	BEGIN MVC AngularJS
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/directives.js"></script>
 		<script type="text/javascript" src="js/services.js"></script>
-		Controllers 
+		Controllers
 		<script type="text/javascript" src="js/controllers/controllers.js"></script>
 
 		<script type="text/javascript" src="js/controllers/dashboard.js"></script>
@@ -82,8 +82,8 @@
 		<script type="text/javascript" src="js/controllers/configuracion.js"></script>-->
 
 	<!--BEGIN MVC AngularJS -->
-		
-	
+
+
 	<!-- END MVC AngularJS	 -->
 	<script>
 	$(document).ready(function(){
@@ -111,7 +111,7 @@
 				<h3 class="form-title">Sign In to your Account</h3>
 
 				<!-- Error Message -->
-				<div class="alert fade in alert-danger" style="display: none;">
+				<div class="alert fade in alert-danger" id="dangerLogin" style="display: none;">
 					<i class="icon-remove close" data-dismiss="alert"></i>
 					Enter any username and password.
 				</div>
@@ -161,7 +161,7 @@
 						<i class="icon-user"></i>
 						<input type="text" name="name"  class="form-control" placeholder="Apellido" autofocus="autofocus" data-rule-required="true" />
 					</div>
-				</div>		
+				</div>
 				<div class="form-group">
 					<div class="input-icon">
 						<i class="icon-lock"></i>
@@ -261,16 +261,16 @@ $('#loginSubmit').click(function(event){
     type: "POST",
     url: '/login',
     data: {
-    	email:email, 
+    	email:email,
     	password:password
     }
   }).done(function(data) {
     if(data.success == false){
-      // var errores = '';
-      // for(datos in data.errors){
-      //   errores += '<small >' + data.errors[datos] + '</small>';
-      // }
-      // $('#danger').fadeIn("fast").html(errores);
+      var errores = '';
+      for(datos in data.errors){
+        errores += '<small >' + data.errors[datos] + '</small>';
+      }
+      $('#dangerLogin').fadeIn("fast").html(errores);
     }else{
       window.location.href = '/dashboard';
       console.log(data.email);
@@ -278,4 +278,3 @@ $('#loginSubmit').click(function(event){
   });
 });
   </script>
-

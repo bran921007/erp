@@ -34,9 +34,28 @@ class CreateUsersTable extends Migration {
 			'nombre'=>'Amalia',
 			'apellido'=>'Linarez',
 			'email'=>'linaresamalia@gmail.com',
-			'password'=>Hash::make('musica'),
+			'password'=>Hash::make('playadiamante'),
+			'nivel'=>'admin'
 			)
 		);
+
+		User::create([
+			'nombre'	=>'Mairolys',
+			'apellido'=>'Sagrario',
+			'email'		=>'alicia2840@gmail.com',
+			'password'=>Hash::make('oriolys'),
+			'nivel'		=>'empleado'
+
+			]);
+
+		User::create([
+			'nombre'	=>'Francisco',
+			'apellido'=>'Perez',
+			'email'		=>'franciscoperez583@gmail.com',
+			'password'=>Hash::make('behavior.10'),
+			'nivel'		=>'admin'
+
+			]);
 
 	}
 
