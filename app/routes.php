@@ -42,6 +42,15 @@ Route::post('/postCategoria' ,         ['as' => 'categoria', 'uses' => 'HomeCont
 Route::put('/editarCategoria/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarCategoria']);
 Route::delete('/borrarCategoria/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarCategoria']);
 
+//Compra Pedidos
+Route::get('/getCompraPedidos' ,          ['as' => 'categoria', 'uses' => 'HomeController@getCompraPedidos']);
+Route::post('/postCompraPedidos' ,         ['as' => 'categoria', 'uses' => 'HomeController@postCompraPedidos']);
+Route::put('/editarCompraPedidos/{id}',     ['as' => 'categoria', 'uses' => 'HomeController@editarCompraPedidos']);
+Route::delete('/borrarCompraPedidos/{id}', ['as' => 'categoria', 'uses' => 'HomeController@borrarCompraPedidos']);
+
+
+
+
 //Distribuidor
 
 Route::get('/getDistribuidores' ,          ['as' => 'categoria', 'uses' => 'HomeController@getDistribuidores']);

@@ -10,9 +10,43 @@
 		$scope.tipo = 'venta';
 		$scope.metodo = 'efectivo';
 
+
+		// Bound to the output display
+    $scope.monto = 0;
+
+    // Used to evaluate whether to start a new number
+    // in the display and when to concatenate
+    // $scope.newNumber = true;
+
+
+		$scope.outputPedido = function (btn) {
+			// if ($scope.monto == 0 || $scope.newNumber) {
+			// 		$scope.monto = btn;
+			// 		$scope.newNumber = false;
+			// } else {
+					$scope.monto += String(btn);
+			// }
+			$scope.monto = $scope.toNumber($scope.monto);
+
+		};
+
+		$scope.toNumber = function (numberString) {
+			var result = 0;
+			if (numberString) {
+					result = numberString * 1;
+			}
+			return result;
+		};
+
+		$scope.resetMontoPedido = function(){
+			$scope.monto = 0;
+		};
+
+
+
 		$scope.realizarPedidoModal = function(){
 			$scope.pedidoModal = !$scope.pedidoModal;
-		}
+		};
 
 		$scope.inventario = {};
 			$http.get('/getProductos').success(function(data)
@@ -41,6 +75,7 @@
 				tipo: $scope.tipo
 				//fecha: $scope.fecha
 			};
+			console.log(pedido);
 
 			$scope.id_pedido = 0;
 			$http.post('/postPedido', pedido).success(function(data){
@@ -63,7 +98,10 @@
 					$http.post('/postPedidoDetalle',detalle).success(function(data){
 						console.log(data);
 						$scope.carrito = [];
+
+
 					});
+
 					var cantidadNueva ={
 						id:       $scope.inventario[i].id,
 						cantidad: $scope.inventario[i].cantidad
@@ -71,14 +109,17 @@
 
 					$http.post('/actualizarStock',cantidadNueva).success(function(data){
 						console.log(data);
+						$scope.pedidoModal = !$scope.pedidoModal;
+						// window.location.href = "#/factura/"+data.id;
+						setTimeout(function() {
+							$location.url("/factura/"+data.id);
+						}, 100);
+
 					});
-					//console.log($scope.inventario[i].cantidad);
-					//console.log($scope.inventario[i].cantidad - $scope.carrito[i].cantidad);
 
 				}
-				// $scope.pedidoModal = !$scope.pedidoModal;
-				// window.location.href = "/factura/"+data.id;
-				$location.url("/factura/"+data.id);
+
+
 
 			});
 
@@ -86,8 +127,6 @@
 
 
 
-
-			$scope.pedidoModal = !$scope.pedidoModal;
 		};
 
 		$scope.hover = function(p) {

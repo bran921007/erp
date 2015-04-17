@@ -317,12 +317,14 @@
 							Informe
 						</a>
 					</li>
+					@if(Auth::user()->nivel == 'admin')
 					<li ng-class="{ current : tab === 10 }">
 						<a href="#/configuracion" ng-click="tab = 10">
 							<i class="icon-calendar"></i>
 							Configuración
 						</a>
 					</li>
+					@endif
 				</ul>
 				<!-- /Navigation -->
 			</div>

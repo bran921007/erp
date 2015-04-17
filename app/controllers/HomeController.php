@@ -14,10 +14,17 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+
+	// RD${{itbis = subtotal* 18 / 100}}
 	private $id = 0;
 
 	public function __construct(){
-		$this->id = Auth::user()->id;
+
+		if(Auth::check()){
+			$this->id = Auth::user()->id;
+		}
+			return Redirect::to('/login');
+
 
 	}
 
@@ -27,7 +34,7 @@ class HomeController extends BaseController {
 		if(Auth::check()){
 			return View::make('modules.home');
 		}
-
+		//
 		return Redirect::to('/login');
 	}
 
@@ -205,7 +212,7 @@ class HomeController extends BaseController {
 		//Pedidos
     public function getPedido(){
     	$pedidos = DB::table("pedidos")->get();
-			
+
 
     	foreach($pedidos as $key => $value){
     		$id = $pedidos[$key]->id_cliente;
@@ -301,6 +308,50 @@ class HomeController extends BaseController {
 			//'detalle2'=> $detalle2,
 			// 'id'	  => $pedidoDetalle_id
 		));
+	}
+
+	public function getCompraPedidos(){
+
+		// $compras = DistribuidorCompra::all();
+		$compras = DistribuidorCompra::all();
+		foreach($compras as $compra){
+			$compra->producto;
+			$compra->distribuidor;
+		}
+
+		return Response::json(array(
+		 'compras'=>$compras
+		));
+
+	}
+	public function postCompraPedidos(){
+
+		$input  = Input::all();
+		$compra = DistribuidorCompra::create($input);
+
+		$id_articulo = $input['id_articulo'];
+
+		$producto = Producto::find($id_articulo);
+		$producto->cantidad = $producto->cantidad + $input['cantidad'];
+		$stock = $producto->cantidad;
+		$producto->save();
+
+		return Response::json(array(
+			'success'=>true,
+		 	'compra'	 =>$compra,
+			'stock'		=>$stock
+		));
+
+	}
+	public function editarCompraPedidos($id){
+
+		$input = Input::all();
+
+		DistribuidorCompra::find($id)->update($input);
+
+	}
+	public function borrarCompraPedidos($id){
+		DistribuidorCompra::destroy($id);
 	}
 
 

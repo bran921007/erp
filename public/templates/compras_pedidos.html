@@ -8,8 +8,8 @@
       <div class="widget-content">
         <div class="row">
           <div class="col-md-3">
-            <a href="#/pedidos" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
-              <div>Nuevo Pedido</div> </a>
+            <a ng-click="agregarModal()" class="btn btn-icon input-block-level"> <i class="icon-barcode fa-2x"></i>
+              <div>Nueva Compra</div> </a>
             </div>
           </div>
         </div>
@@ -68,9 +68,56 @@
     </form>
 
   </modal>
-<!-- END Modal Agregar Producto -->
+  <!-- Modal END Editar Compra Pedidos -->
 
-<!-- Modal Confirmacion Producto  -->
+  <!--  Modal Agregar Compra Pedidos -->
+    <modal title="Agregar Compra"  visible="showModal">
+
+      <form class="form-horizontal row-border" ng-submit="agregar()" novalidate="novalidate">
+
+        <div class="form-group"  >
+          <label class="col-md-3 control-label">Distribuidor <span class="required">*</span></label>
+          <div class="col-md-9">
+            <select ng-model="compra.distribuidor" class="form-control" ng-controller="distribuidorController" >
+              <option value="0">Seleccione un articulo</option>
+              <option ng-repeat="distribuidor in datos" value="{{distribuidor.id}}">{{distribuidor.empresa}}</option>
+            </select>
+          </div>
+        </div>
+
+<div class="form-group" >
+  <label class="col-md-3 control-label">Articulo <span class="required">*</span></label>
+  <div class="col-md-9">
+    <select ng-model="compra.articulo" class="form-control" ng-controller="inventarioController" >
+      <option value="0">Seleccione un articulo</option>
+      <option ng-repeat="articulo in datos" value="{{articulo.id}}">{{articulo.articulo}}</option>
+    </select>
+  </div>
+</div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Cantidad <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="compra.cantidad" class="form-control required">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Costo Total <span class="required">*</span></label>
+          <div class="col-md-9">
+            <input type="text" ng-model="compra.total" class="form-control required">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <input type="submit" value="Agregar Compra" class="btn btn-primary pull-right">
+        </div>
+      </form>
+
+    </modal>
+<!-- END Modal Agregar Compra Pedido -->
+
+<!-- Modal Confirmacion Compra Pedido  -->
 <!-- Begin Modal Confirmacion -->
     <modal title="Confirmar Eliminación" visible='showConfirmacion'>
       {{bodyModal}}
@@ -127,21 +174,22 @@
                                     </div>
                                 </th>
 
-                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Cliente
+                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Articulo
                                 </th>
-                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Metodo
+                                <th data-class="expand" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Distribuidor
                                 </th>
-                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Total
+                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Cantidad
                                 </th>
-                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Tipo
+                                <th data-hide="phone" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Total
                                 </th>
-                                <th >Estado
-                                </th>
+                        <!--         <th >Estado
+                        </th> -->
                                 <th >
                                 </th>
                             </tr>
                         </thead>
                         <!-- btn btn-sm btn-success -->
+
 
                     <tbody role="alert" aria-live="polite" aria-relevant="all"  >
 
@@ -149,18 +197,16 @@
                                 <td class="checkbox-column  sorting_1">
                                     <div class="checker"><span><input type="checkbox" class="uniform"></span></div>
                                 </td>
-                                <td ng-model="data.id_cliente" class=""><span class="responsiveExpander">{{data.id_cliente}}</span></td>
-                                <td ng-model="data.metodo" class=""><span class="responsiveExpander">{{data.metodo}}</span></td>
-                                <td class="" ng-model="data.total">RD${{data.total}}</td>
-                                <td ng-model="data.tipo" class="">{{data.tipo}}</td>
-                                <td ng-model="data.estado" ng-if="data.estado ==='pagado'"><span  class="label label-success">{{data.estado}}</span>
-                                </td>
-                                <td ng-model="data.estado" ng-if="data.estado ==='pendiente'"><span  class="label label-warning">{{data.estado}}</span>
-                                </td>
+                                <!-- <td hidden>{{data.id}}</td> -->
+                                <td ng-model="data.id_articulo" class=""><span class="responsiveExpander">{{data.producto.articulo}}</span></td>
+                                <td ng-model="data.id_distribuidor" class=""><span class="responsiveExpander">{{data.distribuidor.empresa}}</span></td>
+                                <td class="" ng-model="data.cantidad">{{data.cantidad}}</td>
+                                <td ng-model="data.total" class="">RD${{data.total}}</td>
+
                                 <td class="">
                                     <!-- <span class="icon-remove" ng-click="confirmacionModal(data)"></span> -->
                                     <!-- <span class="icon-edit-sign" ng-click="editarModal(data)"></span> -->
-                                    <span class="label label-info" ng-click="verFactura(data)">Ver Factura</span>
+                                    <!-- <span class="label label-info" ng-click="verFactura(data)">Ver Factura</span> -->
                                 </td>
                         </tr>
 

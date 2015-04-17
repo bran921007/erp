@@ -12,10 +12,11 @@ class CreateDistribuidorescomprasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('distribuidorescompras', function(Blueprint $table)
+		Schema::create('distribuidores_compras', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('id_producto');
+			$table->integer('id_articulo');
+			$table->integer('id_distribuidor');
 			$table->integer('cantidad');
 			$table->string('articulo');
 			$table->integer('precioCompra');
