@@ -75,11 +75,12 @@
 				tipo: $scope.tipo
 				//fecha: $scope.fecha
 			};
+			console.log("pedido: ");
 			console.log(pedido);
 
 			$scope.id_pedido = 0;
 			$http.post('/postPedido', pedido).success(function(data){
-				console.log(data.success);
+				//console.log(data.success);
 				//detalle.id_pedido = data.id;
 				//console.log("id_pedido:"+detalle.id_pedido);
 
@@ -96,6 +97,7 @@
 					};
 					//console.log(detalle);
 					$http.post('/postPedidoDetalle',detalle).success(function(data){
+						console.log("metodo /postPedidoDetalle");
 						console.log(data);
 						$scope.carrito = [];
 
@@ -103,17 +105,21 @@
 					});
 
 					var cantidadNueva ={
-						id:       $scope.inventario[i].id,
-						cantidad: $scope.inventario[i].cantidad
+						// id:       $scope.inventario[i].id,
+						id:       $scope.carrito[i].id,
+						cantidad: $scope.carrito[i].cantidad
 					};
-
+					console.log("cantidadNueva");
+					console.log(cantidadNueva);
 					$http.post('/actualizarStock',cantidadNueva).success(function(data){
+						console.log("metodo actualizarStock: ");
 						console.log(data);
 						$scope.pedidoModal = !$scope.pedidoModal;
 						// window.location.href = "#/factura/"+data.id;
 						setTimeout(function() {
-							$location.url("/factura/"+data.id);
-						}, 100);
+							$location.url("/factura/"+detalle.id_pedido);
+						}, 200);
+
 
 					});
 
@@ -121,8 +127,8 @@
 
 
 
-			});
 
+			});
 
 
 

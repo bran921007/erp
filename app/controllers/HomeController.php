@@ -228,21 +228,35 @@ class HomeController extends BaseController {
 
     public function pedido($id){
     	//$pedido = new Pedido();
-    	$pedido = Pedido::find($id);
-    	$detalle = Detalle::where('id_pedido','=',$id)->get();
+			try{
 
-		$id = $pedido->id_cliente;
-		$cliente = Cliente::find($id);
-    	$pedido->id_cliente = $cliente->nombre." ".$cliente->apellido;
+		    	$pedido = Pedido::find($id);
+		    	$detalle = Detalle::where('id_pedido','=',$id)->get();
 
-	    return Response::json(array(
-		 'pedido'=>	$pedido,
-		 'detalles'=>	$detalle
-		));
+					$id = $pedido->id_cliente;
+					$cliente = Cliente::find($id);
+		    	$pedido->id_cliente = $cliente->nombre." ".$cliente->apellido;
+
+				 return Response::json(array(
+					 'pedido'=>	$pedido,
+					 'detalles'=>	$detalle
+					));
+
+			}catch(Exception $e){
+
+				return Response::json(array(
+				 'msg'=>'No hay ningun pedido disponible',
+				 'pedido'=>[],
+				 'detalles'=>[]
+				));
+
+			}
 
     }
 
 	public function postPedido(){
+
+
 
 		$pedido =  Pedido::create(Input::all());
 		$pedido_id = $pedido->id;
@@ -269,11 +283,13 @@ class HomeController extends BaseController {
     	$cantidad = Input::get('cantidad');
 
     	$producto = Producto::find($id);
-    	$producto->cantidad = $cantidad;
+    	$producto->cantidad = $producto->cantidad - $cantidad;
+			$cantidad_actual = $producto->cantidad;
     	$producto->save();
     	return Response::json(array(
     	 'success'=>true,
     	 'cantidad'=> $cantidad,
+			 'cantidad_actual'=>$cantidad_actual,
     	 'id'=> $id
     	));
     }
