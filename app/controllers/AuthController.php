@@ -10,7 +10,7 @@ class AuthController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{	
+	{
 		// if(!$this->autorizado) return Redirect::to('/login');
 		if(Auth::check()){
 			return Redirect::to('dashboard');
@@ -27,12 +27,13 @@ class AuthController extends \BaseController {
         $credentials = ['email' => $data['email'], 'password' => $data['password']];
 
 
-        if (Auth::attempt($credentials, $data['remember']))
-        {	
+        if (Auth::attempt($credentials, (bool) ($data['remember'] ?? false)))
+        {
+            request()->session()->regenerate();
             return Response::json(array(
             	'success'=>true
             	// 'email'=> Auth::user()->email
-            )); 
+            ));
         }
           return Response::json(array(
               'success' => false,
@@ -46,6 +47,8 @@ class AuthController extends \BaseController {
       if(Auth::check())
       {
         Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
       }
       return Redirect::to('login');
     }

@@ -18,15 +18,14 @@ class HomeController extends BaseController {
 	// RD${{itbis = subtotal* 18 / 100}}
 	private $id = 0;
 
-	public function __construct(){
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->id = Auth::id() ?? 0;
+            return $next($request);
+        });
+    }
 
-		if(Auth::check()){
-			$this->id = Auth::user()->id;
-		}
-			return Redirect::to('/login');
-
-
-	}
 
 	public function index()
 	{

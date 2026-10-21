@@ -254,13 +254,12 @@ $('#loginSubmit').click(function(event){
 
   var email    = $("#email").val();
   var password = $("#password").val();
-  console.log(email);
-  console.log(password);
 
   $.ajax({
     type: "POST",
     url: '/login',
     data: {
+        _token: '{{ csrf_token() }}',
     	email:email,
     	password:password
     }
