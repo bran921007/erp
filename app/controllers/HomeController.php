@@ -18,15 +18,14 @@ class HomeController extends BaseController {
 	// RD${{itbis = subtotal* 18 / 100}}
 	private $id = 0;
 
-	public function __construct(){
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->id = Auth::id() ?? 0;
+            return $next($request);
+        });
+    }
 
-		if(Auth::check()){
-			$this->id = Auth::user()->id;
-		}
-			return Redirect::to('/login');
-
-
-	}
 
 	public function index()
 	{
@@ -117,7 +116,7 @@ class HomeController extends BaseController {
 
 	public function postProductos()
 	{
-		$producto = Producto::create(Input::all());
+		$producto = Producto::create(Input::all() + ['fecha' => null, 'vencimiento' => '']);
 		$producto_id = $producto->id;
 
 		return Response::json(array(
@@ -189,7 +188,7 @@ class HomeController extends BaseController {
 	}
     public function postDistribuidor(){
 
-    	$distribuidor = Distribuidor::create(Input::all());
+		$distribuidor = Distribuidor::create(Input::all() + ['fecha' => null, 'email' => '']);
     	$distribuidor_id = $distribuidor->id;
 
 		return Response::json(array(
@@ -258,7 +257,7 @@ class HomeController extends BaseController {
 
 
 
-		$pedido =  Pedido::create(Input::all());
+		$pedido =  Pedido::create(Input::all() + ['fecha' => null]);
 		$pedido_id = $pedido->id;
 
 		return Response::json(array(
@@ -314,7 +313,7 @@ class HomeController extends BaseController {
 
 		$input = Input::all();
 
-		$pedidoDetalle =  Detalle::create($input);
+		$pedidoDetalle =  Detalle::create($input + ['fecha' => null, 'total' => 0]);
 		$pedidoDetalle_id = $pedidoDetalle->id;
 
 		return Response::json(array(
@@ -343,7 +342,7 @@ class HomeController extends BaseController {
 	public function postCompraPedidos(){
 
 		$input  = Input::all();
-		$compra = DistribuidorCompra::create($input);
+		$compra = DistribuidorCompra::create($input + ['fecha' => null, 'articulo' => '', 'precioCompra' => 0]);
 
 		$id_articulo = $input['id_articulo'];
 

@@ -2,10 +2,13 @@
 /vendor
 /vendor/*
 composer.phar
-composer.lock
 .env.*.php
 .env.php
 .DS_Store
 Thumbs.db
 
 tests/_output/*
+
+/.env
+/.phpunit.cache
+/vendor-runtime/
